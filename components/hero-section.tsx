@@ -1,21 +1,22 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Text3D, OrbitControls } from '@react-three/drei';
-import { Button } from '@/components/ui/button';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
-import Link from 'next/link';
-import * as THREE from 'three';
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Float, Text3D, OrbitControls } from "@react-three/drei";
+import { Button } from "@/components/ui/button";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
+import * as THREE from "three";
 
 function FloatingCode() {
   const meshRef = useRef<THREE.Mesh>(null);
-  
+
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime) * 0.2;
-      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
+      meshRef.current.rotation.y =
+        Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
     }
   });
 
@@ -31,7 +32,7 @@ function FloatingCode() {
 
 function ParticleField() {
   const particlesRef = useRef<THREE.Points>(null);
-  
+
   useFrame((state) => {
     if (particlesRef.current) {
       particlesRef.current.rotation.y = state.clock.elapsedTime * 0.05;
@@ -40,7 +41,7 @@ function ParticleField() {
 
   const count = 1000;
   const positions = new Float32Array(count * 3);
-  
+
   for (let i = 0; i < count; i++) {
     positions[i * 3] = (Math.random() - 0.5) * 10;
     positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
@@ -91,7 +92,7 @@ export function HeroSection() {
           >
             Tyrone Mguni
           </motion.h1>
-          
+
           <motion.p
             className="text-xl md:text-2xl text-muted-foreground mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -100,14 +101,14 @@ export function HeroSection() {
           >
             Full-Stack Software Engineer
           </motion.p>
-          
+
           <motion.p
             className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            I craft exceptional digital experiences using modern technologies. 
+            I craft exceptional digital experiences using modern technologies.
             Specializing in React, Node.js, Python, and cloud architecture.
           </motion.p>
 
@@ -117,7 +118,11 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <Button asChild size="lg" className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700"
+            >
               <Link href="/projects">View Projects</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
