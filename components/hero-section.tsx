@@ -63,7 +63,7 @@ function ParticleField() {
   );
 }
 
-export function HeroSection() {
+export default function HeroSection() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Background */}
@@ -72,7 +72,7 @@ export function HeroSection() {
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
           <ParticleField />
-          <FloatingCode />
+          {/* <FloatingCode /> */}
           <OrbitControls enableZoom={false} enablePan={false} />
         </Canvas>
       </div>
@@ -108,8 +108,9 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            I craft exceptional digital experiences using modern technologies.
-            Specializing in React, Node.js, Python, and cloud architecture.
+            What do I do? In the words of Pickle Rick: "I invent, transform,
+            create, and destroy for a living and when I don't like something
+            about the world, I change it."
           </motion.p>
 
           <motion.div
@@ -137,19 +138,19 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <Link
-              href="https://github.com/tyronemguni"
+              href="https://github.com/IamTyrone"
               className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full"
             >
               <Github size={24} />
             </Link>
             <Link
-              href="https://linkedin.com/in/tyronemguni"
+              href="https://www.linkedin.com/in/tyrone-mguni-9b9806127/"
               className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full"
             >
               <Linkedin size={24} />
             </Link>
             <Link
-              href="mailto:tyrone@drybacktechnology.com"
+              href="mailto:tyronemguni@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full"
             >
               <Mail size={24} />

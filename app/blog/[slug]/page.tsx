@@ -1,19 +1,29 @@
 "use client";
 
-import { notFound } from 'next/navigation';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { ArrowLeft, Calendar, Clock, User, Share, Twitter, Linkedin } from 'lucide-react';
+import React from "react";
+import { notFound } from "next/navigation";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  User,
+  Share,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
 
 // Mock blog data - in a real app, this would come from a CMS or API
 const blogData: Record<string, any> = {
-  '1': {
-    id: '1',
-    title: 'The Evolution of JavaScript Frameworks: A Developer\'s Journey',
-    excerpt: 'My thoughts on how JavaScript frameworks have evolved over the years and what this means for developers in 2024.',
+  "1": {
+    id: "1",
+    title: "The Evolution of JavaScript Frameworks: A Developer's Journey",
+    excerpt:
+      "My thoughts on how JavaScript frameworks have evolved over the years and what this means for developers in 2024.",
     content: `
 # The Evolution of JavaScript Frameworks: A Developer's Journey
 
@@ -140,15 +150,16 @@ What's your JavaScript journey been like? I'd love to hear about your experience
 
 *What do you think about the current state of JavaScript frameworks? Share your thoughts on [Twitter](https://twitter.com/tyronemguni) or [LinkedIn](https://linkedin.com/in/tyronemguni).*
     `,
-    date: '2024-01-15',
-    readTime: '5 min read',
-    tags: ['JavaScript', 'React', 'Vue', 'Opinion'],
-    author: 'Tyrone Mguni'
+    date: "2024-01-15",
+    readTime: "5 min read",
+    tags: ["JavaScript", "React", "Vue", "Opinion"],
+    author: "Tyrone Mguni",
   },
-  '2': {
-    id: '2',
-    title: 'Building Scalable APIs: Lessons from Production',
-    excerpt: 'Hard-learned lessons about API design, performance optimization, and scaling strategies from real-world projects.',
+  "2": {
+    id: "2",
+    title: "Building Scalable APIs: Lessons from Production",
+    excerpt:
+      "Hard-learned lessons about API design, performance optimization, and scaling strategies from real-world projects.",
     content: `
 # Building Scalable APIs: Lessons from Production
 
@@ -481,11 +492,11 @@ The API landscape continues to evolve with GraphQL, gRPC, and other technologies
 
 *Have you faced similar challenges building scalable APIs? I'd love to hear about your experiences and lessons learned.*
     `,
-    date: '2024-01-10',
-    readTime: '8 min read',
-    tags: ['API', 'Backend', 'Performance', 'Architecture'],
-    author: 'Tyrone Mguni'
-  }
+    date: "2024-01-10",
+    readTime: "8 min read",
+    tags: ["API", "Backend", "Performance", "Architecture"],
+    author: "Tyrone Mguni",
+  },
 };
 
 interface BlogPageProps {
@@ -494,9 +505,9 @@ interface BlogPageProps {
   };
 }
 
-export default function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage({ params }: BlogPageProps) {
   const post = blogData[params.slug];
-  
+
   if (!post) {
     notFound();
   }
@@ -526,9 +537,11 @@ export default function BlogPage({ params }: BlogPageProps) {
                   </Badge>
                 ))}
               </div>
-              
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">{post.title}</h1>
-              
+
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                {post.title}
+              </h1>
+
               <div className="flex items-center gap-6 text-muted-foreground mb-6">
                 <div className="flex items-center gap-2">
                   <User size={16} />
@@ -536,11 +549,13 @@ export default function BlogPage({ params }: BlogPageProps) {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar size={16} />
-                  <span>{new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}</span>
+                  <span>
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock size={16} />
@@ -557,7 +572,12 @@ export default function BlogPage({ params }: BlogPageProps) {
                     onClick={() => {
                       const url = window.location.href;
                       const text = `Check out this article: ${post.title}`;
-                      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+                      window.open(
+                        `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                          url
+                        )}&text=${encodeURIComponent(text)}`,
+                        "_blank"
+                      );
                     }}
                   >
                     <Twitter size={16} />
@@ -567,7 +587,12 @@ export default function BlogPage({ params }: BlogPageProps) {
                     variant="outline"
                     onClick={() => {
                       const url = window.location.href;
-                      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+                      window.open(
+                        `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                          url
+                        )}`,
+                        "_blank"
+                      );
                     }}
                   >
                     <Linkedin size={16} />
@@ -588,32 +613,46 @@ export default function BlogPage({ params }: BlogPageProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="prose prose-gray dark:prose-invert max-w-none"
           >
-            <div 
-              dangerouslySetInnerHTML={{ 
+            <div
+              dangerouslySetInnerHTML={{
                 __html: post.content
-                  .split('\n')
+                  .split("\n")
                   .map((line: string) => {
-                    if (line.startsWith('# ')) {
-                      return `<h1 class="text-3xl font-bold mt-8 mb-4">${line.substring(2)}</h1>`;
-                    } else if (line.startsWith('## ')) {
-                      return `<h2 class="text-2xl font-bold mt-6 mb-3">${line.substring(3)}</h2>`;
-                    } else if (line.startsWith('### ')) {
-                      return `<h3 class="text-xl font-bold mt-4 mb-2">${line.substring(4)}</h3>`;
-                    } else if (line.startsWith('- ') || line.startsWith('* ')) {
+                    if (line.startsWith("# ")) {
+                      return `<h1 class="text-3xl font-bold mt-8 mb-4">${line.substring(
+                        2
+                      )}</h1>`;
+                    } else if (line.startsWith("## ")) {
+                      return `<h2 class="text-2xl font-bold mt-6 mb-3">${line.substring(
+                        3
+                      )}</h2>`;
+                    } else if (line.startsWith("### ")) {
+                      return `<h3 class="text-xl font-bold mt-4 mb-2">${line.substring(
+                        4
+                      )}</h3>`;
+                    } else if (line.startsWith("- ") || line.startsWith("* ")) {
                       return `<li class="ml-4">${line.substring(2)}</li>`;
-                    } else if (line.trim() === '') {
-                      return '<br />';
-                    } else if (line.startsWith('```')) {
-                      return line.includes('```') && line.length > 3 ? `</code></pre>` : `<pre class="bg-muted p-4 rounded-lg overflow-x-auto"><code>`;
+                    } else if (line.trim() === "") {
+                      return "<br />";
+                    } else if (line.startsWith("```")) {
+                      return line.includes("```") && line.length > 3
+                        ? `</code></pre>`
+                        : `<pre class="bg-muted p-4 rounded-lg overflow-x-auto"><code>`;
                     } else {
                       // Handle bold text
-                      const boldText = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                      const codeText = boldText.replace(/`(.*?)`/g, '<code class="bg-muted px-2 py-1 rounded">$1</code>');
+                      const boldText = line.replace(
+                        /\*\*(.*?)\*\*/g,
+                        "<strong>$1</strong>"
+                      );
+                      const codeText = boldText.replace(
+                        /`(.*?)`/g,
+                        '<code class="bg-muted px-2 py-1 rounded">$1</code>'
+                      );
                       return `<p class="mb-4 leading-relaxed">${codeText}</p>`;
                     }
                   })
-                  .join('')
-              }} 
+                  .join(""),
+              }}
             />
           </motion.article>
 
@@ -628,8 +667,9 @@ export default function BlogPage({ params }: BlogPageProps) {
           >
             <h3 className="text-xl font-bold mb-3">About the Author</h3>
             <p className="text-muted-foreground">
-              Tyrone Mguni is a full-stack software engineer with over 5 years of experience 
-              building scalable web applications. He specializes in React, Node.js, and cloud architecture.
+              Tyrone Mguni is a full-stack software engineer with over 5 years
+              of experience building scalable web applications. He specializes
+              in React, Node.js, and cloud architecture.
             </p>
           </motion.div>
         </div>

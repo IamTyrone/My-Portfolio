@@ -1,54 +1,112 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { 
-  Code, 
-  Database, 
-  Cloud, 
-  Smartphone, 
+import { motion } from "framer-motion";
+import {
+  Code,
+  Database,
+  Cloud,
+  Smartphone,
   Server,
   Globe,
   GitBranch,
-  Terminal 
-} from 'lucide-react';
+  Terminal,
+} from "lucide-react";
 
 const technologies = [
   {
-    category: 'Frontend',
+    category: "Frontend",
     icon: Code,
-    color: 'from-blue-400 to-blue-600',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vue.js']
+    color: "from-blue-400 to-blue-600",
+    skills: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shard.cn",
+      "Ant Design",
+    ],
   },
   {
-    category: 'Backend',
+    category: "Backend",
     icon: Server,
-    color: 'from-green-400 to-green-600',
-    skills: ['Node.js', 'Python', 'Django', 'FastAPI', 'Express.js']
+    color: "from-green-400 to-green-600",
+    skills: [
+      "Node.js",
+      "Python",
+      "Django",
+      "FastAPI",
+      "Express.js",
+      "Go",
+      "Rust",
+      "Java",
+      "Spring Boot",
+      "Flask",
+    ],
   },
   {
-    category: 'Database',
+    category: "Database",
     icon: Database,
-    color: 'from-purple-400 to-purple-600',
-    skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Supabase', 'Firebase']
+    color: "from-purple-400 to-purple-600",
+    skills: [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Supabase",
+      "MySQL",
+      "Elasticsearch",
+      "SQLite",
+      "Firebase",
+    ],
   },
   {
-    category: 'DevOps',
+    category: "DevOps",
     icon: Cloud,
-    color: 'from-orange-400 to-orange-600',
-    skills: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Terraform']
+    color: "from-orange-400 to-orange-600",
+    skills: [
+      "AWS",
+      "GCP",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Terraform",
+      "Ansible",
+      "Jenkins",
+      "GitHub Actions",
+      "Vercel",
+      "Netlify",
+      "Sentry",
+      "Prometheus",
+      "Grafana",
+      "Nginx",
+      "Apache",
+      "Bash",
+    ],
   },
   {
-    category: 'Mobile',
+    category: "Mobile",
     icon: Smartphone,
-    color: 'from-pink-400 to-pink-600',
-    skills: ['React Native', 'Flutter', 'iOS', 'Android', 'Expo']
+    color: "from-pink-400 to-pink-600",
+    skills: ["React Native", "Flutter", "iOS", "Android", "Expo"],
   },
   {
-    category: 'Tools',
+    category: "Tools",
     icon: Terminal,
-    color: 'from-cyan-400 to-cyan-600',
-    skills: ['Git', 'VS Code', 'Figma', 'Postman', 'Linux']
-  }
+    color: "from-cyan-400 to-cyan-600",
+    skills: [
+      "Git",
+      "VS Code",
+      "Figma",
+      "Postman",
+      "Linux",
+      "Claude",
+      "ChatGPT",
+      "Jira",
+      "Slack",
+      "Confluence",
+      "ClickUp",
+      "Monday",
+    ],
+  },
 ];
 
 export function TechStack() {
@@ -63,7 +121,7 @@ export function TechStack() {
         >
           <h2 className="text-4xl font-bold mb-4">Tech Stack</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Technologies and tools I use to bring ideas to life
+            Yeah, my weapons of choice!
           </p>
         </motion.div>
 
@@ -80,12 +138,16 @@ export function TechStack() {
                 className="relative group"
               >
                 <div className="bg-card border rounded-xl p-6 h-full hover:shadow-lg transition-all duration-300">
-                  <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${tech.color} mb-4`}>
+                  <div
+                    className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${tech.color} mb-4`}
+                  >
                     <Icon className="text-white" size={24} />
                   </div>
-                  
-                  <h3 className="text-xl font-semibold mb-3">{tech.category}</h3>
-                  
+
+                  <h3 className="text-xl font-semibold mb-3">
+                    {tech.category}
+                  </h3>
+
                   <div className="flex flex-wrap gap-2">
                     {tech.skills.map((skill) => (
                       <span
