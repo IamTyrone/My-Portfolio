@@ -1,100 +1,101 @@
 "use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { ExternalLink, Github, Search } from 'lucide-react';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { ExternalLink, Github, Search } from "lucide-react";
 
 const projects = [
   {
-    id: '1',
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product management, and order tracking.',
-    image: 'https://images.pexels.com/photos/6214471/pexels-photo-6214471.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    category: 'frontend',
-    github: 'https://github.com/tyronemguni/ecommerce',
-    demo: 'https://ecommerce-demo.vercel.app',
-    featured: true
+    id: "1",
+    title: "Kraven The Hunter",
+    description:
+      "An AI-powered Chrome browser extension that parses an active URL link and checks for malicious sites using a machine learning model on the backend.",
+    image:
+      "https://t4.ftcdn.net/jpg/06/35/25/41/360_F_635254151_lABWzlpgobLmVIijGBNL37x6oQonVFdz.jpg",
+    tags: [
+      "React",
+      "Python",
+      "FastAPI",
+      "Javascript",
+      "Tailwind",
+      "TensorFlow",
+    ],
+    category: "Full Stack",
+    github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
+    demo: "#",
+    featured: true,
   },
   {
-    id: '2',
-    title: 'AI Content Generator',
-    description: 'An AI-powered content generation tool using OpenAI API. Built with Next.js, features real-time content generation and user-friendly interface.',
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['Next.js', 'OpenAI', 'TypeScript', 'Prisma'],
-    category: 'backend',
-    github: 'https://github.com/tyronemguni/ai-content',
-    demo: 'https://ai-content-gen.vercel.app',
-    featured: true
+    id: "2",
+    title: "Safi Help",
+    description:
+      "Its a really cool platform where people can find cleaners and cleaners can find jobs and get paid instantly. It has a mobile app and a web app.",
+    image: "https://www.safihelp.com/images/request4.png",
+    tags: [
+      "React Native",
+      "React",
+      "Golang",
+      "Django",
+      "PostgreSQL",
+      "Docker",
+      "AWS",
+      "Stripe",
+    ],
+    category: "Full Stack",
+    github: "#",
+    demo: "https://safihelp.com",
+    featured: true,
   },
   {
-    id: '3',
-    title: 'Cloud Infrastructure',
-    description: 'Scalable cloud infrastructure setup using AWS, Docker, and Kubernetes. Includes CI/CD pipelines and monitoring solutions.',
-    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
-    category: 'devops',
-    github: 'https://github.com/tyronemguni/cloud-infra',
-    demo: null,
-    featured: true
+    id: "3",
+    title: "ZimTickets",
+    description:
+      "Scalable cloud infrastructure setup using AWS, Docker, and Kubernetes. Includes CI/CD pipelines and monitoring solutions.",
+    image:
+      "https://media.licdn.com/dms/image/v2/D4D2DAQEamLgnmROxgA/profile-treasury-image-shrink_1920_1920/B4DZVy13C3HYAc-/0/1741388480417?e=1751115600&v=beta&t=VwV_vDCdW8zpYHBCcG0_OITR9ZJN5628JA_uKrhlCLE",
+    tags: [
+      "MySQL",
+      "SmartBear",
+      "Docker",
+      "AWS",
+      "React Native",
+      "Next.js",
+      "Tailwind",
+      "Laravel",
+    ],
+    category: "devops",
+    github: "#",
+    demo: "https://www.zimtickets.com/",
+    featured: true,
   },
-  {
-    id: '4',
-    title: 'Portfolio Website Template',
-    description: 'A modern, responsive portfolio website template built with Next.js and Tailwind CSS. Features dark mode, animations, and SEO optimization.',
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-    category: 'static',
-    github: 'https://github.com/tyronemguni/portfolio-template',
-    demo: 'https://portfolio-template.vercel.app',
-    featured: false
-  },
-  {
-    id: '5',
-    title: 'Task Management API',
-    description: 'RESTful API for task management with user authentication, real-time updates, and comprehensive documentation.',
-    image: 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['Node.js', 'Express', 'PostgreSQL', 'JWT'],
-    category: 'backend',
-    github: 'https://github.com/tyronemguni/task-api',
-    demo: null,
-    featured: false
-  },
-  {
-    id: '6',
-    title: 'React Component Library',
-    description: 'A comprehensive React component library with TypeScript support, Storybook documentation, and npm publishing workflow.',
-    image: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['React', 'TypeScript', 'Storybook', 'Rollup'],
-    category: 'frontend',
-    github: 'https://github.com/tyronemguni/react-components',
-    demo: 'https://components.storybook.io',
-    featured: false
-  }
 ];
 
 const categories = [
-  { value: 'all', label: 'All Projects' },
-  { value: 'frontend', label: 'Frontend' },
-  { value: 'backend', label: 'Backend' },
-  { value: 'devops', label: 'DevOps' },
-  { value: 'static', label: 'Static Sites' }
+  { value: "all", label: "All Projects" },
+  { value: "frontend", label: "Frontend" },
+  { value: "backend", label: "Backend" },
+  { value: "devops", label: "DevOps" },
+  { value: "static", label: "Static Sites" },
 ];
 
 export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProjects = projects.filter(project => {
-    const matchesCategory = selectedCategory === 'all' || project.category === selectedCategory;
-    const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredProjects = projects.filter((project) => {
+    const matchesCategory =
+      selectedCategory === "all" || project.category === selectedCategory;
+    const matchesSearch =
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
+      );
     return matchesCategory && matchesSearch;
   });
 
@@ -111,7 +112,8 @@ export default function Projects() {
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">My Projects</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A collection of projects showcasing my skills across different technologies and domains
+              A collection of projects showcasing my skills across different
+              technologies and domains
             </p>
           </motion.div>
 
@@ -124,7 +126,10 @@ export default function Projects() {
           >
             {/* Search */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={16} />
+              <Search
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"
+                size={16}
+              />
               <Input
                 placeholder="Search projects..."
                 value={searchQuery}
@@ -138,7 +143,9 @@ export default function Projects() {
               {categories.map((category) => (
                 <Button
                   key={category.value}
-                  variant={selectedCategory === category.value ? 'default' : 'outline'}
+                  variant={
+                    selectedCategory === category.value ? "default" : "outline"
+                  }
                   size="sm"
                   onClick={() => setSelectedCategory(category.value)}
                   className="whitespace-nowrap"
@@ -175,31 +182,35 @@ export default function Projects() {
                       </Badge>
                     )}
                   </div>
-                  
+
                   <div className="p-6">
                     <div className="flex flex-wrap gap-2 mb-3">
                       {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
+                        <Badge
+                          key={tag}
+                          variant="secondary"
+                          className="text-xs"
+                        >
                           {tag}
                         </Badge>
                       ))}
                     </div>
-                    
+
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       {project.title}
                     </h3>
-                    
+
                     <p className="text-muted-foreground mb-4 line-clamp-3">
                       {project.description}
                     </p>
-                    
+
                     <div className="flex items-center gap-3">
                       <Button asChild size="sm" variant="outline">
                         <Link href={`/projects/${project.id}`}>
                           View Details
                         </Link>
                       </Button>
-                      
+
                       <div className="flex gap-2">
                         <Link
                           href={project.github}

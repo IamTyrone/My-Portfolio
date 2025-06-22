@@ -1,43 +1,73 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github } from 'lucide-react';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, Github } from "lucide-react";
 
 const featuredProjects = [
   {
-    id: '1',
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product management, and order tracking.',
-    image: 'https://images.pexels.com/photos/6214471/pexels-photo-6214471.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    category: 'frontend',
-    github: 'https://github.com/tyronemguni/ecommerce',
-    demo: 'https://ecommerce-demo.vercel.app'
+    id: "1",
+    title: "Kraven The Hunter",
+    description:
+      "An AI-powered Chrome browser extension that parses an active URL link and checks for malicious sites using a machine learning model on the backend.",
+    image:
+      "https://t4.ftcdn.net/jpg/06/35/25/41/360_F_635254151_lABWzlpgobLmVIijGBNL37x6oQonVFdz.jpg",
+    tags: [
+      "React",
+      "Python",
+      "FastAPI",
+      "Javascript",
+      "Tailwind",
+      "TensorFlow",
+    ],
+    category: "Full Stack",
+    github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
+    demo: "#",
   },
   {
-    id: '2',
-    title: 'AI Content Generator',
-    description: 'An AI-powered content generation tool using OpenAI API. Built with Next.js, features real-time content generation and user-friendly interface.',
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['Next.js', 'OpenAI', 'TypeScript', 'Prisma'],
-    category: 'backend',
-    github: 'https://github.com/tyronemguni/ai-content',
-    demo: 'https://ai-content-gen.vercel.app'
+    id: "2",
+    title: "Safi Help",
+    description:
+      "Its a really cool platform where people can find cleaners and cleaners can find jobs and get paid instantly. It has a mobile app and a web app.",
+    image: "https://www.safihelp.com/images/request4.png",
+    tags: [
+      "React Native",
+      "React",
+      "Golang",
+      "Django",
+      "PostgreSQL",
+      "Docker",
+      "AWS",
+      "Stripe",
+    ],
+    category: "Full Stack",
+    github: "#",
+    demo: "https://safihelp.com",
   },
   {
-    id: '3',
-    title: 'Cloud Infrastructure',
-    description: 'Scalable cloud infrastructure setup using AWS, Docker, and Kubernetes. Includes CI/CD pipelines and monitoring solutions.',
-    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
-    category: 'devops',
-    github: 'https://github.com/tyronemguni/cloud-infra',
-    demo: null
-  }
+    id: "3",
+    title: "ZimTickets",
+    description:
+      "Scalable cloud infrastructure setup using AWS, Docker, and Kubernetes. Includes CI/CD pipelines and monitoring solutions.",
+    image:
+      "https://media.licdn.com/dms/image/v2/D4D2DAQEamLgnmROxgA/profile-treasury-image-shrink_1920_1920/B4DZVy13C3HYAc-/0/1741388480417?e=1751115600&v=beta&t=VwV_vDCdW8zpYHBCcG0_OITR9ZJN5628JA_uKrhlCLE",
+    tags: [
+      "MySQL",
+      "SmartBear",
+      "Docker",
+      "AWS",
+      "React Native",
+      "Next.js",
+      "Tailwind",
+      "Laravel",
+    ],
+    category: "devops",
+    github: "#",
+    demo: "https://www.zimtickets.com/",
+  },
 ];
 
 export function FeaturedProjects() {
@@ -52,7 +82,8 @@ export function FeaturedProjects() {
         >
           <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A selection of my recent work showcasing different technologies and approaches
+            A selection of my recent work showcasing different technologies and
+            approaches
           </p>
         </motion.div>
 
@@ -76,7 +107,7 @@ export function FeaturedProjects() {
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                 </div>
-                
+
                 <div className="p-6">
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.tags.map((tag) => (
@@ -85,22 +116,20 @@ export function FeaturedProjects() {
                       </Badge>
                     ))}
                   </div>
-                  
+
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground mb-4 line-clamp-3">
                     {project.description}
                   </p>
-                  
+
                   <div className="flex items-center gap-3">
                     <Button asChild size="sm" variant="outline">
-                      <Link href={`/projects/${project.id}`}>
-                        View Details
-                      </Link>
+                      <Link href={`/projects/${project.id}`}>View Details</Link>
                     </Button>
-                    
+
                     <div className="flex gap-2">
                       <Link
                         href={project.github}
