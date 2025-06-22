@@ -25,7 +25,7 @@ const projects = [
       "Tailwind",
       "TensorFlow",
     ],
-    category: "Full Stack",
+    category: "fullstack",
     github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
     demo: "#",
     featured: true,
@@ -46,7 +46,7 @@ const projects = [
       "AWS",
       "Stripe",
     ],
-    category: "Full Stack",
+    category: "fullstack",
     github: "#",
     demo: "https://safihelp.com",
     featured: true,
@@ -55,7 +55,7 @@ const projects = [
     id: "3",
     title: "ZimTickets",
     description:
-      "Scalable cloud infrastructure setup using AWS, Docker, and Kubernetes. Includes CI/CD pipelines and monitoring solutions.",
+      "I gave this bad boy a detailed high level architecture. Its a ticketing platform that allows users to buy, sell and validate tickets for events. It's got a couple of mobile and web apps.",
     image:
       "https://media.licdn.com/dms/image/v2/D4D2DAQEamLgnmROxgA/profile-treasury-image-shrink_1920_1920/B4DZVy13C3HYAc-/0/1741388480417?e=1751115600&v=beta&t=VwV_vDCdW8zpYHBCcG0_OITR9ZJN5628JA_uKrhlCLE",
     tags: [
@@ -68,10 +68,10 @@ const projects = [
       "Tailwind",
       "Laravel",
     ],
-    category: "devops",
+    category: "architecture",
     github: "#",
     demo: "https://www.zimtickets.com/",
-    featured: true,
+    featured: false,
   },
 ];
 
@@ -81,6 +81,8 @@ const categories = [
   { value: "backend", label: "Backend" },
   { value: "devops", label: "DevOps" },
   { value: "static", label: "Static Sites" },
+  { value: "fullstack", label: "Full Stack" },
+  { value: "architecture", label: "Architecture" },
 ];
 
 export default function Projects() {

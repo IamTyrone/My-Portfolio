@@ -21,52 +21,51 @@ import {
 const projectsData: Record<string, any> = {
   "1": {
     id: "1",
-    title: "E-Commerce Platform",
+    title: "Kraven The Hunter",
     description:
-      "A comprehensive e-commerce solution built with modern web technologies, featuring a responsive design, secure payment processing, and an intuitive admin dashboard.",
-    longDescription: `This e-commerce platform represents a full-stack solution designed to handle modern online retail needs. Built with React and Node.js, it provides a seamless shopping experience while maintaining robust security and performance standards.
+      "An ML powered chrome extension that parses the url and sends it to the an ML endine and database to check if the it is malicious or not.",
+    longDescription: `So Tyrone, why did you decide to do this project? I plead the 5th. What  I will say, is that the idea to do it was pretty cool, am I right? LOL. This is essentially a browser extension that parses the URL the browser is currently on and sends it somehwere..
 
-The platform features a dynamic product catalog with advanced filtering and search capabilities, secure user authentication, and integrated payment processing through Stripe. The admin dashboard allows for comprehensive inventory management, order tracking, and analytics.
+Send it where? Well, I have a FastAPI server on the backend exposing a machine learning model trained on a databases of known malicious URL. First I had to decide what are my features. Well, for starters, malicious URLs tend to be werid, right? What do I mean by that? They are long and have lots of special characters. Well, So I used the length of the URL and the number of special characters and as well as a host of other stuff you know.
 
-Key technical highlights include server-side rendering for improved SEO, real-time inventory updates, automated email notifications, and comprehensive error handling. The application is deployed on AWS with CI/CD pipelines ensuring reliable updates and scaling capabilities.`,
+On the other hand, if we have a filter feature enabled on the server, we can direct traffic to check whether the URL is a shopping site or an adult entertainment site and all. Why would someone want to filter those out? Psshhhh, I don't know, maybe you have kids and you don't want them to see that stuff. So I added a filter for that too.
+
+The page we eventually direct the user to is built off of React and Tailwind and it shows a minimal report on whether the URL is malicious or not and our degree of accuracy. If the URL is good, no redirects.`,
     image:
-      "https://images.pexels.com/photos/6214471/pexels-photo-6214471.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    tags: ["React", "Node.js", "MongoDB", "Stripe", "AWS"],
-    category: "frontend",
-    github: "https://github.com/tyronemguni/ecommerce",
-    demo: "https://ecommerce-demo.vercel.app",
+      "https://t4.ftcdn.net/jpg/06/35/25/41/360_F_635254151_lABWzlpgobLmVIijGBNL37x6oQonVFdz.jpg",
+    tags: ["React", "Python", "FastAPI", "Javascript", "Tailwind", "ML"],
+    category: "Full Stack",
+    github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
+    demo: "#",
     timeline: "3 months",
     team: "Solo project",
-    status: "Completed",
+    status: "Completed(But Imperfect)",
     features: [
-      "User authentication and authorization",
-      "Product catalog with search and filtering",
+      "Auto URL parsing.",
+      "Typo-squatting and phishing detection.",
       "Shopping cart and wishlist functionality",
       "Secure payment processing with Stripe",
       "Order management and tracking",
-      "Admin dashboard for inventory management",
       "Responsive design for all devices",
-      "Email notifications and confirmations",
     ],
     techStack: {
-      Frontend: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-      Backend: ["Node.js", "Express.js", "JWT Authentication"],
-      Database: ["MongoDB", "Mongoose ODM"],
-      Payment: ["Stripe API", "Webhook handling"],
-      Deployment: ["AWS EC2", "PM2", "Nginx"],
-      Tools: ["Git", "GitHub Actions", "Postman"],
+      Frontend: ["React", "TypeScript", "Tailwind CSS", "Javascript"],
+      Backend: ["Python", "FastAPI", "JWT Authentication"],
+      Database: ["N/A"],
+      Payment: ["N/A"],
+      Deployment: ["N/A"],
+      Tools: ["Git", "GitHub Actions", "Postman", "VS Code"],
     },
     challenges: [
-      "Implementing secure payment processing with proper error handling",
-      "Optimizing database queries for large product catalogs",
+      "Implementing ML without using an established ML library like tensorflow.",
+      "Capturing the URL and redirecting to a warning page if malicious. Chrome doesn't like that.",
       "Creating a responsive design that works across all device sizes",
       "Setting up automated deployment pipelines",
     ],
     learnings: [
-      "Advanced React patterns and state management",
-      "Payment gateway integration and security best practices",
-      "Database optimization techniques",
-      "Cloud deployment and infrastructure management",
+      "Definitely how to build a browser extension and browser APIs.",
+      "Not to forget how to develop ML models without using an established ML library.",
+      "To be honest, I already knew how to code pretty well with everything else.",
     ],
   },
   "2": {
