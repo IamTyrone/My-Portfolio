@@ -68,58 +68,59 @@ The page we eventually direct the user to is built off of React and Tailwind and
       "To be honest, I already knew how to code pretty well with everything else.",
     ],
   },
-  "2": {
-    id: "2",
-    title: "AI Content Generator",
-    description:
-      "An AI-powered content generation tool using OpenAI API, designed to help content creators and marketers generate high-quality content efficiently.",
-    longDescription: `The AI Content Generator is a sophisticated web application that leverages the power of OpenAI's GPT models to assist users in creating various types of content. From blog posts and social media content to product descriptions and email campaigns, this tool streamlines the content creation process.
-
-Built with Next.js and TypeScript, the application features a clean, intuitive interface that makes AI-powered content generation accessible to users of all technical levels. The tool includes customizable templates, tone adjustment, and content optimization features.
-
-The backend integrates seamlessly with OpenAI's API while implementing proper rate limiting, cost tracking, and user management. Real-time collaboration features allow teams to work together on content projects, with version control and approval workflows built-in.`,
-    image:
-      "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    tags: ["Next.js", "OpenAI", "TypeScript", "Prisma"],
-    category: "backend",
-    github: "https://github.com/tyronemguni/ai-content",
-    demo: "https://ai-content-gen.vercel.app",
-    timeline: "2 months",
-    team: "Solo project",
-    status: "Completed",
-    features: [
-      "Multiple content generation templates",
-      "Customizable tone and style settings",
-      "Real-time content preview",
-      "Export to various formats (PDF, DOCX, HTML)",
-      "Usage tracking and analytics",
-      "Team collaboration features",
-      "Version history and rollback",
-      "API rate limiting and cost optimization",
-    ],
-    techStack: {
-      Frontend: ["Next.js", "TypeScript", "Tailwind CSS", "React Hook Form"],
-      Backend: ["Next.js API Routes", "Prisma ORM", "NextAuth.js"],
-      Database: ["PostgreSQL", "PlanetScale"],
-      AI: ["OpenAI GPT-4", "Prompt engineering"],
-      Deployment: ["Vercel", "Edge Functions"],
-      Tools: ["ESLint", "Prettier", "Husky"],
-    },
-    challenges: [
-      "Optimizing API costs while maintaining quality",
-      "Implementing proper rate limiting and user quotas",
-      "Designing intuitive UX for complex AI interactions",
-      "Handling large text outputs efficiently",
-    ],
-    learnings: [
-      "AI integration and prompt engineering",
-      "Advanced Next.js features and optimization",
-      "Database design for content management",
-      "User experience design for AI tools",
-    ],
-  },
   "3": {
     id: "3",
+    title: "ZimTickets",
+    description:
+      "An all in one event management platform. It Houses the ability to help event organizers post events, sell their tickets and provide means to enable users to validate those tickets.",
+    longDescription: `I did mention that I work as a software architect back at Mviyo techonologies right? That means when new products come into the fold, they tend to pass through my hands first, to gather requirements, and design solutions for those requirements alongside the higher-ups. ZimTickets is one of those products.
+
+While designing the architecture for the platform, I had to create what exactly the users will do once on the platform in "Functional Requirements" and make user stories out of those which are eventually used as a unit of work for developers. The technical architecture had to be limited to AWS because that is our primary service provider.
+
+Upon designing the high level architecture, I went deep into the database and designed what it should look like. For that I used pen and paper first because that makes me think quick while retaining lots of context in my head, then I moved it to Eraser to just give me clear schema diagrams to share with the backend developers.
+
+After doing the database design, I did the API design using Smart Bear. This enabled the backend and client side developers to work in parallel. This way, no one has to wait for the other to get their work done. Smart Bear allowed me to create mockable API endpoints that the frontend developers could use to test their code against. This is a great way to ensure that the frontend and backend are in sync and that the API is well documented.`,
+    image:
+      "https://media.licdn.com/dms/image/v2/D4D2DAQEamLgnmROxgA/profile-treasury-image-shrink_1920_1920/B4DZVy13C3HYAc-/0/1741388480417?e=1751115600&v=beta&t=VwV_vDCdW8zpYHBCcG0_OITR9ZJN5628JA_uKrhlCLE",
+    tags: ["Architecture", "OpenAPI", "Eraser.io"],
+    category: "backend",
+    github: "#",
+    demo: "https://zimtickets.com",
+    timeline: "1 Year",
+    team: "Mviyo Technologies",
+    status: "Completed",
+    features: [
+      "Event Management",
+      "Ticket Sales and Validation",
+      "Detailed Event Analytics",
+      "Secure Payment Processing",
+      "Event Promotion Tools",
+    ],
+    techStack: {
+      Frontend: ["React Native", "Next.js", "TypeScript", "Tailwind CSS"],
+      Backend: ["Laravel", "PHP"],
+      Database: ["MySQL"],
+      Payment: ["Stripe", "Innbucks", "Ecocash", "Omari"],
+      Deployment: ["Vercel", "AWS"],
+      Tools: ["Smart Bear", "Eraser.io", "Postman", "Lucid Charts"],
+    },
+    challenges: [
+      "Cost effective resource utilization.",
+      "Consistent API and database design",
+      "Mockable API endpoints for testing",
+      "User authentication and authorization",
+      "User story generation and management",
+    ],
+    learnings: [
+      "Generating user stories and requirements from high-level descriptions",
+      "Drafting API specifications and documentation",
+      "Designing scalable and maintainable backend architectures",
+      "Implementing best practices for API development and testing",
+      "Writing Software Requirements Specifications (SRS) documents",
+    ],
+  },
+  "2": {
+    id: "2",
     title: "Cloud Infrastructure",
     description:
       "A scalable cloud infrastructure setup using AWS, Docker, and Kubernetes, designed for high-availability applications with comprehensive monitoring and CI/CD.",
