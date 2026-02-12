@@ -528,3 +528,36 @@
 .font-mono-body {
   font-family: "JetBrains Mono", monospace;
 }
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE UTILITIES
+   ═══════════════════════════════════════════════════════ */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-area-bottom {
+    padding-bottom: calc(0.625rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 640px) {
+  button,
+  a,
+  input {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  input[type="text"] {
+    font-size: 16px !important; /* Prevent iOS zoom on focus */
+  }
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
@@ -8,10 +8,18 @@ import { MatrixRain } from "@/components/matrix-rain";
 import { GlitchText } from "@/components/glitch-text";
 import { Typewriter } from "@/components/typewriter";
 import { SkullAscii } from "@/components/ascii-art";
+import { getRandomQuote } from "@/lib/quotes";
+
+const CATEGORY_COLORS: Record<string, string> = {
+  "rick-and-morty": "text-hack-cyan/50",
+  voldemort: "text-evil-red/50",
+  "mr-robot": "text-terminal-green/50",
+};
 
 export default function HeroSection() {
   const [bootComplete, setBootComplete] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const quote = useMemo(() => getRandomQuote(), []);
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -137,15 +145,21 @@ export default function HeroSection() {
               Full-Stack Software Engineer
             </motion.p>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
-              className="text-xs sm:text-sm text-muted-foreground font-mono mb-10 max-w-xl mx-auto italic"
+              className="mb-10 max-w-xl mx-auto"
             >
-              &quot;Nobody exists on purpose. Nobody belongs anywhere.
-              Everybody&apos;s gonna die. Come look at my code.&quot;
-            </motion.p>
+              <p className="text-xs sm:text-sm text-muted-foreground font-mono italic">
+                &quot;{quote.text}&quot;
+              </p>
+              <p
+                className={`text-[10px] font-mono mt-1.5 ${CATEGORY_COLORS[quote.category] || "text-muted-foreground/50"}`}
+              >
+                — {quote.source}
+              </p>
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div

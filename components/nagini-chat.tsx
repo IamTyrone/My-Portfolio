@@ -2,12 +2,12 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send } from "lucide-react";
-import { SnakeAscii } from "@/components/ascii-art";
+import { X, Send, MessageSquare } from "lucide-react";
 
 interface Message {
   role: "user" | "nagini";
   content: string;
+  streaming?: boolean;
 }
 
 const NAGINI_GREETINGS = [
@@ -79,15 +79,12 @@ const NAGINI_RESPONSES: Record<string, string> = {
 function getNaginiResponse(input: string): string {
   const lower = input.toLowerCase().trim();
 
-  // Check for exact matches first
   if (NAGINI_RESPONSES[lower]) return NAGINI_RESPONSES[lower];
 
-  // Check for partial matches
   for (const [key, response] of Object.entries(NAGINI_RESPONSES)) {
     if (lower.includes(key)) return response;
   }
 
-  // Check for common patterns
   if (lower.includes("name") || lower.includes("who are you"))
     return NAGINI_RESPONSES["who"];
   if (
@@ -150,7 +147,6 @@ function getNaginiResponse(input: string): string {
     return NAGINI_RESPONSES["dimension"];
   if (lower.includes("plumbus")) return NAGINI_RESPONSES["plumbus"];
 
-  // Default responses
   const defaults = [
     "Hmm, I'm not sssure about that. Try asking about my master's skills, projects, experience, or type 'help' for suggestions.",
     "The Dark Lord's knowledge is vast, but that question eludes even me. Perhaps rephrase? Or type 'help' to see what I can tell you.",
@@ -159,14 +155,69 @@ function getNaginiResponse(input: string): string {
   return defaults[Math.floor(Math.random() * defaults.length)];
 }
 
+function StreamingText({
+  text,
+  onComplete,
+}: {
+  text: string;
+  onComplete?: () => void;
+}) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let i = 0;
+    setDisplayed("");
+    setDone(false);
+    const interval = setInterval(() => {
+      i++;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(interval);
+        setDone(true);
+        onComplete?.();
+      }
+    }, 18);
+    return () => clearInterval(interval);
+  }, [text, onComplete]);
+
+  return (
+    <span>
+      {displayed}
+      {!done && (
+        <span className="inline-block w-1.5 h-3 bg-terminal-green ml-0.5 animate-pulse align-middle" />
+      )}
+    </span>
+  );
+}
+
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isDesktop;
+}
+
 export function NaginiChat() {
+  const isDesktop = useIsDesktop();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
+  const [isStreaming, setIsStreaming] = useState(false);
   const [hasGreeted, setHasGreeted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Auto-open on desktop
+  useEffect(() => {
+    if (isDesktop) {
+      setIsOpen(true);
+    }
+  }, [isDesktop]);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -176,20 +227,14 @@ export function NaginiChat() {
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
+  // Greeting with streaming effect
   useEffect(() => {
     if (isOpen && !hasGreeted) {
-      setIsTyping(true);
-      const timeout = setTimeout(() => {
-        setMessages([
-          {
-            role: "nagini",
-            content: NAGINI_GREETINGS[0],
-          },
-        ]);
-        setIsTyping(false);
-        setHasGreeted(true);
-      }, 1200);
-      return () => clearTimeout(timeout);
+      setIsStreaming(true);
+      setHasGreeted(true);
+      setMessages([
+        { role: "nagini", content: NAGINI_GREETINGS[0], streaming: true },
+      ]);
     }
   }, [isOpen, hasGreeted]);
 
@@ -199,26 +244,34 @@ export function NaginiChat() {
     }
   }, [isOpen]);
 
+  const handleStreamComplete = useCallback((index: number) => {
+    setMessages((prev) =>
+      prev.map((msg, i) => (i === index ? { ...msg, streaming: false } : msg)),
+    );
+    setIsStreaming(false);
+  }, []);
+
   const handleSend = useCallback(() => {
-    if (!input.trim()) return;
+    if (!input.trim() || isStreaming) return;
 
     const userMessage = input.trim();
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
-    setIsTyping(true);
+    setIsStreaming(true);
 
-    // Simulate typing delay
-    const delay = Math.min(800 + userMessage.length * 20, 2500);
+    const delay = Math.min(400 + userMessage.length * 10, 1200);
     setTimeout(() => {
       const response = getNaginiResponse(userMessage);
-      setMessages((prev) => [...prev, { role: "nagini", content: response }]);
-      setIsTyping(false);
+      setMessages((prev) => [
+        ...prev,
+        { role: "nagini", content: response, streaming: true },
+      ]);
     }, delay);
-  }, [input]);
+  }, [input, isStreaming]);
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating Button — only on mobile when closed */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -227,10 +280,10 @@ export function NaginiChat() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-[200] w-14 h-14 rounded-full bg-[#0a0a0a] border border-terminal-green/30 flex items-center justify-center pulse-glow hover:border-terminal-green/60 transition-colors group"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[200] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0a0a0a] border border-terminal-green/30 flex items-center justify-center pulse-glow hover:border-terminal-green/60 transition-colors group"
             aria-label="Chat with Nagini"
           >
-            <span className="text-2xl group-hover:scale-110 transition-transform">
+            <span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform">
               🐍
             </span>
           </motion.button>
@@ -245,10 +298,10 @@ export function NaginiChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 z-[200] w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-6rem)] flex flex-col terminal-window border-glow-green"
+            className="fixed bottom-0 right-0 sm:bottom-4 sm:right-4 lg:bottom-6 lg:right-6 z-[200] w-full sm:w-[380px] sm:max-w-[calc(100vw-2rem)] h-[85vh] sm:h-[520px] sm:max-h-[calc(100vh-6rem)] flex flex-col terminal-window sm:rounded-md rounded-none border-glow-green"
           >
             {/* Header */}
-            <div className="terminal-titlebar justify-between">
+            <div className="terminal-titlebar justify-between shrink-0">
               <div className="flex items-center gap-2">
                 <div className="flex gap-1.5 mr-2">
                   <button
@@ -258,28 +311,28 @@ export function NaginiChat() {
                   <span className="terminal-dot terminal-dot-yellow" />
                   <span className="terminal-dot terminal-dot-green" />
                 </div>
-                <span className="text-terminal-green text-[11px]">
+                <span className="text-terminal-green text-[11px] font-mono">
                   nagini@voldermort:~$
                 </span>
-                <span className="terminal-cursor !h-2.5 !w-1" />
+                <span className="inline-block w-1.5 h-2.5 bg-terminal-green animate-pulse" />
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-muted-foreground hover:text-terminal-green transition-colors"
+                className="text-muted-foreground hover:text-terminal-green transition-colors p-1"
               >
-                <X size={12} />
+                <X size={14} />
               </button>
             </div>
 
-            {/* ASCII Art Header */}
-            <div className="px-3 py-2 border-b border-terminal-green/10 bg-[#030303]">
+            {/* Subheader */}
+            <div className="px-3 py-2 border-b border-terminal-green/10 bg-[#030303] shrink-0">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] font-mono text-terminal-green/50">
                     NAGINI AI INTERFACE v0.1
                   </p>
                   <p className="text-[8px] font-mono text-muted-foreground/40">
-                    // the dark lord&apos;s faithful servant
+                    {"//"} the dark lord&apos;s faithful servant
                   </p>
                 </div>
                 <span className="text-lg">🐍</span>
@@ -287,25 +340,27 @@ export function NaginiChat() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-[#020202]">
+            <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-[#020202] min-h-0">
               {messages.map((msg, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className={`${
-                    msg.role === "user" ? "text-right" : "text-left"
-                  }`}
+                  className={msg.role === "user" ? "text-right" : "text-left"}
                 >
                   {msg.role === "nagini" ? (
                     <div className="space-y-1">
                       <span className="text-[9px] font-mono text-evil-red/60">
                         [NAGINI]
                       </span>
-                      <p className="text-xs font-mono text-terminal-green/90 leading-relaxed bg-terminal-green/5 rounded px-2.5 py-2 border-l-2 border-terminal-green/20">
-                        {msg.content}
-                      </p>
+                      <div className="text-xs font-mono text-terminal-green/90 leading-relaxed bg-terminal-green/5 rounded px-2.5 py-2 border-l-2 border-terminal-green/20">
+                        {msg.streaming ? (
+                          <StreamingText
+                            text={msg.content}
+                            onComplete={() => handleStreamComplete(i)}
+                          />
+                        ) : (
+                          msg.content
+                        )}
+                      </div>
                     </div>
                   ) : (
                     <div className="space-y-1">
@@ -320,32 +375,29 @@ export function NaginiChat() {
                       </p>
                     </div>
                   )}
-                </motion.div>
+                </div>
               ))}
 
-              {/* Typing indicator */}
-              {isTyping && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-left"
-                >
-                  <span className="text-[9px] font-mono text-evil-red/60">
-                    [NAGINI]
-                  </span>
-                  <div className="text-xs font-mono text-terminal-green/50 bg-terminal-green/5 rounded px-2.5 py-2 border-l-2 border-terminal-green/20 inline-block mt-1">
-                    <span className="animate-pulse">sss...</span>
+              {/* Typing indicator — shows before streaming starts */}
+              {isStreaming &&
+                messages[messages.length - 1]?.role === "user" && (
+                  <div className="text-left">
+                    <span className="text-[9px] font-mono text-evil-red/60">
+                      [NAGINI]
+                    </span>
+                    <div className="text-xs font-mono text-terminal-green/50 bg-terminal-green/5 rounded px-2.5 py-2 border-l-2 border-terminal-green/20 inline-block mt-1">
+                      <span className="inline-block w-1.5 h-3 bg-terminal-green animate-pulse" />
+                    </div>
                   </div>
-                </motion.div>
-              )}
+                )}
 
               <div ref={messagesEndRef} />
             </div>
 
             {/* Input */}
-            <div className="p-2.5 border-t border-terminal-green/10 bg-[#050505]">
+            <div className="p-2.5 sm:p-2.5 border-t border-terminal-green/10 bg-[#050505] shrink-0 safe-area-bottom">
               <div className="flex items-center gap-2">
-                <span className="text-terminal-green/50 text-xs font-mono">
+                <span className="text-terminal-green/50 text-xs font-mono shrink-0">
                   {">"}
                 </span>
                 <input
@@ -355,12 +407,13 @@ export function NaginiChat() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
                   placeholder="speak to nagini..."
-                  className="flex-1 bg-transparent text-xs font-mono text-terminal-green placeholder:text-muted-foreground/30 outline-none border-none"
+                  disabled={isStreaming}
+                  className="flex-1 bg-transparent text-xs font-mono text-terminal-green placeholder:text-muted-foreground/30 outline-none border-none disabled:opacity-40 min-w-0"
                 />
                 <button
                   onClick={handleSend}
-                  disabled={!input.trim()}
-                  className="text-terminal-green/50 hover:text-terminal-green disabled:opacity-20 transition-colors"
+                  disabled={!input.trim() || isStreaming}
+                  className="text-terminal-green/50 hover:text-terminal-green disabled:opacity-20 transition-colors shrink-0 p-1"
                 >
                   <Send size={14} />
                 </button>
