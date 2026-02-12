@@ -1,172 +1,224 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Text3D, OrbitControls } from "@react-three/drei";
-import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import * as THREE from "three";
-
-function FloatingCode() {
-  const meshRef = useRef<THREE.Mesh>(null);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime) * 0.2;
-      meshRef.current.rotation.y =
-        Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
-    }
-  });
-
-  return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <mesh ref={meshRef} position={[2, 0, 0]}>
-        <boxGeometry args={[0.5, 0.5, 0.5]} />
-        <meshStandardMaterial color="#06b6d4" />
-      </mesh>
-    </Float>
-  );
-}
-
-function ParticleField() {
-  const particlesRef = useRef<THREE.Points>(null);
-
-  useFrame((state) => {
-    if (particlesRef.current) {
-      particlesRef.current.rotation.y = state.clock.elapsedTime * 0.05;
-    }
-  });
-
-  const count = 1000;
-  const positions = new Float32Array(count * 3);
-
-  for (let i = 0; i < count; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 10;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
-  }
-
-  return (
-    <points ref={particlesRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial size={0.02} sizeAttenuation color="#8b5cf6" />
-    </points>
-  );
-}
+import { MatrixRain } from "@/components/matrix-rain";
+import { GlitchText } from "@/components/glitch-text";
+import { Typewriter } from "@/components/typewriter";
+import { SkullAscii } from "@/components/ascii-art";
 
 export default function HeroSection() {
+  const [bootComplete, setBootComplete] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0">
-        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <ParticleField />
-          {/* <FloatingCode /> */}
-          <OrbitControls enableZoom={false} enablePan={false} />
-        </Canvas>
-      </div>
+      {/* Matrix Rain Background */}
+      <MatrixRain />
+
+      {/* Dark gradient overlay for readability */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
+        {/* Boot Sequence */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="mb-8"
         >
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 bg-clip-text text-transparent"
-            initial={{ opacity: 0, scale: 0.5 }}
+          {/* ASCII Skull */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center mb-6"
           >
-            Tyrone Mguni
-          </motion.h1>
-
-          <motion.p
-            className="text-xl md:text-2xl text-muted-foreground mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Full-Stack Software Engineer
-          </motion.p>
-
-          <motion.p
-            className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            What do I do? In the words of Pickle Rick: "I invent, transform,
-            create, and destroy for a living and when I don't like something
-            about the world, I change it."
-          </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <Button
-              asChild
-              size="lg"
-              className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700"
-            >
-              <Link href="/projects">View Projects</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/about">About Me</Link>
-            </Button>
+            <SkullAscii />
           </motion.div>
 
-          <motion.div
-            className="flex justify-center space-x-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            <Link
-              href="https://github.com/IamTyrone"
-              className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full"
-            >
-              <Github size={24} />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/tyrone-mguni-9b9806127/"
-              className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full"
-            >
-              <Linkedin size={24} />
-            </Link>
-            <Link
-              href="mailto:tyronemguni@gmail.com"
-              className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full"
-            >
-              <Mail size={24} />
-            </Link>
-          </motion.div>
+          {/* Boot text */}
+          <div className="text-left max-w-2xl mx-auto mb-8 font-mono text-xs sm:text-sm">
+            <Typewriter
+              text="[SYSTEM] Initializing Voldermort OS v6.6.6..."
+              speed={30}
+              className="text-muted-foreground block"
+              showCursor={false}
+              onComplete={() => setBootComplete(true)}
+            />
+            {bootComplete && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mt-1 space-y-0.5"
+              >
+                <Typewriter
+                  text="[OK] Dark Arts module loaded"
+                  speed={25}
+                  delay={200}
+                  className="text-terminal-green block"
+                  showCursor={false}
+                />
+                <Typewriter
+                  text="[OK] Horcrux backup system online"
+                  speed={25}
+                  delay={800}
+                  className="text-terminal-green block"
+                  showCursor={false}
+                />
+                <Typewriter
+                  text="[OK] Connection to fsociety established"
+                  speed={25}
+                  delay={1400}
+                  className="text-hack-cyan block"
+                  showCursor={false}
+                />
+                <Typewriter
+                  text="[READY] Welcome back, Dark Lord."
+                  speed={25}
+                  delay={2000}
+                  className="text-evil-red block"
+                  showCursor={false}
+                  onComplete={() => setShowContent(true)}
+                />
+              </motion.div>
+            )}
+          </div>
         </motion.div>
+
+        {/* Main Content — appears after boot */}
+        {showContent && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Name with glitch */}
+            <div className="mb-4">
+              <GlitchText
+                text="TYRONE MGUNI"
+                as="h1"
+                className="text-4xl sm:text-5xl md:text-7xl font-bold font-display tracking-widest"
+              />
+            </div>
+
+            {/* Alias */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="mb-6"
+            >
+              <span className="text-muted-foreground text-sm font-mono">
+                alias:{" "}
+              </span>
+              <span className="text-evil-red text-lg sm:text-xl font-display tracking-[0.3em] text-glow-red">
+                VOLDERMORT
+              </span>
+            </motion.div>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="text-sm sm:text-base text-terminal-green/70 font-mono mb-3"
+            >
+              Full-Stack Software Engineer
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="text-xs sm:text-sm text-muted-foreground font-mono mb-10 max-w-xl mx-auto italic"
+            >
+              &quot;I invent, transform, create, and destroy for a living and
+              when I don&apos;t like something about the world, I change
+              it.&quot;
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="flex flex-col sm:flex-row gap-3 justify-center mb-10"
+            >
+              <Link
+                href="/projects"
+                className="px-6 py-2.5 text-xs font-mono border border-terminal-green/40 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm tracking-wider"
+              >
+                $ ls ./projects
+              </Link>
+              <Link
+                href="/about"
+                className="px-6 py-2.5 text-xs font-mono border border-evil-red/30 text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-all duration-200 rounded-sm tracking-wider"
+              >
+                $ cat ./about
+              </Link>
+            </motion.div>
+
+            {/* Social Links as terminal commands */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1 }}
+              className="flex justify-center gap-6"
+            >
+              <Link
+                href="https://github.com/IamTyrone"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-muted-foreground hover:text-terminal-green transition-all duration-200"
+              >
+                <Github size={16} />
+                <span className="text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 transition-opacity">
+                  git remote -v
+                </span>
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/tyrone-mguni-9b9806127/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-muted-foreground hover:text-hack-cyan transition-all duration-200"
+              >
+                <Linkedin size={16} />
+                <span className="text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 transition-opacity">
+                  connect --professional
+                </span>
+              </Link>
+              <Link
+                href="mailto:tyronemguni@gmail.com"
+                className="group flex items-center gap-2 text-muted-foreground hover:text-evil-red transition-all duration-200"
+              >
+                <Mail size={16} />
+                <span className="text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 transition-opacity">
+                  sendmail -v
+                </span>
+              </Link>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <ArrowDown className="text-muted-foreground" size={24} />
-      </motion.div>
+      {showContent && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, 8, 0] }}
+          transition={{
+            opacity: { delay: 1.5 },
+            y: { duration: 2, repeat: Infinity },
+          }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        >
+          <ArrowDown className="text-terminal-green/40" size={20} />
+        </motion.div>
+      )}
     </section>
   );
 }

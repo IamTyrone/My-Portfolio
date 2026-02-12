@@ -1,35 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Code,
-  Database,
-  Cloud,
-  Smartphone,
-  Server,
-  Globe,
-  GitBranch,
-  Terminal,
-} from "lucide-react";
+import { TerminalWindow } from "@/components/terminal-window";
 
 const technologies = [
   {
     category: "Frontend",
-    icon: Code,
-    color: "from-blue-400 to-blue-600",
+    dir: "/usr/lib/frontend",
     skills: [
       "React",
       "Next.js",
       "TypeScript",
       "Tailwind CSS",
-      "Shard.cn",
+      "Shadcn",
       "Ant Design",
     ],
   },
   {
     category: "Backend",
-    icon: Server,
-    color: "from-green-400 to-green-600",
+    dir: "/usr/lib/backend",
     skills: [
       "Node.js",
       "Python",
@@ -45,8 +34,7 @@ const technologies = [
   },
   {
     category: "Database",
-    icon: Database,
-    color: "from-purple-400 to-purple-600",
+    dir: "/var/db",
     skills: [
       "PostgreSQL",
       "MongoDB",
@@ -60,8 +48,7 @@ const technologies = [
   },
   {
     category: "DevOps",
-    icon: Cloud,
-    color: "from-orange-400 to-orange-600",
+    dir: "/etc/devops",
     skills: [
       "AWS",
       "GCP",
@@ -84,14 +71,12 @@ const technologies = [
   },
   {
     category: "Mobile",
-    icon: Smartphone,
-    color: "from-pink-400 to-pink-600",
+    dir: "/opt/mobile",
     skills: ["React Native", "Flutter", "iOS", "Android", "Expo"],
   },
   {
     category: "Tools",
-    icon: Terminal,
-    color: "from-cyan-400 to-cyan-600",
+    dir: "/usr/bin",
     skills: [
       "Git",
       "VS Code",
@@ -113,57 +98,68 @@ export function TechStack() {
   return (
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={{ once: true }}
+          className="mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">Tech Stack</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Yeah, my weapons of choice!
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-evil-red font-mono text-sm">
+              voldermort@arsenal
+            </span>
+            <span className="text-muted-foreground font-mono text-sm">:~$</span>
+            <span className="text-terminal-green font-mono text-sm">
+              cat /etc/voldermort/skills.json
+            </span>
+          </div>
+          <p className="text-muted-foreground text-xs font-mono ml-2">
+            // weapons of mass construction
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {technologies.map((tech, index) => {
-            const Icon = tech.icon;
-            return (
-              <motion.div
-                key={tech.category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="relative group"
-              >
-                <div className="bg-card border rounded-xl p-6 h-full hover:shadow-lg transition-all duration-300">
-                  <div
-                    className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${tech.color} mb-4`}
-                  >
-                    <Icon className="text-white" size={24} />
-                  </div>
-
-                  <h3 className="text-xl font-semibold mb-3">
-                    {tech.category}
-                  </h3>
-
-                  <div className="flex flex-wrap gap-2">
-                    {tech.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1 bg-muted rounded-full text-sm text-muted-foreground"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {technologies.map((tech, index) => (
+            <TerminalWindow
+              key={tech.category}
+              title={`ls ${tech.dir}/`}
+              delay={index * 0.08}
+              className="h-full"
+            >
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-hack-cyan text-xs font-mono">
+                    [{tech.category.toUpperCase()}]
+                  </span>
+                  <span className="text-muted-foreground text-[10px]">
+                    {tech.skills.length} modules loaded
+                  </span>
                 </div>
-              </motion.div>
-            );
-          })}
+
+                <div className="flex flex-wrap gap-1.5">
+                  {tech.skills.map((skill, i) => (
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.08 + i * 0.03 }}
+                      viewport={{ once: true }}
+                      className="px-2 py-0.5 text-[11px] font-mono border border-terminal-green/20 text-terminal-green/80 hover:text-terminal-green hover:border-terminal-green/50 hover:bg-terminal-green/5 transition-all duration-200 cursor-default rounded-sm"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            </TerminalWindow>
+          ))}
         </div>
       </div>
+
+      <div className="section-divider mt-20" />
     </section>
   );
 }

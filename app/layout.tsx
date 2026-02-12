@@ -1,14 +1,19 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
-import { Navigation } from '@/components/navigation';
+import "./globals.css";
+import type { Metadata } from "next";
+import { JetBrains_Mono } from "next/font/google";
+import { Navigation } from "@/components/navigation";
+import { CRTOverlay } from "@/components/crt-overlay";
+import { NaginiChat } from "@/components/nagini-chat";
 
-const inter = Inter({ subsets: ['latin'] });
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+});
 
 export const metadata: Metadata = {
-  title: 'Tyrone Mguni - Software Engineer',
-  description: 'Full-stack developer specializing in modern web technologies, cloud architecture, and scalable solutions.',
+  title: "Voldermort // Tyrone Mguni — Software Engineer",
+  description:
+    "He Who Must Not Be Debugged. Full-stack software engineer specializing in modern web technologies, cloud architecture, and scalable solutions.",
 };
 
 export default function RootLayout({
@@ -17,19 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navigation />
-          <main className="min-h-screen">
-            {children}
-          </main>
-        </ThemeProvider>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body className={`${jetbrains.variable} noise-bg`}>
+        <CRTOverlay />
+        <Navigation />
+        <main className="min-h-screen">{children}</main>
+        <NaginiChat />
       </body>
     </html>
   );

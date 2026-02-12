@@ -2,12 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { ExternalLink, Github, Search } from "lucide-react";
+import { GlitchText } from "@/components/glitch-text";
 
 const projects = [
   {
@@ -15,8 +12,6 @@ const projects = [
     title: "Kraven The Hunter",
     description:
       "An AI-powered Chrome browser extension that parses an active URL link and checks for malicious sites using a machine learning model on the backend.",
-    image:
-      "https://t4.ftcdn.net/jpg/06/35/25/41/360_F_635254151_lABWzlpgobLmVIijGBNL37x6oQonVFdz.jpg",
     tags: [
       "React",
       "Python",
@@ -35,7 +30,6 @@ const projects = [
     title: "Safi Help",
     description:
       "Its a really cool platform where people can find cleaners and cleaners can find jobs and get paid instantly. It has a mobile app and a web app.",
-    image: "https://www.safihelp.com/images/request4.png",
     tags: [
       "React Native",
       "React",
@@ -55,9 +49,7 @@ const projects = [
     id: "3",
     title: "ZimTickets",
     description:
-      "I gave this bad boy a detailed high level architecture. Its a ticketing platform that allows users to buy, sell and validate tickets for events. It's got a couple of mobile and web apps.",
-    image:
-      "https://media.licdn.com/dms/image/v2/D4D2DAQEamLgnmROxgA/profile-treasury-image-shrink_1920_1920/B4DZVy13C3HYAc-/0/1741388480417?e=1751115600&v=beta&t=VwV_vDCdW8zpYHBCcG0_OITR9ZJN5628JA_uKrhlCLE",
+      "I gave this bad boy a detailed high level architecture. Its a ticketing platform that allows users to buy, sell and validate tickets for events.",
     tags: [
       "MySQL",
       "SmartBear",
@@ -76,13 +68,12 @@ const projects = [
 ];
 
 const categories = [
-  { value: "all", label: "All Projects" },
-  { value: "frontend", label: "Frontend" },
-  { value: "backend", label: "Backend" },
-  { value: "devops", label: "DevOps" },
-  { value: "static", label: "Static Sites" },
-  { value: "fullstack", label: "Full Stack" },
-  { value: "architecture", label: "Architecture" },
+  { value: "all", label: "--all" },
+  { value: "fullstack", label: "--fullstack" },
+  { value: "backend", label: "--backend" },
+  { value: "frontend", label: "--frontend" },
+  { value: "devops", label: "--devops" },
+  { value: "architecture", label: "--architecture" },
 ];
 
 export default function Projects() {
@@ -96,26 +87,40 @@ export default function Projects() {
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase())
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     return matchesCategory && matchesSearch;
   });
 
   return (
     <div className="min-h-screen pt-20">
-      {/* Header */}
-      <section className="py-20 px-4">
+      <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="mb-10"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">My Projects</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A collection of projects showcasing my skills across different
-              technologies and domains
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-evil-red font-mono text-sm">
+                voldermort@projects
+              </span>
+              <span className="text-muted-foreground font-mono text-sm">
+                :~$
+              </span>
+              <span className="text-terminal-green font-mono text-sm">
+                find /projects -type f
+              </span>
+            </div>
+            <GlitchText
+              text="PROJECTS"
+              as="h1"
+              className="text-3xl md:text-5xl font-bold font-display tracking-wider mb-3"
+            />
+            <p className="text-muted-foreground text-xs font-mono">
+              // horcruxes of code — each one contains a piece of my soul
             </p>
           </motion.div>
 
@@ -124,115 +129,124 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col md:flex-row gap-4 mb-12"
+            className="flex flex-col md:flex-row gap-4 mb-10"
           >
             {/* Search */}
             <div className="relative flex-1 max-w-md">
               <Search
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"
-                size={16}
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-terminal-green/40"
+                size={14}
               />
-              <Input
-                placeholder="Search projects..."
+              <input
+                placeholder="grep -i 'search' ./projects/*"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                className="w-full pl-9 pr-4 py-2 bg-[#050505] border border-terminal-green/15 text-xs font-mono text-terminal-green placeholder:text-muted-foreground/30 outline-none focus:border-terminal-green/40 transition-colors rounded-sm"
               />
             </div>
 
             {/* Categories */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {categories.map((category) => (
-                <Button
+                <button
                   key={category.value}
-                  variant={
-                    selectedCategory === category.value ? "default" : "outline"
-                  }
-                  size="sm"
                   onClick={() => setSelectedCategory(category.value)}
-                  className="whitespace-nowrap"
+                  className={`px-3 py-1.5 text-[10px] font-mono rounded-sm border transition-all duration-200 ${
+                    selectedCategory === category.value
+                      ? "border-terminal-green/50 text-terminal-green bg-terminal-green/10"
+                      : "border-terminal-green/10 text-muted-foreground hover:text-terminal-green hover:border-terminal-green/30"
+                  }`}
                 >
                   {category.label}
-                </Button>
+                </button>
               ))}
             </div>
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="bg-card border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300">
-                  <div className="relative aspect-video overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-                    {project.featured && (
-                      <Badge className="absolute top-3 left-3 bg-gradient-to-r from-cyan-500 to-purple-600">
-                        Featured
-                      </Badge>
-                    )}
+                <div className="terminal-window h-full flex flex-col">
+                  <div className="terminal-titlebar">
+                    <div className="flex gap-1.5 mr-3">
+                      <span className="terminal-dot terminal-dot-red" />
+                      <span className="terminal-dot terminal-dot-yellow" />
+                      <span className="terminal-dot terminal-dot-green" />
+                    </div>
+                    <span className="truncate">
+                      ~/projects/
+                      {project.title.toLowerCase().replace(/\s+/g, "-")}
+                    </span>
                   </div>
 
-                  <div className="p-6">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {project.tags.map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
+                  <div className="terminal-body flex-1 flex flex-col">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-terminal-green text-glow-green text-base font-display tracking-wider group-hover:text-white transition-colors">
+                        {project.title}
+                      </h3>
+                      {project.featured && (
+                        <span className="text-[9px] font-mono px-1.5 py-0.5 border border-evil-red/30 text-evil-red rounded-sm">
+                          FEATURED
+                        </span>
+                      )}
                     </div>
 
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
+                    <div className="mb-3">
+                      <span className="text-[10px] font-mono px-2 py-0.5 border border-hack-cyan/30 text-hack-cyan rounded-sm">
+                        {project.category}
+                      </span>
+                    </div>
 
-                    <p className="text-muted-foreground mb-4 line-clamp-3">
+                    <p className="text-muted-foreground text-xs font-mono leading-relaxed mb-4 line-clamp-3 flex-1">
+                      <span className="text-terminal-green/50">// </span>
                       {project.description}
                     </p>
 
-                    <div className="flex items-center gap-3">
-                      <Button asChild size="sm" variant="outline">
-                        <Link href={`/projects/${project.id}`}>
-                          View Details
-                        </Link>
-                      </Button>
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-mono px-1.5 py-0.5 bg-terminal-green/5 border border-terminal-green/10 text-terminal-green/60 rounded-sm"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
 
-                      <div className="flex gap-2">
+                    <div className="flex items-center gap-3 pt-3 border-t border-terminal-green/10">
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-terminal-green transition-colors"
+                      >
+                        <Github size={12} />
+                        <span>source</span>
+                      </Link>
+                      {project.demo && project.demo !== "#" && (
                         <Link
-                          href={project.github}
-                          className="p-2 hover:bg-muted rounded-full transition-colors"
+                          href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-hack-cyan transition-colors"
                         >
-                          <Github size={16} />
+                          <ExternalLink size={12} />
+                          <span>demo</span>
                         </Link>
-                        {project.demo && (
-                          <Link
-                            href={project.demo}
-                            className="p-2 hover:bg-muted rounded-full transition-colors"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink size={16} />
-                          </Link>
-                        )}
-                      </div>
+                      )}
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="ml-auto text-[10px] font-mono text-evil-red/70 hover:text-evil-red transition-colors"
+                      >
+                        $ cat README.md →
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -244,10 +258,11 @@ export default function Projects() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-12"
+              className="text-center py-16"
             >
-              <p className="text-muted-foreground">
-                No projects found matching your search criteria.
+              <p className="text-muted-foreground text-xs font-mono">
+                // find: no matches found. the dark lord&apos;s archives are
+                empty for this query.
               </p>
             </motion.div>
           )}
