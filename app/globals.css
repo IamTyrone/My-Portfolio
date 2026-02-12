@@ -548,16 +548,15 @@ html {
   text-size-adjust: 100%;
 }
 
-/* Better touch targets on mobile */
+/* Better touch targets on mobile — scoped to avoid breaking small UI elements */
 @media (max-width: 640px) {
-  button,
-  a,
-  input {
+  button:not([class*="terminal-dot"]):not([class*="shrink"]),
+  a:not([class*="terminal-dot"]) {
     min-height: 44px;
-    min-width: 44px;
   }
 
   input[type="text"] {
+    min-height: 44px;
     font-size: 16px !important; /* Prevent iOS zoom on focus */
   }
 }

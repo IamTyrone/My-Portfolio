@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
@@ -19,7 +19,21 @@ const CATEGORY_COLORS: Record<string, string> = {
 export default function HeroSection() {
   const [bootComplete, setBootComplete] = useState(false);
   const [showContent, setShowContent] = useState(false);
-  const quote = useMemo(() => getRandomQuote(), []);
+  const [quote, setQuote] = useState<ReturnType<typeof getRandomQuote> | null>(
+    null,
+  );
+
+  // Pick quote on client only to avoid SSR hydration mismatch
+  useEffect(() => {
+    setQuote(getRandomQuote());
+  }, []);
+
+  // Notify NaginiChat that hero boot is complete
+  useEffect(() => {
+    if (showContent) {
+      window.dispatchEvent(new CustomEvent("hero-boot-complete"));
+    }
+  }, [showContent]);
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -145,21 +159,23 @@ export default function HeroSection() {
               Full-Stack Software Engineer
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="mb-10 max-w-xl mx-auto"
-            >
-              <p className="text-xs sm:text-sm text-muted-foreground font-mono italic">
-                &quot;{quote.text}&quot;
-              </p>
-              <p
-                className={`text-[10px] font-mono mt-1.5 ${CATEGORY_COLORS[quote.category] || "text-muted-foreground/50"}`}
+            {quote && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                className="mb-10 max-w-xl mx-auto"
               >
-                — {quote.source}
-              </p>
-            </motion.div>
+                <p className="text-xs sm:text-sm text-muted-foreground font-mono italic">
+                  &quot;{quote.text}&quot;
+                </p>
+                <p
+                  className={`text-[10px] font-mono mt-1.5 ${CATEGORY_COLORS[quote.category] || "text-muted-foreground/50"}`}
+                >
+                  — {quote.source}
+                </p>
+              </motion.div>
+            )}
 
             {/* CTA Buttons */}
             <motion.div

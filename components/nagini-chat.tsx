@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, MessageSquare } from "lucide-react";
+import { X, Send } from "lucide-react";
 
 interface Message {
   role: "user" | "nagini";
@@ -164,6 +164,8 @@ function StreamingText({
 }) {
   const [displayed, setDisplayed] = useState("");
   const [done, setDone] = useState(false);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     let i = 0;
@@ -175,11 +177,11 @@ function StreamingText({
       if (i >= text.length) {
         clearInterval(interval);
         setDone(true);
-        onComplete?.();
+        onCompleteRef.current?.();
       }
     }, 18);
     return () => clearInterval(interval);
-  }, [text, onComplete]);
+  }, [text]);
 
   return (
     <span>
@@ -209,15 +211,29 @@ export function NaginiChat() {
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [hasGreeted, setHasGreeted] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const sendTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Auto-open on desktop
+  // Listen for hero boot completion before showing chat
   useEffect(() => {
-    if (isDesktop) {
+    const onBootComplete = () => setIsReady(true);
+    window.addEventListener("hero-boot-complete", onBootComplete);
+    // Fallback: if event never fires (e.g. not on home page), show after 8s
+    const fallback = setTimeout(() => setIsReady(true), 8000);
+    return () => {
+      window.removeEventListener("hero-boot-complete", onBootComplete);
+      clearTimeout(fallback);
+    };
+  }, []);
+
+  // Auto-open on desktop once ready
+  useEffect(() => {
+    if (isDesktop && isReady) {
       setIsOpen(true);
     }
-  }, [isDesktop]);
+  }, [isDesktop, isReady]);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -251,6 +267,24 @@ export function NaginiChat() {
     setIsStreaming(false);
   }, []);
 
+  // Clean up pending send timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (sendTimeoutRef.current) clearTimeout(sendTimeoutRef.current);
+    };
+  }, []);
+
+  // Reset streaming state when chat is closed to prevent stuck state
+  useEffect(() => {
+    if (!isOpen) {
+      setIsStreaming(false);
+      if (sendTimeoutRef.current) {
+        clearTimeout(sendTimeoutRef.current);
+        sendTimeoutRef.current = null;
+      }
+    }
+  }, [isOpen]);
+
   const handleSend = useCallback(() => {
     if (!input.trim() || isStreaming) return;
 
@@ -260,7 +294,8 @@ export function NaginiChat() {
     setIsStreaming(true);
 
     const delay = Math.min(400 + userMessage.length * 10, 1200);
-    setTimeout(() => {
+    sendTimeoutRef.current = setTimeout(() => {
+      sendTimeoutRef.current = null;
       const response = getNaginiResponse(userMessage);
       setMessages((prev) => [
         ...prev,
@@ -271,9 +306,9 @@ export function NaginiChat() {
 
   return (
     <>
-      {/* Floating Button — only on mobile when closed */}
+      {/* Floating Button — only on mobile when closed, after ready */}
       <AnimatePresence>
-        {!isOpen && (
+        {isReady && !isOpen && (
           <motion.button
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
