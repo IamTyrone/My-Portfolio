@@ -13,7 +13,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Voldermort // Tyrone Mguni — Software Engineer",
   description:
-    "He Who Must Not Be Debugged. Full-stack software engineer specializing in modern web technologies, cloud architecture, and scalable solutions.",
+    "He Who Must Not Be Debugged. The Rickest developer in dimension C-137. Full-stack software engineer specializing in modern web technologies, cloud architecture, and scalable solutions.",
 };
 
 export default function RootLayout({

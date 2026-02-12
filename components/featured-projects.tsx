@@ -85,7 +85,7 @@ export function FeaturedProjects() {
             </span>
           </div>
           <p className="text-muted-foreground text-xs font-mono ml-2">
-            // horcruxes of code — each one contains a piece of my soul
+            // horcruxes of code — each one exists in a different dimension
           </p>
         </motion.div>
 

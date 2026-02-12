@@ -56,7 +56,7 @@ export function BlogPreview() {
             </span>
           </div>
           <p className="text-muted-foreground text-xs font-mono ml-2">
-            // unhinged thoughts, rants, and dark incantations
+            // interdimensional thoughts, rants, and dark incantations
           </p>
         </motion.div>
 

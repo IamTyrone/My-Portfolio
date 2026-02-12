@@ -50,11 +50,30 @@ const NAGINI_RESPONSES: Record<string, string> = {
   hack: "Hack? The Dark Lord doesn't hack — he engineers. Though his Kraven The Hunter project does detect malicious websites using machine learning. Fighting dark arts with dark arts, you might sssay.",
   "sudo rm -rf /":
     "FOOLISH MORTAL! You dare attempt to destroy the Dark Lord's system?! *hisses violently* ...fortunately, I have revoked your sudo privileges. Nice try though. The Dark Lord would be amused.",
-  help: "You can ask me about: my master's skills, experience, projects, contact info, favorite languages (Python, Go, Rust), his thoughts on Mr. Robot, or anything else about the Dark Lord Voldermort. Try typing 'fsociety' for a surprise...",
+  help: "You can ask me about: my master's skills, experience, projects, contact info, favorite languages (Python, Go, Rust), his thoughts on Mr. Robot, Rick and Morty, or anything else about the Dark Lord Voldermort. Try typing 'wubba lubba dub dub' or 'pickle' for a surprise...",
   funny:
     "The Dark Lord once described himself as 'the epitome of a dopamine driven developer.' He thrives on intense problem solving and constantly proving to himself that he actually IS as smart as he thinks he is. Sssuch confidence.",
   available:
     "The Dark Lord is currently available for new opportunities. He seeks challenges worthy of his abilities. Dazzle him with something interesting, and he may grace you with his presence.",
+  "rick and morty":
+    "Wubba lubba dub dub! ...I mean, sssss. The Dark Lord is a devoted follower of the Rickest Rick. 'To live is to risk it all; otherwise you're just an inert chunk of randomly assembled molecules drifting wherever the universe blows you.' My master codes by that philosophy.",
+  rick: "Rick Sanchez? The Dark Lord considers him a kindred ssspirit. Both are the smartest being in their respective dimensions. Both have... questionable social skills. But the code doesn't lie, Morty — I mean, mortal.",
+  morty:
+    "*burp* Oh geez, you mentioned Morty? The Dark Lord sometimes feels like a Morty debugging Rick-level code at 3am. But then he remembers — he IS the Rick. He's always been the Rick.",
+  wubba:
+    "WUBBA LUBBA DUB DUB! The Dark Lord screams this internally every time a production deploy succeeds on the first try. Which is... sssurprisingly often.",
+  pickle:
+    "I turned myself into a pickle, Morty! I'M PICKLE RIIIICK! ...sorry, the Dark Lord's Rick Sanchez impression is contagious. But sssseriously, my master once refactored an entire monolith in a weekend. That's the real pickle move.",
+  portal:
+    "The Dark Lord doesn't need a portal gun — he has SSH tunnels to every dimension. But between you and me, he did name one of his dev servers 'C-137'. Sssuch a nerd.",
+  "get schwifty":
+    "SHOW ME WHAT YOU GOT! ...the Dark Lord's code, that is. He gets schwifty with every tech stack. React? Schwifty. Django? Schwifty. Kubernetes? The schwiftiest.",
+  szechuan:
+    "The Dark Lord's szechuan sauce? That's the feeling when all tests pass on the first run. Nine more seasons of that feeling, Morty. Ninety-seven more years.",
+  dimension:
+    "In dimension C-137, the Dark Lord is a software architect. In dimension C-138, he's probably still a software architect. Some constants exist across all realities. His talent is one of them.",
+  plumbus:
+    "Everyone has a plumbus in their home. And everyone has the Dark Lord's code running somewhere in their stack. It's just how the universe works.",
 };
 
 function getNaginiResponse(input: string): string {
@@ -71,20 +90,65 @@ function getNaginiResponse(input: string): string {
   // Check for common patterns
   if (lower.includes("name") || lower.includes("who are you"))
     return NAGINI_RESPONSES["who"];
-  if (lower.includes("skill") || lower.includes("tech") || lower.includes("stack"))
+  if (
+    lower.includes("skill") ||
+    lower.includes("tech") ||
+    lower.includes("stack")
+  )
     return NAGINI_RESPONSES["skills"];
-  if (lower.includes("work") || lower.includes("experience") || lower.includes("job"))
+  if (
+    lower.includes("work") ||
+    lower.includes("experience") ||
+    lower.includes("job")
+  )
     return NAGINI_RESPONSES["experience"];
-  if (lower.includes("project") || lower.includes("portfolio") || lower.includes("built"))
+  if (
+    lower.includes("project") ||
+    lower.includes("portfolio") ||
+    lower.includes("built")
+  )
     return NAGINI_RESPONSES["projects"];
-  if (lower.includes("email") || lower.includes("contact") || lower.includes("reach"))
+  if (
+    lower.includes("email") ||
+    lower.includes("contact") ||
+    lower.includes("reach")
+  )
     return NAGINI_RESPONSES["contact"];
-  if (lower.includes("where") || lower.includes("location") || lower.includes("live"))
+  if (
+    lower.includes("where") ||
+    lower.includes("location") ||
+    lower.includes("live")
+  )
     return NAGINI_RESPONSES["location"];
-  if (lower.includes("hire") || lower.includes("available") || lower.includes("open"))
+  if (
+    lower.includes("hire") ||
+    lower.includes("available") ||
+    lower.includes("open")
+  )
     return NAGINI_RESPONSES["available"];
-  if (lower.includes("funny") || lower.includes("joke") || lower.includes("personality"))
+  if (
+    lower.includes("funny") ||
+    lower.includes("joke") ||
+    lower.includes("personality")
+  )
     return NAGINI_RESPONSES["funny"];
+  if (lower.includes("rick") && lower.includes("morty"))
+    return NAGINI_RESPONSES["rick and morty"];
+  if (lower.includes("wubba") || lower.includes("dub"))
+    return NAGINI_RESPONSES["wubba"];
+  if (lower.includes("pickle")) return NAGINI_RESPONSES["pickle"];
+  if (lower.includes("portal")) return NAGINI_RESPONSES["portal"];
+  if (lower.includes("schwifty") || lower.includes("show me what you got"))
+    return NAGINI_RESPONSES["get schwifty"];
+  if (lower.includes("szechuan") || lower.includes("sauce"))
+    return NAGINI_RESPONSES["szechuan"];
+  if (
+    lower.includes("dimension") ||
+    lower.includes("c-137") ||
+    lower.includes("multiverse")
+  )
+    return NAGINI_RESPONSES["dimension"];
+  if (lower.includes("plumbus")) return NAGINI_RESPONSES["plumbus"];
 
   // Default responses
   const defaults = [

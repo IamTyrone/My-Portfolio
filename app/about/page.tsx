@@ -189,7 +189,7 @@ const intro =
   "I am the epitome of a dopamine driven developer. I thrive on the thrill of intense problem solving and the satisfaction of constantly proving to myself that I actually am as smart as I think I am.";
 
 const expanded =
-  "Please do not let my versitility fool you. Ever heard of a footballer callled Ruud Gullit? He damn near played every position on the field and won a Ballon Do'r while at it. I am the Ruud Gullit of software engineering. I do this in my sleep! Now while I may describe myself as an extremely versatile full-stack developer, my preference is more on the server side. Crazily enough, Golang and Rust are my favorite programming languages but my most proficient are Python and Javascript. Talk about a toxic relationship.";
+  "Please do not let my versitility fool you. Ever heard of a footballer callled Ruud Gullit? He damn near played every position on the field and won a Ballon Do'r while at it. I am the Ruud Gullit of software engineering. I do this in my sleep! Now while I may describe myself as an extremely versatile full-stack developer, my preference is more on the server side. Crazily enough, Golang and Rust are my favorite programming languages but my most proficient are Python and Javascript. Talk about a toxic relationship. As Rick Sanchez once said, 'To live is to risk it all.' I code by that philosophy across every dimension.";
 
 export default function About() {
   return (
@@ -257,7 +257,9 @@ export default function About() {
                 <div className="flex items-center gap-2 text-xs font-mono">
                   <Calendar size={12} className="text-terminal-green" />
                   <span className="text-muted-foreground">status:</span>
-                  <span className="text-evil-red">AVAILABLE — dazzle me!</span>
+                  <span className="text-evil-red">
+                    AVAILABLE — show me what you got!
+                  </span>
                 </div>
               </motion.div>
 

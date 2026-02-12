@@ -77,9 +77,16 @@ export default function HeroSection() {
                   showCursor={false}
                 />
                 <Typewriter
-                  text="[READY] Welcome back, Dark Lord."
+                  text="[OK] Portal gun calibrated — dimension C-137"
                   speed={25}
                   delay={2000}
+                  className="text-hack-cyan block"
+                  showCursor={false}
+                />
+                <Typewriter
+                  text="[READY] Welcome back, Dark Lord."
+                  speed={25}
+                  delay={2600}
                   className="text-evil-red block"
                   showCursor={false}
                   onComplete={() => setShowContent(true)}
@@ -136,9 +143,8 @@ export default function HeroSection() {
               transition={{ delay: 0.7 }}
               className="text-xs sm:text-sm text-muted-foreground font-mono mb-10 max-w-xl mx-auto italic"
             >
-              &quot;I invent, transform, create, and destroy for a living and
-              when I don&apos;t like something about the world, I change
-              it.&quot;
+              &quot;Nobody exists on purpose. Nobody belongs anywhere.
+              Everybody&apos;s gonna die. Come look at my code.&quot;
             </motion.p>
 
             {/* CTA Buttons */}

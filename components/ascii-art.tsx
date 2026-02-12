@@ -59,6 +59,33 @@ export function SnakeAscii({ className = "" }: { className?: string }) {
   );
 }
 
+export function PortalGunAscii({ className = "" }: { className?: string }) {
+  const portalGun = `
+     ___________________
+    |  _______________  |
+    | |  ___________  | |
+    | | |  _______  | | |
+    | | | | C-137 | | | |
+    | | | |_______| | | |
+    | | |___________| | |
+    | |_______________| |
+    |___________________|
+         |       |
+         |  |||  |
+         |  |||  |
+         |_______|
+  `;
+
+  return (
+    <pre
+      className={`text-hack-cyan text-glow-cyan text-[0.4rem] sm:text-xs leading-tight select-none ${className}`}
+      aria-hidden="true"
+    >
+      {portalGun}
+    </pre>
+  );
+}
+
 export function DarkMarkAscii({ className = "" }: { className?: string }) {
   const mark = `
   ╔══════════════════════════════════════╗

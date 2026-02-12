@@ -48,7 +48,7 @@ export function Navigation() {
               voldermort
             </span>
             <span className="text-muted-foreground font-display text-sm">
-              :~$
+              :~/C-137$
             </span>
             <span className="terminal-cursor !h-3.5 !w-1.5 ml-0.5" />
           </Link>

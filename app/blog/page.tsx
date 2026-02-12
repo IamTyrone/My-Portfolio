@@ -112,7 +112,8 @@ export default function Blog() {
               className="text-3xl md:text-5xl font-bold font-display tracking-wider mb-3"
             />
             <p className="text-muted-foreground text-xs font-mono">
-              // unhinged thoughts, rants, and dark incantations about software
+              // interdimensional thoughts, rants, and dark incantations about
+              software
             </p>
           </motion.div>
 

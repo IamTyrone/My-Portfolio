@@ -120,7 +120,7 @@ export default function Projects() {
               className="text-3xl md:text-5xl font-bold font-display tracking-wider mb-3"
             />
             <p className="text-muted-foreground text-xs font-mono">
-              // horcruxes of code — each one contains a piece of my soul
+              // horcruxes of code scattered across infinite dimensions
             </p>
           </motion.div>
 
