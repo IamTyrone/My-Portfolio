@@ -7,30 +7,32 @@ import { TerminalWindow } from "@/components/terminal-window";
 const blogPosts = [
   {
     id: "1",
-    title: "The Evolution of JavaScript Frameworks: A Developer's Journey",
+    title: "Why I moved from session auth to JWT auth on AWS.",
     excerpt:
-      "My thoughts on how JavaScript frameworks have evolved over the years and what this means for developers in 2024.",
-    date: "2024-01-15",
+      "How I migrated from session-based authentication to JWT-based authentication on AWS.",
+    date: "2025-10-15",
     readTime: "5 min",
-    tags: ["JavaScript", "React", "Vue", "Opinion"],
+    tags: ["NestJS", "AWS", "JWT", "Authentication"],
+    featured: true,
   },
   {
     id: "2",
-    title: "Building Scalable APIs: Lessons from Production",
+    title: "Diminishing Returns in Software Development Experience.",
     excerpt:
-      "Hard-learned lessons about API design, performance optimization, and scaling strategies from real-world projects.",
-    date: "2024-01-10",
+      "How competence increases at a decreasing rate as you gain more experience.",
+    date: "2025-10-10",
     readTime: "8 min",
-    tags: ["API", "Backend", "Performance", "Architecture"],
+    tags: ["Experience", "Growth", "Learning"],
+    featured: true,
   },
   {
-    id: "3",
-    title: "Why I Still Love Python in 2024",
-    excerpt:
-      "A love letter to Python and why it remains my go-to language for certain types of projects despite the JS ecosystem dominance.",
-    date: "2024-01-05",
-    readTime: "6 min",
-    tags: ["Python", "Opinion", "Development"],
+    id: "4",
+    title: "There is a cult amongst Rust developers!",
+    excerpt: "Debunking the irrational, blind admiration for Rust.",
+    date: "2025-10-01",
+    readTime: "7 min",
+    tags: ["Rust", "Community", "Development"],
+    featured: false,
   },
 ];
 
