@@ -1,47 +1,72 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
+
+const CHARS =
+  "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]<>/\\|;:+=*&^%$#@!~`";
+const CHAR_ARRAY = CHARS.split("");
+const FONT_SIZE = 18;
+const TARGET_FPS = 24;
+const FRAME_INTERVAL = 1000 / TARGET_FPS;
 
 export function MatrixRain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
+  const dropsRef = useRef<number[]>([]);
+  const lastFrameRef = useRef<number>(0);
 
-  const draw = useCallback(() => {
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    const chars =
-      "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]<>/\\|;:+=*&^%$#@!~`";
-    const charArray = chars.split("");
-    const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
+    const initDrops = () => {
+      const columns = Math.floor(canvas.width / FONT_SIZE);
+      const drops: number[] = [];
+      for (let i = 0; i < columns; i++) {
+        drops[i] = Math.random() * -100;
+      }
+      dropsRef.current = drops;
+    };
 
-    const drops: number[] = [];
-    for (let i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -100;
-    }
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initDrops();
+    };
 
-    const render = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    resize();
+    window.addEventListener("resize", resize);
+
+    ctx.font = `${FONT_SIZE}px monospace`;
+
+    const render = (now: number) => {
+      animationRef.current = requestAnimationFrame(render);
+
+      const delta = now - lastFrameRef.current;
+      if (delta < FRAME_INTERVAL) return;
+      lastFrameRef.current = now - (delta % FRAME_INTERVAL);
+
+      const drops = dropsRef.current;
+
+      ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.font = `${fontSize}px 'Fira Code', monospace`;
-
       for (let i = 0; i < drops.length; i++) {
-        const char = charArray[Math.floor(Math.random() * charArray.length)];
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
+        const char = CHAR_ARRAY[(Math.random() * CHAR_ARRAY.length) | 0];
+        const x = i * FONT_SIZE;
+        const y = drops[i] * FONT_SIZE;
 
         // Head of the stream is brighter
-        if (Math.random() > 0.98) {
+        const rand = Math.random();
+        if (rand > 0.98) {
           ctx.fillStyle = "#ffffff";
-        } else if (Math.random() > 0.9) {
+        } else if (rand > 0.9) {
           ctx.fillStyle = "#00ff41";
         } else {
-          ctx.fillStyle = `rgba(0, 255, 65, ${0.15 + Math.random() * 0.3})`;
+          ctx.fillStyle = "rgba(0, 255, 65, 0.3)";
         }
 
         ctx.fillText(char, x, y);
@@ -51,31 +76,15 @@ export function MatrixRain() {
         }
         drops[i]++;
       }
-
-      animationRef.current = requestAnimationFrame(render);
     };
 
-    render();
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    resize();
-    window.addEventListener("resize", resize);
-    draw();
+    animationRef.current = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationRef.current);
     };
-  }, [draw]);
+  }, []);
 
   return (
     <div className="matrix-rain-container">
