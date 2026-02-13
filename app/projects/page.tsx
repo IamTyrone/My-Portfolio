@@ -284,6 +284,28 @@ const projects = [
     demo: "#",
     featured: false,
   },
+  {
+    id: "17",
+    title: "Offside(Formerly Betmaster)",
+    description:
+      "A sports betting platform for football enthusiasts via a whatsapp interface.",
+    tags: ["Django", "Python", "Postgres", "Heroku", "WhatsApp API"],
+    category: "fullstack",
+    github: "#",
+    demo: "#",
+    featured: false,
+  },
+  {
+    id: "18",
+    title: "Fund Admin",
+    description:
+      "An accounting system for a fund management companies powered by Five Avenue Partners.",
+    tags: ["React", "Typescript", "Supabase", "Vercel"],
+    category: "fullstack",
+    github: "#",
+    demo: "https://www.fifeavenuepartners.vc/",
+    featured: false,
+  },
 ];
 
 const categories = [
