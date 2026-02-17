@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Mail, Calendar, Download } from "lucide-react";
 import { TerminalWindow } from "@/components/terminal-window";
@@ -186,10 +185,10 @@ const experience = [
 ];
 
 const intro =
-  "I am the epitome of a dopamine driven developer. I thrive on the thrill of intense problem solving and the satisfaction of constantly proving to myself that I actually am as smart as I think I am.";
+  "What do I do? I'm the guy who makes sure your company doesn't go bankrupt because of a single bad config. When sh*t hits the fan because of a vibe coded mess, I'm the guy the guy you call calls!";
 
 const expanded =
-  "Please do not let my versitility fool you. Ever heard of a footballer callled Ruud Gullit? He damn near played every position on the field and won a Ballon Do'r while at it. I am the Ruud Gullit of software engineering. I do this in my sleep! Now while I may describe myself as an extremely versatile full-stack developer, my preference is more on the server side. Crazily enough, Golang and Rust are my favorite programming languages but my most proficient are Python and Javascript. Talk about a toxic relationship. As Rick Sanchez once said, 'To live is to risk it all.' I code by that philosophy across every dimension.";
+  "I've built a career helping resource deprived organisations achieve their goals by optimizing architectures, provisioning streamlined infrastructure, writing resource efficient code and hiring extraordinary talent under budget constraints. I wear multiple hats to elite levels, leading overachieving teams through the various stages of the software development lifecycle. I design, develop, secure, deploy and test software, effectively and efficiently reducing time to market to ridiculous levels. I set development standards, mentor developers, design and enforce software development standards.";
 
 export default function About() {
   return (
@@ -279,7 +278,7 @@ export default function About() {
               </motion.div>
             </motion.div>
 
-            {/* Right: Profile Image */}
+            {/* Right: F Society Mask */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -293,21 +292,154 @@ export default function About() {
                     <span className="terminal-dot terminal-dot-yellow" />
                     <span className="terminal-dot terminal-dot-green" />
                   </div>
-                  <span>display /home/voldermort/avatar.jpg</span>
+                  <span>display /home/voldermort/fsociety.svg</span>
                 </div>
-                <div className="p-2">
-                  <Image
-                    src="https://media.licdn.com/dms/image/v2/D4D03AQHGBNx_KWmx6Q/profile-displayphoto-shrink_800_800/B4DZY.XAPRH4Ac-/0/1744802943191?e=1755734400&v=beta&t=TZZArLzDEz1_wORpt1eGTIcDfbsE7Ro64M20sfixvPY"
-                    alt="Tyrone Mguni"
-                    width={400}
-                    height={400}
-                    className="w-full aspect-square object-cover rounded-sm opacity-90 hover:opacity-100 transition-opacity"
-                    style={{ filter: "saturate(0.7) contrast(1.1)" }}
-                  />
+                <div className="p-6 flex items-center justify-center bg-[#030303]">
+                  <div className="relative w-full max-w-[280px] aspect-square">
+                    {/* F Society Mask SVG */}
+                    <svg
+                      viewBox="0 0 200 200"
+                      className="w-full h-full text-terminal-green opacity-90 hover:opacity-100 transition-opacity"
+                      fill="currentColor"
+                    >
+                      {/* Mask outline */}
+                      <ellipse
+                        cx="100"
+                        cy="95"
+                        rx="75"
+                        ry="85"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        opacity="0.8"
+                      />
+
+                      {/* Eyes */}
+                      <ellipse
+                        cx="65"
+                        cy="80"
+                        rx="18"
+                        ry="12"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      />
+                      <ellipse
+                        cx="135"
+                        cy="80"
+                        rx="18"
+                        ry="12"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      />
+
+                      {/* Eye details */}
+                      <circle
+                        cx="65"
+                        cy="80"
+                        r="5"
+                        fill="currentColor"
+                        opacity="0.6"
+                      />
+                      <circle
+                        cx="135"
+                        cy="80"
+                        r="5"
+                        fill="currentColor"
+                        opacity="0.6"
+                      />
+
+                      {/* Eyebrows */}
+                      <path
+                        d="M45 62 L85 58"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M115 58 L155 62"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                      />
+
+                      {/* Nose */}
+                      <path
+                        d="M100 85 L95 110 L100 115 L105 110 L100 85"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
+
+                      {/* Mustache */}
+                      <path
+                        d="M70 125 Q85 135 100 128 Q115 135 130 125"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M65 128 Q80 140 100 132 Q120 140 135 128"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        opacity="0.6"
+                      />
+
+                      {/* Mouth/Smile */}
+                      <path
+                        d="M75 145 Q100 165 125 145"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      />
+
+                      {/* Cheek lines */}
+                      <path
+                        d="M35 100 Q40 120 50 135"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        opacity="0.4"
+                      />
+                      <path
+                        d="M165 100 Q160 120 150 135"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        opacity="0.4"
+                      />
+
+                      {/* Forehead wrinkles */}
+                      <path
+                        d="M60 45 Q100 40 140 45"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        opacity="0.3"
+                      />
+                      <path
+                        d="M65 52 Q100 48 135 52"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        opacity="0.3"
+                      />
+                    </svg>
+
+                    {/* Glitch effect overlay */}
+                    <div className="absolute inset-0 opacity-20 pointer-events-none">
+                      <div
+                        className="absolute inset-0 bg-terminal-green/10 animate-pulse"
+                        style={{ mixBlendMode: "overlay" }}
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="px-3 pb-2">
                   <p className="text-[9px] font-mono text-muted-foreground">
-                    // the dark lord himself
+                    {"//"} control is an illusion
                   </p>
                 </div>
               </div>

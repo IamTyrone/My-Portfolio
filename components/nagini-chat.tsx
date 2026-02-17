@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send } from "lucide-react";
+import { X, Send, Loader2 } from "lucide-react";
 
 interface Message {
   role: "user" | "nagini";
@@ -14,11 +14,18 @@ const NAGINI_GREETINGS = [
   "Sssalutations, mortal... I am Nagini, loyal servant of the Dark Lord Voldermort. What do you wisssh to know about my massster?",
 ];
 
+const GREETING_RESPONSES = [
+  "Yesss... greetingsss. I am Nagini. The Dark Lord's most trusted companion. Ask me anything about my master, Voldermort — the one they call Tyrone in the mortal world.",
+  "Ssspeak, mortal. What do you wish to know about the Dark Lord?",
+  "Ah, another visssitor. The Dark Lord is quite popular these days. What brings you to his domain?",
+  "Welcome to the Dark Lord's domain. I sssense curiosity in you. Ask, and you shall receive answers.",
+  "Ah, a brave soul approaches. The Dark Lord appreciates courage. What knowledge do you sssseek?",
+  "Greetingsss, mortal. I've been expecting someone like you. What brings you to Voldermort's lair?",
+  "Yesss, yesss... another seeker of knowledge. The Dark Lord's story is quite fascinating. Where shall we begin?",
+  "*slithers closer* A visitor! How delightful. Ask me about my master's dark arts... I mean, software engineering.",
+];
+
 const NAGINI_RESPONSES: Record<string, string> = {
-  hello:
-    "Yesss... greetingsss. I am Nagini. The Dark Lord's most trusted companion. Ask me anything about my master, Voldermort — the one they call Tyrone in the mortal world.",
-  hi: "Ssspeak, mortal. What do you wish to know about the Dark Lord?",
-  hey: "Ah, another visssitor. The Dark Lord is quite popular these days. What brings you to his domain?",
   who: "My massster? He is Tyrone Mguni — known in the digital realm as Voldermort. A full-stack software engineer who bends code to his will like dark magic. He architecsssts systems, destroys bugs, and builds empires of code.",
   skills:
     "The Dark Lord's arsenal is vasssst... React, Next.js, Python, Django, Go, Rust, TypeScript, Docker, Kubernetes, AWS — he wields them all. Frontend, backend, mobile, DevOps — there is no domain he cannot conquer. He is the Ruud Gullit of software engineering.",
@@ -76,8 +83,30 @@ const NAGINI_RESPONSES: Record<string, string> = {
     "Everyone has a plumbus in their home. And everyone has the Dark Lord's code running somewhere in their stack. It's just how the universe works.",
 };
 
-function getNaginiResponse(input: string): string {
+function getLocalNaginiResponse(input: string): string | null {
   const lower = input.toLowerCase().trim();
+
+  // Handle greetings with variety
+  const greetingPatterns = [
+    "hi",
+    "hello",
+    "hey",
+    "greetings",
+    "sup",
+    "yo",
+    "hola",
+    "howdy",
+  ];
+  if (
+    greetingPatterns.some(
+      (g) =>
+        lower === g || lower.startsWith(g + " ") || lower.startsWith(g + "!"),
+    )
+  ) {
+    return GREETING_RESPONSES[
+      Math.floor(Math.random() * GREETING_RESPONSES.length)
+    ];
+  }
 
   if (NAGINI_RESPONSES[lower]) return NAGINI_RESPONSES[lower];
 
@@ -147,6 +176,35 @@ function getNaginiResponse(input: string): string {
     return NAGINI_RESPONSES["dimension"];
   if (lower.includes("plumbus")) return NAGINI_RESPONSES["plumbus"];
 
+  // No local match found - return null to trigger API fallback
+  return null;
+}
+
+async function fetchAIResponse(message: string): Promise<string> {
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    if (!res.ok) throw new Error("API error");
+    const data = await res.json();
+    return data.response || "";
+  } catch {
+    return "";
+  }
+}
+
+async function getNaginiResponse(input: string): Promise<string> {
+  // Try local response first for known queries
+  const localResponse = getLocalNaginiResponse(input);
+  if (localResponse) return localResponse;
+
+  // Try AI API for unknown queries
+  const aiResponse = await fetchAIResponse(input);
+  if (aiResponse) return aiResponse;
+
+  // Fallback defaults
   const defaults = [
     "Hmm, I'm not sssure about that. Try asking about my master's skills, projects, experience, or type 'help' for suggestions.",
     "The Dark Lord's knowledge is vast, but that question eludes even me. Perhaps rephrase? Or type 'help' to see what I can tell you.",
@@ -285,7 +343,7 @@ export function NaginiChat() {
     }
   }, [isOpen]);
 
-  const handleSend = useCallback(() => {
+  const handleSend = useCallback(async () => {
     if (!input.trim() || isStreaming) return;
 
     const userMessage = input.trim();
@@ -293,10 +351,11 @@ export function NaginiChat() {
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setIsStreaming(true);
 
-    const delay = Math.min(400 + userMessage.length * 10, 1200);
-    sendTimeoutRef.current = setTimeout(() => {
+    // Small delay for UX, then fetch response
+    const delay = Math.min(300 + userMessage.length * 5, 800);
+    sendTimeoutRef.current = setTimeout(async () => {
       sendTimeoutRef.current = null;
-      const response = getNaginiResponse(userMessage);
+      const response = await getNaginiResponse(userMessage);
       setMessages((prev) => [
         ...prev,
         { role: "nagini", content: response, streaming: true },
@@ -333,7 +392,7 @@ export function NaginiChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-0 right-0 sm:bottom-4 sm:right-4 lg:bottom-6 lg:right-6 z-[200] w-full sm:w-[380px] sm:max-w-[calc(100vw-2rem)] h-[85vh] sm:h-[520px] sm:max-h-[calc(100vh-6rem)] flex flex-col terminal-window sm:rounded-md rounded-none border-glow-green"
+            className="fixed inset-0 sm:inset-auto sm:bottom-4 sm:right-4 lg:bottom-6 lg:right-6 z-[200] w-full sm:w-[380px] sm:max-w-[calc(100vw-2rem)] h-full sm:h-[520px] sm:max-h-[calc(100vh-6rem)] flex flex-col terminal-window sm:rounded-md rounded-none border-glow-green"
           >
             {/* Header */}
             <div className="terminal-titlebar justify-between shrink-0">
@@ -430,9 +489,9 @@ export function NaginiChat() {
             </div>
 
             {/* Input */}
-            <div className="p-2.5 sm:p-2.5 border-t border-terminal-green/10 bg-[#050505] shrink-0 safe-area-bottom">
-              <div className="flex items-center gap-2">
-                <span className="text-terminal-green/50 text-xs font-mono shrink-0">
+            <div className="p-3 sm:p-2.5 border-t border-terminal-green/10 bg-[#050505] shrink-0 safe-area-bottom">
+              <div className="flex items-center gap-3 sm:gap-2">
+                <span className="text-terminal-green/50 text-sm sm:text-xs font-mono shrink-0">
                   {">"}
                 </span>
                 <input
@@ -443,14 +502,26 @@ export function NaginiChat() {
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
                   placeholder="speak to nagini..."
                   disabled={isStreaming}
-                  className="flex-1 bg-transparent text-xs font-mono text-terminal-green placeholder:text-muted-foreground/30 outline-none border-none disabled:opacity-40 min-w-0"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  className="flex-1 bg-transparent text-base sm:text-xs font-mono text-terminal-green placeholder:text-muted-foreground/30 outline-none border-none disabled:opacity-40 min-w-0 h-11 sm:h-auto"
                 />
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || isStreaming}
-                  className="text-terminal-green/50 hover:text-terminal-green disabled:opacity-20 transition-colors shrink-0 p-1"
+                  className="text-terminal-green/50 hover:text-terminal-green disabled:opacity-20 transition-colors shrink-0 p-3 sm:p-1 -mr-1 touch-manipulation"
+                  aria-label="Send message"
                 >
-                  <Send size={14} />
+                  {isStreaming ? (
+                    <Loader2
+                      size={18}
+                      className="animate-spin sm:w-3.5 sm:h-3.5"
+                    />
+                  ) : (
+                    <Send size={18} className="sm:w-3.5 sm:h-3.5" />
+                  )}
                 </button>
               </div>
             </div>
