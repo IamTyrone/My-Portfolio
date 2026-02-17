@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Home, ArrowLeft, Terminal } from "lucide-react";
@@ -32,8 +33,16 @@ const wittyQuotes = [
 ];
 
 export default function NotFound() {
-  const randomQuote = wittyQuotes[Math.floor(Math.random() * wittyQuotes.length)];
-  const randomGlitch = glitchMessages[Math.floor(Math.random() * glitchMessages.length)];
+  // Use state to avoid hydration mismatch from Math.random()
+  const [randomQuote, setRandomQuote] = useState(wittyQuotes[0]);
+  const [randomGlitch, setRandomGlitch] = useState(glitchMessages[0]);
+
+  useEffect(() => {
+    setRandomQuote(wittyQuotes[Math.floor(Math.random() * wittyQuotes.length)]);
+    setRandomGlitch(
+      glitchMessages[Math.floor(Math.random() * glitchMessages.length)],
+    );
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-20">
@@ -45,7 +54,10 @@ export default function NotFound() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className="text-[120px] sm:text-[180px] font-bold font-display leading-none text-terminal-green glitch-text" data-text="404">
+          <h1
+            className="text-[120px] sm:text-[180px] font-bold font-display leading-none text-terminal-green glitch-text"
+            data-text="404"
+          >
             404
           </h1>
         </motion.div>
@@ -67,10 +79,14 @@ export default function NotFound() {
           </div>
           <div className="terminal-body font-mono text-sm space-y-2">
             <p className="text-evil-red">
-              <span className="text-muted-foreground">$</span> curl -I {typeof window !== 'undefined' ? window.location.href : '/unknown'}
+              <span className="text-muted-foreground">$</span> curl -I{" "}
+              {typeof window !== "undefined"
+                ? window.location.href
+                : "/unknown"}
             </p>
             <p className="text-terminal-green/70">
-              HTTP/1.1 <span className="text-evil-red font-bold">404 Not Found</span>
+              HTTP/1.1{" "}
+              <span className="text-evil-red font-bold">404 Not Found</span>
             </p>
             <p className="text-muted-foreground text-xs mt-4">
               <Terminal size={12} className="inline mr-2" />
@@ -101,7 +117,7 @@ export default function NotFound() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-terminal-green/30 text-[8px] sm:text-[10px] font-mono mb-10 leading-tight hidden sm:block"
         >
-{`
+          {`
             _____
            /     \\
           | () () |
@@ -127,7 +143,9 @@ export default function NotFound() {
             Return to Safety
           </Link>
           <button
-            onClick={() => typeof window !== 'undefined' && window.history.back()}
+            onClick={() =>
+              typeof window !== "undefined" && window.history.back()
+            }
             className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-evil-red/30 text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-all duration-200 rounded-sm"
           >
             <ArrowLeft size={16} />
@@ -142,7 +160,8 @@ export default function NotFound() {
           transition={{ duration: 0.5, delay: 1 }}
           className="mt-12 text-[10px] font-mono text-muted-foreground/40"
         >
-          Pro tip: Try talking to Nagini 🐍 — she knows where everything is hidden
+          Pro tip: Try talking to Nagini 🐍 — she knows where everything is
+          hidden
         </motion.p>
       </div>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { use } from "react";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -187,13 +187,14 @@ However, there are cases where you might want your server to handle your files b
 };
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
-  const post = blogData[params.slug];
+export default function BlogPage({ params }: BlogPageProps) {
+  const { slug } = use(params);
+  const post = blogData[slug];
 
   if (!post) {
     notFound();

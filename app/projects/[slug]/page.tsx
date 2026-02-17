@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { use } from "react";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -183,13 +183,14 @@ Our Infra is all on AWS. We use a lot of EC2 and RDS. We love Docker over here t
 };
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projectsData[params.slug];
+  const { slug } = use(params);
+  const project = projectsData[slug];
 
   if (!project) {
     notFound();
@@ -337,7 +338,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                       <div key={index} className="bg-muted/50 rounded-lg p-4">
                         <p className="text-muted-foreground">{challenge}</p>
                       </div>
-                    )
+                    ),
                   )}
                 </div>
               </motion.div>
@@ -421,7 +422,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                           ))}
                         </div>
                       </div>
-                    )
+                    ),
                   )}
                 </div>
               </motion.div>
