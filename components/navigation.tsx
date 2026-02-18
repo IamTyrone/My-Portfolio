@@ -99,9 +99,9 @@ export function Navigation() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-[#0a0a0a] backdrop-blur-md"
             >
-              <div className="border-t border-terminal-green/10 py-3 space-y-1">
+              <div className="border-t border-terminal-green/10 py-3 space-y-1 bg-[#0a0a0a]">
                 {navItems.map((item, i) => {
                   const isActive = pathname === item.href;
                   return (
