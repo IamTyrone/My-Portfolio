@@ -30,7 +30,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${jetbrains.variable} noise-bg`}>
+      <body
+        className={`${jetbrains.variable} noise-bg`}
+        suppressHydrationWarning
+      >
         <CRTOverlay />
         <Navigation />
         <main className="min-h-screen">{children}</main>
