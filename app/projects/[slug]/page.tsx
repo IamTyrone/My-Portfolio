@@ -23,49 +23,83 @@ const projectsData: Record<string, any> = {
     id: "1",
     title: "Kraven The Hunter",
     description:
-      "An ML powered chrome extension that parses the url and sends it to the an ML endine and database to check if the it is malicious or not.",
-    longDescription: `So Tyrone, why did you decide to do this project? I plead the 5th. What  I will say, is that the idea to do it was pretty cool, am I right? LOL. This is essentially a browser extension that parses the URL the browser is currently on and sends it somehwere..
+      "A full-stack cybersecurity platform that uses machine learning to detect phishing, malware, and malicious URLs in real time — combining a trained ML model, a production-grade API, a React web dashboard, and a Chrome extension.",
+    longDescription: `I built Kraven because the problem was real and the existing solutions were either too slow, too expensive, or too dumb. So I built my own. End to end.
 
-Send it where? Well, I have a FastAPI server on the backend exposing a machine learning model trained on a databases of known malicious URL. First I had to decide what are my features. Well, for starters, malicious URLs tend to be werid, right? What do I mean by that? They are long and have lots of special characters. Well, So I used the length of the URL and the number of special characters and as well as a host of other stuff you know.
+The ML pipeline was the most interesting part. I engineered 14 features from raw URLs — Shannon entropy, digit ratio, special character density, IP-based hostname detection, subdomain count, path depth, URL shortener detection, @ symbol presence, double-slash redirects, domain length, and HTTPS usage. I trained a scikit-learn RandomForest classifier on a merged dataset of ~500K malicious and benign URLs. The model outputs probability-based confidence scores via predict_proba, not just binary labels — giving users a nuanced threat assessment rather than a blunt yes/no.
 
-On the other hand, if we have a filter feature enabled on the server, we can direct traffic to check whether the URL is a shopping site or an adult entertainment site and all. Why would someone want to filter those out? Psshhhh, I don't know, maybe you have kids and you don't want them to see that stuff. So I added a filter for that too.
+The FastAPI backend exposes endpoints for URL prediction, community threat reporting, and health checks. It features model hot-reloading — it detects when the .pkl file changes on disk and swaps it in without downtime. There's also a community report lookup that overrides ML predictions with crowd-sourced intelligence, which is a nice touch.
 
-The page we eventually direct the user to is built off of React and Tailwind and it shows a minimal report on whether the URL is malicious or not and our degree of accuracy. If the URL is good, no redirects.`,
+When community report counts cross a configurable threshold, the API dispatches an async Celery task to a dedicated worker process. The worker merges community-reported URLs with the original training data and retrains the model — all without blocking the API. RabbitMQ serves as the message broker between the API and the worker.
+
+The Chrome extension (Manifest V3) has two layers of protection: a content script that automatically scans every page the user visits and redirects to a warning page if the confidence score exceeds 85%, and a popup interface where users can manually scan the current page and see the full threat report inline — without ever leaving the browser.
+
+The whole backend is containerised with Docker Compose running three services: the FastAPI engine, the Celery worker, and RabbitMQ. The engine and worker share a Docker volume for the model file. The React frontend is deployed to Vercel as a static SPA.`,
     image:
       "https://t4.ftcdn.net/jpg/06/35/25/41/360_F_635254151_lABWzlpgobLmVIijGBNL37x6oQonVFdz.jpg",
-    tags: ["React", "Python", "FastAPI", "Javascript", "Tailwind", "ML"],
+    tags: [
+      "Python",
+      "FastAPI",
+      "scikit-learn",
+      "Celery",
+      "RabbitMQ",
+      "React",
+      "Vite",
+      "TailwindCSS",
+      "Docker",
+      "Vercel",
+      "Chrome Extension",
+    ],
     category: "Full Stack",
     github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
     demo: "#",
     timeline: "3 months",
     team: "Solo project",
-    status: "Completed(But Imperfect)",
+    status: "Completed",
     features: [
-      "Auto URL parsing.",
-      "Typo-squatting and phishing detection.",
-      "Shopping cart and wishlist functionality",
-      "Secure payment processing with Stripe",
-      "Order management and tracking",
-      "Responsive design for all devices",
+      "Real-time malicious URL detection with ML confidence scoring",
+      "14-feature URL engineering pipeline (entropy, digit ratio, path depth, etc.)",
+      "RandomForest classifier trained on ~500K URLs with predict_proba output",
+      "Community threat reporting that overrides ML predictions",
+      "Async model retraining via Celery + RabbitMQ without API downtime",
+      "Model hot-reloading — swaps updated .pkl file without restart",
+      "Chrome Extension (Manifest V3) with auto-scan and manual popup",
+      "React web dashboard with detailed threat reports and one-click reporting",
+      "Fully containerised backend with Docker Compose (API + worker + broker)",
     ],
     techStack: {
-      Frontend: ["React", "TypeScript", "Tailwind CSS", "Javascript"],
-      Backend: ["Python", "FastAPI", "JWT Authentication"],
-      Database: ["N/A"],
-      Payment: ["N/A"],
-      Deployment: ["N/A"],
-      Tools: ["Git", "GitHub Actions", "Postman", "VS Code"],
+      "ML / Backend": [
+        "Python",
+        "scikit-learn",
+        "FastAPI",
+        "SQLAlchemy",
+        "SQLite",
+      ],
+      "Async / Messaging": ["Celery", "RabbitMQ"],
+      Frontend: [
+        "React 18",
+        "Vite",
+        "TailwindCSS",
+        "Framer Motion",
+        "Flowbite",
+      ],
+      Extension: ["Chrome Extension (Manifest V3)", "JavaScript"],
+      Deployment: ["Docker Compose", "Vercel"],
+      Tools: ["Git", "Postman", "VS Code"],
     },
     challenges: [
-      "Implementing ML without using an established ML library like tensorflow.",
-      "Capturing the URL and redirecting to a warning page if malicious. Chrome doesn't like that.",
-      "Creating a responsive design that works across all device sizes",
-      "Setting up automated deployment pipelines",
+      "Engineering meaningful features from raw URL strings without leaking label information",
+      "Chrome Manifest V3 restrictions on content script redirects — required creative workarounds",
+      "Wiring async Celery retraining so it never blocks the live API",
+      "Keeping the model hot-reloadable on disk without service restarts",
+      "Balancing ML prediction confidence thresholds to minimise false positives",
     ],
     learnings: [
-      "Definitely how to build a browser extension and browser APIs.",
-      "Not to forget how to develop ML models without using an established ML library.",
-      "To be honest, I already knew how to code pretty well with everything else.",
+      "How to build a production Chrome Extension with Manifest V3 and its many constraints",
+      "Feature engineering for URL-based ML — entropy and structural signals are surprisingly powerful",
+      "Async task queues with Celery and RabbitMQ for background model retraining",
+      "Model hot-reloading patterns in production APIs",
+      "How crowd-sourced intelligence can meaningfully improve ML accuracy over time",
     ],
   },
   "3": {
