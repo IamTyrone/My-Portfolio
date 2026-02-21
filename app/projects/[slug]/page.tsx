@@ -35,8 +35,7 @@ When community report counts cross a configurable threshold, the API dispatches 
 The Chrome extension (Manifest V3) has two layers of protection: a content script that automatically scans every page the user visits and redirects to a warning page if the confidence score exceeds 85%, and a popup interface where users can manually scan the current page and see the full threat report inline — without ever leaving the browser.
 
 The whole backend is containerised with Docker Compose running three services: the FastAPI engine, the Celery worker, and RabbitMQ. The engine and worker share a Docker volume for the model file. The React frontend is deployed to Vercel as a static SPA.`,
-    image:
-      "https://t4.ftcdn.net/jpg/06/35/25/41/360_F_635254151_lABWzlpgobLmVIijGBNL37x6oQonVFdz.jpg",
+    image: "/img/projects/kraven/scanner.png",
     tags: [
       "Python",
       "FastAPI",
@@ -52,7 +51,7 @@ The whole backend is containerised with Docker Compose running three services: t
     ],
     category: "Full Stack",
     github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
-    demo: "#",
+    demo: "https://kraven-the-hunter.vercel.app/",
     timeline: "3 months",
     team: "Solo project",
     status: "Completed",

@@ -24,7 +24,7 @@ const projects = [
     ],
     category: "fullstack",
     github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
-    demo: "#",
+    demo: "https://kraven-the-hunter.vercel.app/",
     featured: true,
   },
   {
