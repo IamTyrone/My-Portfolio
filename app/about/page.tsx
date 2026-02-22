@@ -224,15 +224,15 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
+                transition={{ delay: 0.5 }}
                 className="mt-6"
               >
                 <Link
-                  href="/resume.pdf"
+                  href="/resume/Tyrone_Mguni.pdf"
                   target="_blank"
                   className="inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
                 >
-                  <Download size={12} />$ wget resume.pdf
+                  <Download size={12} />$ wget resume/Tyrone_Mguni.pdf
                 </Link>
               </motion.div>
             </motion.div>
