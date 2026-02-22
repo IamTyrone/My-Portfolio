@@ -87,6 +87,32 @@ const experience = [
     ],
   },
   {
+    title: "Lead DevOps Engineer (Contractual)",
+    company: "Great Sun Financial",
+    period: "May 2024 – Nov 2024",
+    hash: "c5d9e3b",
+    description:
+      "Designed CI/CD pipelines using GitHub Actions, built staging/testing/production environments on DigitalOcean and AWS, deployed applications with Docker. Set up metrics reporting and managed infrastructure security.",
+    achievements: [
+      "Designed and deployed development, test and canary environments.",
+      "Implemented CI/CD pipelines to terraform provisioned AWS and Digital Ocean infrastructure.",
+      "Prepared Neo4j production, test and canary environments.",
+    ],
+  },
+  {
+    title: "Senior Software Engineer (Contractual)",
+    company: "Great Sun Financial",
+    period: "March 2024 – May 2024",
+    hash: "d2a6b7c",
+    description:
+      "Led development team for Credex, a distributed fintech solution leveraging WhatsApp. Contributed to system architecture, selected technology stacks, developed backend services using Node.js, TypeScript, Neo4j, and Django.",
+    achievements: [
+      "Refactored serverless architecture, eliminating cold starts and nearly doubling performance.",
+      "Decoupled client/server logic improving load times.",
+      "Implemented custom auth system and optimized GraphQL queries.",
+    ],
+  },
+  {
     title: "Senior Software Engineer",
     company: "Healthify Medical Software",
     period: "Dec 2021 – Nov 2023",
@@ -120,12 +146,27 @@ const experience = [
     period: "Feb 2019 – Present",
     hash: "a1c5d9f",
     description:
-      "Long-running contract engagement spanning multiple production systems across retail, real estate, and asset management.",
+      "Long-running contract engagement spanning multiple production systems across retail, real estate, and asset management. I did a lotttttt of freelance projects. A LOOOOT. LOL.",
     achievements: [
       "Designed and built a full-featured ERP (Vantage Point) with a React Native mobile POS and React back-office dashboard; backend in Go (Fiber) with Redis and PostgreSQL — managing real retail operations.",
       "Developed a Golang-based tenant management system with a React.js frontend and PostgreSQL, including mobile self-service access for tenants.",
       "Built an asset registry system in Django / React tracking real-time asset locations, automating depreciation and revaluation calculations.",
       "Architected the Acrepoint Housing System (Django, Celery, React.js) — a WhatsApp-integrated real estate platform connecting developers with buyers.",
+      "Built the Dabane Trust education system for local farmers using Django and React.js.",
+      "Designed a text-based WhatsApp chatbot for low-bandwidth rural areas in Zimbabwe.",
+    ],
+  },
+  {
+    title: "Technical Support Specialist",
+    company: "MIBV Media",
+    period: "2019 – 2020",
+    hash: "b3e7f2a",
+    description:
+      "Tackled complex technical issues requiring scripting, managed servers, designed CI/CD pipelines. Extended website functionality on Framer using React/TypeScript and automated workflows.",
+    achievements: [
+      "Designed backup methodologies for critical systems.",
+      "Deployed automation scripts to streamline workflows.",
+      "Integrated third-party APIs to dynamic interfaces in Framer.",
     ],
   },
   {
