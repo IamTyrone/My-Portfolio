@@ -72,114 +72,73 @@ const skills = [
 
 const experience = [
   {
-    title: "Software/Systems Architect",
+    title: "Software Architect",
     company: "Mviyo Technologies",
-    period: "May 2024 - Present",
+    period: "Nov 2023 – Aug 2025",
     hash: "a3f7c2d",
     description:
-      "Design infrastructure for multiple products, define technology stacks, and architect APIs. Build mobile apps with React Native, backend systems with Django, WebSocket services using Golang, and web clients with React and Next.js.",
+      "Owned the full technical architecture for the organisation's entire product portfolio — selecting technologies, defining infrastructure patterns on AWS, and establishing engineering standards across all projects.",
     achievements: [
-      "Designed scalable cost effective architecture for multiple products.",
-      "Designed software development processes and workflows.",
-      "Prepared technical documentation and architecture diagrams.",
-    ],
-  },
-  {
-    title: "Software Developer(Contractual)",
-    company: "Mviyo Technologies",
-    period: "Nov 2023 - May 2024",
-    hash: "b8e1f4a",
-    description:
-      "Developed React Native mobile clients, built high-availability Django backend, designed CI/CD pipelines using GitHub Actions for AWS. Created web admin interfaces with React.js and a Golang-based geo-proximity tool with WebSockets.",
-    achievements: [
-      "Refactored and optimized existing codebase, improving code quality and performance.",
-      "Oversaw implementation of new features ensuring alignment with product requirements.",
-    ],
-  },
-  {
-    title: "Lead DevOps Engineer(Contractual)",
-    company: "Great Sun Financial",
-    period: "May 2024 - Nov 2024",
-    hash: "c5d9e3b",
-    description:
-      "Designed CI/CD pipelines using GitHub Actions, built staging/testing/production environments on DigitalOcean and AWS, deployed applications with Docker. Set up metrics reporting and managed infrastructure security.",
-    achievements: [
-      "Designed and deployed development, test and canary environments.",
-      "Implemented CI/CD pipelines to terraform provisioned AWS and Digital Ocean infrastructure.",
-      "Prepared Neo4j production, test and canary environments.",
-    ],
-  },
-  {
-    title: "Senior Software Engineer(Contractual)",
-    company: "Great Sun Financial",
-    period: "March 2024 - May 2024",
-    hash: "d2a6b7c",
-    description:
-      "Led development team for Credex, a distributed fintech solution leveraging WhatsApp. Contributed to system architecture, selected technology stacks, developed backend services using Node.js, TypeScript, Neo4j, and Django.",
-    achievements: [
-      "Refactored serverless architecture, eliminating cold starts and nearly doubling performance.",
-      "Decoupled client/server logic improving load times.",
-      "Implemented custom auth system and optimized GraphQL queries.",
+      "Designed CI/CD pipelines (GitHub Actions, Jenkins) and Kubernetes deployment strategies, achieving zero-downtime deployments across all production services.",
+      "Authored and enforced organisation-wide engineering standards covering code style, PR structure, code review policy, and testing practices across Go, Python, Django, and Laravel projects.",
+      "Designed and built a Go-based geo-proximity microservice for the Safi platform, enabling real-time location-based matching between service providers and clients at scale.",
+      "Integrated production systems with AWS (EC2, RDS, S3), reducing infrastructure spend while maintaining availability targets.",
+      "Led project scoping, team composition decisions, and technology selection for all new initiatives.",
     ],
   },
   {
     title: "Senior Software Engineer",
     company: "Healthify Medical Software",
-    period: "Jan 2022 - Nov 2024",
+    period: "Dec 2021 – Nov 2023",
     hash: "e9f3a1d",
     description:
-      "Designed and deployed large-scale distributed medical aid claims system. Modernized Django monolith using strangler pattern, reducing downtime by 60%. Implemented RabbitMQ for async microservices. Managed Kubernetes cluster with Grafana/Prometheus monitoring.",
+      "Designed and led development of a large-scale distributed claims and contributions platform for medical aid organisations, built on Django, PostgreSQL, and a microservices architecture.",
     achievements: [
-      "Led recruitment and onboarding of developers.",
-      "Designed large-scale distributed medical claims system.",
-      "Led data migration from legacy systems ensuring data integrity.",
-      "Designed high-availability Kubernetes cluster with automated CI/CD.",
+      "Engineered a 5x+ API performance improvement through strategic caching, reducing server load in a high-traffic healthcare environment.",
+      "Built a Go-based audit microservice with MongoDB persistence, providing immutable logging of all user actions for compliance.",
+      "Created a Node.js PDF generation microservice (Puppeteer / Express.js), decoupling document generation from core business logic.",
+      "Designed async inter-service communication using RabbitMQ alongside synchronous HTTP, enabling resilient, decoupled service interactions.",
+      "Stood up and managed production Kubernetes clusters with Jenkins and GitHub Actions CI/CD — zero downtime across all releases.",
     ],
   },
   {
-    title: "Software Engineer",
+    title: "Software Developer",
     company: "Intelli Africa Solutions",
-    period: "Jan 2021 - Dec 2021",
+    period: "Feb 2021 – Dec 2021",
     hash: "f4b8c2e",
     description:
-      "Built high-availability multitenant SMS/Email gateway in Django. Created installable Python and Node.js packages for PyPI and NPM. Integrated with Telecomms providers and designed deployment pipelines.",
+      "Engineered a full-stack bulk SMS and email dispatch platform integrating with multiple carrier networks, built on Python, Django, Celery, and PostgreSQL — handling high message throughput asynchronously.",
     achievements: [
-      "Built multitenant SMS and Email gateway in Python Django.",
-      "Developed packages deployed to PyPI and NPM.",
-      "Designed deployment pipeline to remote VPS servers.",
+      "Published and maintained open-source API client SDKs on PyPI (Python) and NPM (Node.js), enabling third-party developer integrations.",
+      "Implemented military-grade encryption for payment data at rest and in transit in a React.js merchant dashboard integrated with PayPal and Payfast.",
+      "Managed and configured Ubuntu production and test servers for all platform environments.",
     ],
   },
   {
-    title: "Software Engineer(Contractual)",
+    title: "Software Developer (Contracts)",
     company: "Dryback Technology",
-    period: "Jan 2021 - Dec 2021",
+    period: "Feb 2019 – Present",
     hash: "a1c5d9f",
     description:
-      "Built the Dabane Trust education system for local farmers using Django and React.js. Designed a text-based WhatsApp chatbot for low-bandwidth rural areas in Zimbabwe.",
-    achievements: ["I did a lotttttt of freelance projects. A LOOOOT. LOL."],
-  },
-  {
-    title: "Technical Support Specialist",
-    company: "MIBV Media",
-    period: "2019 - 2020",
-    hash: "b3e7f2a",
-    description:
-      "Tackled complex technical issues requiring scripting, managed servers, designed CI/CD pipelines. Extended website functionality on Framer using React/TypeScript and automated workflows.",
+      "Long-running contract engagement spanning multiple production systems across retail, real estate, and asset management.",
     achievements: [
-      "Designed backup methodologies for critical systems.",
-      "Deployed automation scripts to streamline workflows.",
-      "Integrated third-party APIs to dynamic interfaces in Framer.",
+      "Designed and built a full-featured ERP (Vantage Point) with a React Native mobile POS and React back-office dashboard; backend in Go (Fiber) with Redis and PostgreSQL — managing real retail operations.",
+      "Developed a Golang-based tenant management system with a React.js frontend and PostgreSQL, including mobile self-service access for tenants.",
+      "Built an asset registry system in Django / React tracking real-time asset locations, automating depreciation and revaluation calculations.",
+      "Architected the Acrepoint Housing System (Django, Celery, React.js) — a WhatsApp-integrated real estate platform connecting developers with buyers.",
     ],
   },
   {
     title: "Intern",
     company: "Integrity Business Solutions",
-    period: "Jan 2021 - Dec 2021",
+    period: "Aug 2019 – Aug 2020",
     hash: "c8d4a6b",
     description:
-      "Customized and implemented Hansaworld ERP across the country. Set up networking infrastructures, POS machines, fiscalization, and trained staff on new systems.",
+      "Deployed and configured Linux server infrastructure for Hansaworld Standard ERP installations at multiple client sites.",
     achievements: [
-      "Well, I was an intern. Updating this as I remember more lol.",
+      "Customised the Hansaworld ERP using the proprietary HULL scripting language.",
+      "Delivered data migration tooling to transition client data from legacy databases.",
+      "Delivered end-user training to client teams across multiple organisations.",
     ],
   },
 ];
