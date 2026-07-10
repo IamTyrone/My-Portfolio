@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { MatrixRain } from "@/components/matrix-rain";
 import { GlitchText } from "@/components/glitch-text";
-import { Typewriter } from "@/components/typewriter";
 import { SkullAscii } from "@/components/ascii-art";
+import { BootScreen } from "@/components/boot-screen";
+import { ZapDoodles } from "@/components/zap-doodles";
 import { getRandomQuote } from "@/lib/quotes";
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -17,7 +18,6 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export default function HeroSection() {
-  const [bootComplete, setBootComplete] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [quote, setQuote] = useState<ReturnType<typeof getRandomQuote> | null>(
     null,
@@ -28,15 +28,17 @@ export default function HeroSection() {
     setQuote(getRandomQuote());
   }, []);
 
-  // Notify NaginiChat that hero boot is complete
-  useEffect(() => {
-    if (showContent) {
-      window.dispatchEvent(new CustomEvent("hero-boot-complete"));
-    }
-  }, [showContent]);
+  const handleBootComplete = useCallback(() => {
+    setShowContent(true);
+    // Notify NaginiChat that hero boot is complete
+    window.dispatchEvent(new CustomEvent("hero-boot-complete"));
+  }, []);
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Full-screen boot / loading screen with generated fsociety footage */}
+      <BootScreen onComplete={handleBootComplete} />
+
       {/* Matrix Rain Background */}
       <MatrixRain />
 
@@ -45,79 +47,6 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
-        {/* Boot Sequence */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="mb-8"
-        >
-          {/* ASCII Skull */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center mb-6"
-          >
-            <SkullAscii />
-          </motion.div>
-
-          {/* Boot text */}
-          <div className="text-left max-w-2xl mx-auto mb-8 font-mono text-xs sm:text-sm">
-            <Typewriter
-              text="[SYSTEM] Initializing Voldermort OS v6.6.6..."
-              speed={30}
-              className="text-muted-foreground block"
-              showCursor={false}
-              onComplete={() => setBootComplete(true)}
-            />
-            {bootComplete && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="mt-1 space-y-0.5"
-              >
-                <Typewriter
-                  text="[OK] Dark Arts module loaded"
-                  speed={25}
-                  delay={200}
-                  className="text-terminal-green block"
-                  showCursor={false}
-                />
-                <Typewriter
-                  text="[OK] Horcrux backup system online"
-                  speed={25}
-                  delay={800}
-                  className="text-terminal-green block"
-                  showCursor={false}
-                />
-                <Typewriter
-                  text="[OK] Connection to fsociety established"
-                  speed={25}
-                  delay={1400}
-                  className="text-hack-cyan block"
-                  showCursor={false}
-                />
-                <Typewriter
-                  text="[OK] Portal gun calibrated — dimension C-137"
-                  speed={25}
-                  delay={2000}
-                  className="text-hack-cyan block"
-                  showCursor={false}
-                />
-                <Typewriter
-                  text="[READY] Welcome back, Dark Lord."
-                  speed={25}
-                  delay={2600}
-                  className="text-evil-red block"
-                  showCursor={false}
-                  onComplete={() => setShowContent(true)}
-                />
-              </motion.div>
-            )}
-          </div>
-        </motion.div>
-
         {/* Main Content — appears after boot */}
         {showContent && (
           <motion.div
@@ -125,8 +54,19 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Name with glitch */}
-            <div className="mb-4">
+            {/* ASCII Skull */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="flex justify-center mb-8"
+            >
+              <SkullAscii />
+            </motion.div>
+
+            {/* Name with glitch + electric doodles */}
+            <div className="mb-4 relative inline-block">
+              <ZapDoodles />
               <GlitchText
                 text="TYRONE MGUNI"
                 as="h1"
@@ -186,13 +126,13 @@ export default function HeroSection() {
             >
               <Link
                 href="/projects"
-                className="px-6 py-2.5 text-xs font-mono border border-terminal-green/40 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm tracking-wider"
+                className="zap-hover px-6 py-2.5 text-xs font-mono border border-terminal-green/40 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm tracking-wider"
               >
                 $ ls ./projects
               </Link>
               <Link
                 href="/about"
-                className="px-6 py-2.5 text-xs font-mono border border-evil-red/30 text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-all duration-200 rounded-sm tracking-wider"
+                className="zap-hover px-6 py-2.5 text-xs font-mono border border-evil-red/30 text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-all duration-200 rounded-sm tracking-wider"
               >
                 $ cat ./about
               </Link>

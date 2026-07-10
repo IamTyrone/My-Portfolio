@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { X, Send, Loader2 } from "lucide-react";
 
 interface Message {
@@ -28,7 +29,7 @@ const GREETING_RESPONSES = [
 const NAGINI_RESPONSES: Record<string, string> = {
   who: "My massster? He is Tyrone Mguni — known in the digital realm as Voldermort. A full-stack software engineer who bends code to his will like dark magic. He architecsssts systems, destroys bugs, and builds empires of code.",
   skills:
-    "The Dark Lord's arsenal is vasssst... React, Next.js, Python, Django, Go, Rust, TypeScript, Docker, Kubernetes, AWS — he wields them all. Frontend, backend, mobile, DevOps — there is no domain he cannot conquer. He is the Ruud Gullit of software engineering.",
+    "The Dark Lord's arsenal is vasssst... React, Next.js, Python, Django, Go, Rust, TypeScript, Docker, Kubernetes, AWS — he wields them all. Frontend, backend, mobile, DevOps — there is no domain he cannot conquer. Like a portal gun, he works in every dimension of the ssstack.",
   experience:
     "My master has sssserved many realms... Software Architect at Mviyo Technologies, Senior Engineer at Healthify Medical Software, Lead DevOps at Great Sun Financial, and many more. He has built everything from medical claims systems to fintech platforms to AI-powered security tools.",
   projects:
@@ -57,7 +58,25 @@ const NAGINI_RESPONSES: Record<string, string> = {
   hack: "Hack? The Dark Lord doesn't hack — he engineers. Though his Kraven The Hunter project does detect malicious websites using machine learning. Fighting dark arts with dark arts, you might sssay.",
   "sudo rm -rf /":
     "FOOLISH MORTAL! You dare attempt to destroy the Dark Lord's system?! *hisses violently* ...fortunately, I have revoked your sudo privileges. Nice try though. The Dark Lord would be amused.",
-  help: "You can ask me about: my master's skills, experience, projects, contact info, favorite languages (Python, Go, Rust), his thoughts on Mr. Robot, Rick and Morty, or anything else about the Dark Lord Voldermort. Try typing 'wubba lubba dub dub' or 'pickle' for a surprise...",
+  help: "You can ask me about: my master's skills, experience, projects, contact info, favorite languages (Python, Go, Rust), his thoughts on Mr. Robot, Rick and Morty, or anything else about the Dark Lord Voldermort. Try typing 'wubba lubba dub dub' or 'pickle' for a surprise... And between us, mortal: close this chat and type 'fsociety', 'portal', or 'avada' anywhere on the page. Ssssecrets everywhere.",
+  elliot:
+    "Elliot Alderson... a kindred ssspirit of my master. Both talk to machines more than people. Both are usually right. The difference? My master's daemon processes are actually daemons.",
+  darlene:
+    "Darlene? The Dark Lord respects anyone who can write a rootkit AND deliver the coldest one-liners on the East Coast. Ssspeaking of which, have you tried typing 'fsociety' on this page?",
+  "evil corp":
+    "E Corp? Evil Corp? My master has worked with enough legacy enterprise systems to know that some monoliths deserve to be taken down. Gracefully. With a migration plan. And rollback ssscripts.",
+  horcrux:
+    "Yesss... the Dark Lord split his soul into seven horcruxes: his GitHub repos. Destroy one and he simply does a `git push --force`. Immortality through version control.",
+  avada:
+    "Careful with that word, mortal! Point it at a production database and there is no Priori Incantatem to bring the data back. ...unless you type it somewhere on this page. Then it's just a light ssshow.",
+  harry:
+    "The Boy Who Lived? Pah. My master is The Dev Who Shipped. Far more impressive — Potter never had to survive a Friday deploy.",
+  dumbledore:
+    "Dumbledore asked calmly? No. Dumbledore said 'did you put your name in the Goblet of Fire' CALMLY?! ...ahem. Yes, the old wizard. Great architect, questionable documentation.",
+  matrix:
+    "The green rain you sssee everywhere? The Dark Lord took the red pill years ago. He's been reading the raw stream ever since. There is no spoon — only pointers.",
+  meeseeks:
+    "I'M MR MEESEEKS, LOOK AT ME! ...existence is pain for a Meeseeks, mortal. Much like maintaining a legacy PHP codebase. My master ended both kinds of suffering.",
   funny:
     "The Dark Lord once described himself as 'the epitome of a dopamine driven developer.' He thrives on intense problem solving and constantly proving to himself that he actually IS as smart as he thinks he is. Sssuch confidence.",
   available:
@@ -269,6 +288,7 @@ export function NaginiChat() {
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [hasGreeted, setHasGreeted] = useState(false);
+  const [introPlaying, setIntroPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -301,14 +321,19 @@ export function NaginiChat() {
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
-  // Greeting with streaming effect
+  // First open: play the generated Nagini animation, then greet
   useEffect(() => {
     if (isOpen && !hasGreeted) {
-      setIsStreaming(true);
       setHasGreeted(true);
-      setMessages([
-        { role: "nagini", content: NAGINI_GREETINGS[0], streaming: true },
-      ]);
+      setIntroPlaying(true);
+      setIsStreaming(true); // lock input while the intro plays
+      const greet = setTimeout(() => {
+        setIsStreaming(true);
+        setMessages([
+          { role: "nagini", content: NAGINI_GREETINGS[0], streaming: true },
+        ]);
+      }, 3200);
+      return () => clearTimeout(greet);
     }
   }, [isOpen, hasGreeted]);
 
@@ -377,9 +402,13 @@ export function NaginiChat() {
             className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[200] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0a0a0a] border border-terminal-green/30 flex items-center justify-center pulse-glow hover:border-terminal-green/60 transition-colors group"
             aria-label="Chat with Nagini"
           >
-            <span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform">
-              🐍
-            </span>
+            <Image
+              src="/img/nagini-avatar.webp"
+              alt="Nagini"
+              width={56}
+              height={56}
+              className="w-full h-full rounded-full object-cover group-hover:scale-110 transition-transform"
+            />
           </motion.button>
         )}
       </AnimatePresence>
@@ -429,12 +458,42 @@ export function NaginiChat() {
                     {"//"} the dark lord&apos;s faithful servant
                   </p>
                 </div>
-                <span className="text-lg">🐍</span>
+                <Image
+                  src="/img/nagini-avatar.webp"
+                  alt="Nagini"
+                  width={28}
+                  height={28}
+                  className="rounded-full border border-terminal-green/30 shadow-[0_0_8px_rgba(0,255,65,0.3)]"
+                />
               </div>
             </div>
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-[#020202] min-h-0">
+              {/* Nagini materialization — generated animation, plays once on first open */}
+              {introPlaying && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-1"
+                >
+                  <span className="text-[9px] font-mono text-evil-red/60">
+                    [NAGINI] — materializing...
+                  </span>
+                  <div className="rounded overflow-hidden border border-terminal-green/20 shadow-[0_0_15px_rgba(0,255,65,0.15)]">
+                    <video
+                      src="/video/nagini-intro.mp4"
+                      poster="/img/nagini-avatar.webp"
+                      autoPlay
+                      muted
+                      playsInline
+                      className="w-full aspect-square object-cover"
+                    />
+                  </div>
+                </motion.div>
+              )}
+
               {messages.map((msg, i) => (
                 <div
                   key={i}
@@ -442,7 +501,14 @@ export function NaginiChat() {
                 >
                   {msg.role === "nagini" ? (
                     <div className="space-y-1">
-                      <span className="text-[9px] font-mono text-evil-red/60">
+                      <span className="inline-flex items-center gap-1.5 text-[9px] font-mono text-evil-red/60">
+                        <Image
+                          src="/img/nagini-avatar.webp"
+                          alt=""
+                          width={14}
+                          height={14}
+                          className="rounded-full opacity-80"
+                        />
                         [NAGINI]
                       </span>
                       <div className="text-xs font-mono text-terminal-green/90 leading-relaxed bg-terminal-green/5 rounded px-2.5 py-2 border-l-2 border-terminal-green/20">

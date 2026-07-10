@@ -4,6 +4,7 @@ import { JetBrains_Mono } from "next/font/google";
 import { Navigation } from "@/components/navigation";
 import { CRTOverlay } from "@/components/crt-overlay";
 import { NaginiChat } from "@/components/nagini-chat";
+import { EasterEggs } from "@/components/easter-eggs";
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <NaginiChat />
+        <EasterEggs />
       </body>
     </html>
   );

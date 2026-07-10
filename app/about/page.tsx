@@ -271,7 +271,7 @@ export default function About() {
                 <Link
                   href="/resume/Tyrone_Mguni.pdf"
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
+                  className="zap-hover inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
                 >
                   <Download size={12} />$ wget resume/Tyrone_Mguni.pdf
                 </Link>
@@ -292,154 +292,27 @@ export default function About() {
                     <span className="terminal-dot terminal-dot-yellow" />
                     <span className="terminal-dot terminal-dot-green" />
                   </div>
-                  <span>display /home/voldermort/fsociety.svg</span>
+                  <span>play /home/voldermort/lair.mp4</span>
                 </div>
-                <div className="p-6 flex items-center justify-center bg-[#030303]">
-                  <div className="relative w-full max-w-[280px] aspect-square">
-                    {/* F Society Mask SVG */}
-                    <svg
-                      viewBox="0 0 200 200"
-                      className="w-full h-full text-terminal-green opacity-90 hover:opacity-100 transition-opacity"
-                      fill="currentColor"
-                    >
-                      {/* Mask outline */}
-                      <ellipse
-                        cx="100"
-                        cy="95"
-                        rx="75"
-                        ry="85"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        opacity="0.8"
-                      />
-
-                      {/* Eyes */}
-                      <ellipse
-                        cx="65"
-                        cy="80"
-                        rx="18"
-                        ry="12"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      />
-                      <ellipse
-                        cx="135"
-                        cy="80"
-                        rx="18"
-                        ry="12"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      />
-
-                      {/* Eye details */}
-                      <circle
-                        cx="65"
-                        cy="80"
-                        r="5"
-                        fill="currentColor"
-                        opacity="0.6"
-                      />
-                      <circle
-                        cx="135"
-                        cy="80"
-                        r="5"
-                        fill="currentColor"
-                        opacity="0.6"
-                      />
-
-                      {/* Eyebrows */}
-                      <path
-                        d="M45 62 L85 58"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M115 58 L155 62"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                      />
-
-                      {/* Nose */}
-                      <path
-                        d="M100 85 L95 110 L100 115 L105 110 L100 85"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      />
-
-                      {/* Mustache */}
-                      <path
-                        d="M70 125 Q85 135 100 128 Q115 135 130 125"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      />
-                      <path
-                        d="M65 128 Q80 140 100 132 Q120 140 135 128"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        opacity="0.6"
-                      />
-
-                      {/* Mouth/Smile */}
-                      <path
-                        d="M75 145 Q100 165 125 145"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      />
-
-                      {/* Cheek lines */}
-                      <path
-                        d="M35 100 Q40 120 50 135"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        opacity="0.4"
-                      />
-                      <path
-                        d="M165 100 Q160 120 150 135"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        opacity="0.4"
-                      />
-
-                      {/* Forehead wrinkles */}
-                      <path
-                        d="M60 45 Q100 40 140 45"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        opacity="0.3"
-                      />
-                      <path
-                        d="M65 52 Q100 48 135 52"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        opacity="0.3"
-                      />
-                    </svg>
-
-                    {/* Glitch effect overlay */}
-                    <div className="absolute inset-0 opacity-20 pointer-events-none">
-                      <div
-                        className="absolute inset-0 bg-terminal-green/10 animate-pulse"
-                        style={{ mixBlendMode: "overlay" }}
-                      />
-                    </div>
-                  </div>
+                <div className="relative bg-[#030303]">
+                  <video
+                    src="/video/voldemort-lair.mp4"
+                    poster="/img/voldemort-lair.webp"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full aspect-video object-cover"
+                  />
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
-                <div className="px-3 pb-2">
+                <div className="px-3 py-2 space-y-0.5">
                   <p className="text-[9px] font-mono text-muted-foreground">
-                    {"//"} control is an illusion
+                    {"//"} the dark lord &amp; nagini, somewhere in the server
+                    room
+                  </p>
+                  <p className="text-[9px] font-mono text-terminal-green/40">
+                    {"//"} control is an illusion — but uptime is real
                   </p>
                 </div>
               </div>
@@ -516,7 +389,7 @@ export default function About() {
               </span>
             </div>
             <p className="text-muted-foreground text-xs font-mono ml-2">
-              // the dark lord&apos;s professional journey
+              {"//"} the dark lord&apos;s professional journey
             </p>
           </motion.div>
 

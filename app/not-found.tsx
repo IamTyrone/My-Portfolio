@@ -110,23 +110,39 @@ export default function NotFound() {
           </p>
         </motion.div>
 
-        {/* ASCII Art Snake */}
-        <motion.pre
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        {/* Interdimensional portal — the page fell through it */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-terminal-green/30 text-[8px] sm:text-[10px] font-mono mb-10 leading-tight hidden sm:block"
+          className="terminal-window text-left mb-10 max-w-md mx-auto"
         >
-          {`
-            _____
-           /     \\
-          | () () |
-           \\  ^  /
-            |||||
-            |||||
-    ~^~^~^~^~^~^~^~^~^~
-`}
-        </motion.pre>
+          <div className="terminal-titlebar">
+            <div className="flex gap-1.5 mr-3">
+              <span className="terminal-dot terminal-dot-red" />
+              <span className="terminal-dot terminal-dot-yellow" />
+              <span className="terminal-dot terminal-dot-green" />
+            </div>
+            <span className="text-[10px]">
+              portal-gun --search-all-dimensions
+            </span>
+          </div>
+          <video
+            src="/video/portal.mp4"
+            poster="/img/portal.webp"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full aspect-video object-cover"
+          />
+          <div className="px-3 py-2">
+            <p className="text-[10px] font-mono text-terminal-green/60">
+              {"//"} searched infinite dimensions. page not found in any of
+              them.
+            </p>
+          </div>
+        </motion.div>
 
         {/* Action Buttons */}
         <motion.div
@@ -137,7 +153,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
+            className="zap-hover inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
           >
             <Home size={16} />
             Return to Safety
@@ -160,8 +176,8 @@ export default function NotFound() {
           transition={{ duration: 0.5, delay: 1 }}
           className="mt-12 text-[10px] font-mono text-muted-foreground/40"
         >
-          Pro tip: Try talking to Nagini 🐍 — she knows where everything is
-          hidden
+          Pro tip: Try talking to Nagini — she knows where everything is
+          hidden. Or type &quot;portal&quot; and see what happens...
         </motion.p>
       </div>
     </div>
