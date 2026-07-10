@@ -92,14 +92,14 @@ export function BootScreen({ onComplete }: BootScreenProps) {
                   showCursor={false}
                 />
                 <Typewriter
-                  text="[OK] Connection to fsociety established"
+                  text="[OK] Elder Wand allegiance verified"
                   speed={18}
                   delay={1100}
                   className="text-hack-cyan block"
                   showCursor={false}
                 />
                 <Typewriter
-                  text="[OK] Portal gun calibrated — dimension C-137"
+                  text="[OK] Death Eaters summoned — Dark Mark active"
                   speed={18}
                   delay={1600}
                   className="text-hack-cyan block"
