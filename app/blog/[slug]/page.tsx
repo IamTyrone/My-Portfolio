@@ -355,7 +355,7 @@ export default function BlogPage({ params }: BlogPageProps) {
           >
             <h3 className="text-xl font-bold mb-3">About the Author</h3>
             <p className="text-muted-foreground">
-              Tyrone Mguni is a full-stack software engineer with over 5 years
+              Tyrone Mguni is a full-stack software engineer with over 7 years
               of experience building scalable web applications. He specializes
               in React, Node.js, and cloud architecture.
             </p>
