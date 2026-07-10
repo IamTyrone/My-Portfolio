@@ -4,39 +4,20 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "@/components/typewriter";
 
-const BOOT_KEY = "voldermort-booted";
-
 interface BootScreenProps {
   onComplete: () => void;
 }
 
 export function BootScreen({ onComplete }: BootScreenProps) {
-  // null = deciding, false = skip entirely (already booted this session)
-  const [active, setActive] = useState<boolean | null>(null);
+  // Always plays on mount — no once-per-session gating.
+  const [active, setActive] = useState(true);
   const [bootStarted, setBootStarted] = useState(false);
   const [exiting, setExiting] = useState(false);
   const doneRef = useRef(false);
 
-  useEffect(() => {
-    let booted = false;
-    try {
-      booted = sessionStorage.getItem(BOOT_KEY) === "1";
-    } catch {}
-    if (booted) {
-      setActive(false);
-      onComplete();
-    } else {
-      setActive(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const finish = useCallback(() => {
     if (doneRef.current) return;
     doneRef.current = true;
-    try {
-      sessionStorage.setItem(BOOT_KEY, "1");
-    } catch {}
     setExiting(true);
     setTimeout(() => {
       setActive(false);
