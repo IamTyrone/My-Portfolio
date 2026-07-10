@@ -287,12 +287,12 @@ export function NaginiChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
-  const [hasGreeted, setHasGreeted] = useState(false);
   const [introPlaying, setIntroPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const sendTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hasGreetedRef = useRef(false);
 
   // Listen for hero boot completion before showing chat
   useEffect(() => {
@@ -321,21 +321,21 @@ export function NaginiChat() {
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
-  // First open: play the generated Nagini animation, then greet
+  // First open: play the generated Nagini animation, then greet.
+  // Guard with a ref (not state) so setting "greeted" doesn't re-run this
+  // effect and cancel its own pending greeting timeout.
   useEffect(() => {
-    if (isOpen && !hasGreeted) {
-      setHasGreeted(true);
-      setIntroPlaying(true);
-      setIsStreaming(true); // lock input while the intro plays
-      const greet = setTimeout(() => {
-        setIsStreaming(true);
-        setMessages([
-          { role: "nagini", content: NAGINI_GREETINGS[0], streaming: true },
-        ]);
-      }, 3200);
-      return () => clearTimeout(greet);
-    }
-  }, [isOpen, hasGreeted]);
+    if (!isOpen || hasGreetedRef.current) return;
+    hasGreetedRef.current = true;
+    setIntroPlaying(true);
+    setIsStreaming(true); // lock input while the intro plays
+    const greet = setTimeout(() => {
+      setMessages([
+        { role: "nagini", content: NAGINI_GREETINGS[0], streaming: true },
+      ]);
+    }, 3200);
+    return () => clearTimeout(greet);
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
