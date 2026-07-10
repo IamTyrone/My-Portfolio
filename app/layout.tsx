@@ -5,6 +5,7 @@ import { Navigation } from "@/components/navigation";
 import { CRTOverlay } from "@/components/crt-overlay";
 import { NaginiChat } from "@/components/nagini-chat";
 import { EasterEggs } from "@/components/easter-eggs";
+import { MatrixRain } from "@/components/matrix-rain";
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
         className={`${jetbrains.variable} noise-bg`}
         suppressHydrationWarning
       >
+        <MatrixRain />
         <CRTOverlay />
         <Navigation />
         <main className="min-h-screen">{children}</main>

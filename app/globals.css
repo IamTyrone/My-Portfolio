@@ -60,7 +60,9 @@
 
   body {
     font-family: "JetBrains Mono", "Fira Code", monospace;
-    background: var(--dark-bg);
+    /* Transparent so the fixed MatrixRain backdrop (z-index: -1) shows
+       through. The base color lives on <html> (--darkest-bg). */
+    background: transparent;
     color: var(--terminal-green);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -648,10 +650,13 @@
    MATRIX RAIN CANVAS
    ═══════════════════════════════════════════════════════ */
 .matrix-rain-container {
-  position: absolute;
+  position: fixed;
   inset: 0;
   overflow: hidden;
-  z-index: 0;
+  /* Site-wide backdrop: sits above the body background but behind all
+     normal-flow content, so it shows through transparent sections. */
+  z-index: -1;
+  pointer-events: none;
 }
 
 .matrix-rain-container canvas {

@@ -62,11 +62,11 @@ export function MatrixRain() {
         // Head of the stream is brighter
         const rand = Math.random();
         if (rand > 0.98) {
-          ctx.fillStyle = "#ffffff";
+          ctx.fillStyle = "rgba(255, 255, 255, 0.55)";
         } else if (rand > 0.9) {
-          ctx.fillStyle = "#00ff41";
+          ctx.fillStyle = "rgba(0, 255, 65, 0.55)";
         } else {
-          ctx.fillStyle = "rgba(0, 255, 65, 0.3)";
+          ctx.fillStyle = "rgba(0, 255, 65, 0.15)";
         }
 
         ctx.fillText(char, x, y);
@@ -88,7 +88,7 @@ export function MatrixRain() {
 
   return (
     <div className="matrix-rain-container">
-      <canvas ref={canvasRef} className="opacity-60" />
+      <canvas ref={canvasRef} className="opacity-25" />
     </div>
   );
 }
