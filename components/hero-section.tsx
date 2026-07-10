@@ -46,7 +46,7 @@ export default function HeroSection() {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover object-[70%_center] sm:object-center"
+        className="absolute inset-0 w-full h-full object-cover object-[30%_center] sm:object-center"
       />
 
       {/*
