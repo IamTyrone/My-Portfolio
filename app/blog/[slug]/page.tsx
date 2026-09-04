@@ -5,8 +5,8 @@ import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { SkillChip } from "@/lib/tech-icons";
 import {
   ArrowLeft,
   Calendar,
@@ -220,9 +220,7 @@ export default function BlogPage({ params }: BlogPageProps) {
             <div className="mb-8">
               <div className="flex flex-wrap gap-2 mb-4">
                 {post.tags.map((tag: string) => (
-                  <Badge key={tag} variant="secondary">
-                    {tag}
-                  </Badge>
+                  <SkillChip key={tag} name={tag} size="md" />
                 ))}
               </div>
 

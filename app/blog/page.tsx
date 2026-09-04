@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import { GlitchText } from "@/components/glitch-text";
 import { TerminalWindow } from "@/components/terminal-window";
+import { SkillChip } from "@/lib/tech-icons";
 
 const blogPosts = [
   {
@@ -208,12 +209,7 @@ export default function Blog() {
                             </span>
                             <div className="flex gap-1">
                               {post.tags.map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="text-[9px] font-mono text-muted-foreground/50"
-                                >
-                                  #{tag}
-                                </span>
+                                <SkillChip key={tag} name={tag} />
                               ))}
                             </div>
                           </div>

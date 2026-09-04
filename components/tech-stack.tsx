@@ -1,171 +1,96 @@
 "use client";
 
-import type { IconType } from "react-icons";
 import { motion } from "framer-motion";
-import { CalendarDays, Infinity as InfinityIcon } from "lucide-react";
-import { FaAws, FaRobot, FaSlack } from "react-icons/fa";
 import { TerminalWindow } from "@/components/terminal-window";
-import { VscCode } from "react-icons/vsc";
-import {
-  SiAndroid,
-  SiAnsible,
-  SiAntdesign,
-  SiApache,
-  SiApple,
-  SiClaude,
-  SiConfluence,
-  SiClickup,
-  SiDjango,
-  SiDocker,
-  SiElasticsearch,
-  SiExpo,
-  SiExpress,
-  SiFastapi,
-  SiFigma,
-  SiFirebase,
-  SiFlask,
-  SiFlutter,
-  SiGit,
-  SiGithubactions,
-  SiGnubash,
-  SiGo,
-  SiGooglecloud,
-  SiGrafana,
-  SiJira,
-  SiJenkins,
-  SiKubernetes,
-  SiLinux,
-  SiMongodb,
-  SiMysql,
-  SiNetlify,
-  SiNextdotjs,
-  SiNginx,
-  SiNodedotjs,
-  SiOpenjdk,
-  SiPostgresql,
-  SiPostman,
-  SiPrometheus,
-  SiPython,
-  SiReact,
-  SiRedis,
-  SiRust,
-  SiSentry,
-  SiShadcnui,
-  SiSpringboot,
-  SiSqlite,
-  SiSupabase,
-  SiTailwindcss,
-  SiTerraform,
-  SiTypescript,
-  SiVercel,
-} from "react-icons/si";
+import { getTechIcon } from "@/lib/tech-icons";
 
-type Skill = {
-  name: string;
-  icon: IconType;
-  /** Brand color, used for the glyph and the hover glow. */
-  color: string;
-};
-
-type TechGroup = {
-  category: string;
-  dir: string;
-  skills: Skill[];
-};
-
-const technologies: TechGroup[] = [
+const technologies = [
   {
     category: "Frontend",
     dir: "/usr/lib/frontend",
     skills: [
-      { name: "React", icon: SiReact, color: "#61DAFB" },
-      { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
-      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
-      { name: "Shadcn", icon: SiShadcnui, color: "#FFFFFF" },
-      { name: "Ant Design", icon: SiAntdesign, color: "#1677FF" },
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn",
+      "Ant Design",
     ],
   },
   {
     category: "Backend",
     dir: "/usr/lib/backend",
     skills: [
-      { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
-      { name: "Python", icon: SiPython, color: "#3776AB" },
-      { name: "Django", icon: SiDjango, color: "#0C9D58" },
-      { name: "FastAPI", icon: SiFastapi, color: "#009688" },
-      { name: "Express.js", icon: SiExpress, color: "#FFFFFF" },
-      { name: "Go", icon: SiGo, color: "#00ADD8" },
-      { name: "Rust", icon: SiRust, color: "#F74C00" },
-      { name: "Java", icon: SiOpenjdk, color: "#F89820" },
-      { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F" },
-      { name: "Flask", icon: SiFlask, color: "#FFFFFF" },
+      "Node.js",
+      "Python",
+      "Django",
+      "FastAPI",
+      "Express.js",
+      "Go",
+      "Rust",
+      "Java",
+      "Spring Boot",
+      "Flask",
     ],
   },
   {
     category: "Database",
     dir: "/var/db",
     skills: [
-      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-      { name: "Redis", icon: SiRedis, color: "#FF4438" },
-      { name: "Supabase", icon: SiSupabase, color: "#3FCF8E" },
-      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-      { name: "Elasticsearch", icon: SiElasticsearch, color: "#FEC514" },
-      { name: "SQLite", icon: SiSqlite, color: "#5DA9DD" },
-      { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Supabase",
+      "MySQL",
+      "Elasticsearch",
+      "SQLite",
+      "Firebase",
     ],
   },
   {
     category: "DevOps",
     dir: "/etc/devops",
     skills: [
-      { name: "AWS", icon: FaAws, color: "#FF9900" },
-      { name: "GCP", icon: SiGooglecloud, color: "#4285F4" },
-      { name: "Docker", icon: SiDocker, color: "#2496ED" },
-      { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
-      { name: "CI/CD", icon: InfinityIcon, color: "#00E5A0" },
-      { name: "Terraform", icon: SiTerraform, color: "#844FBA" },
-      { name: "Ansible", icon: SiAnsible, color: "#FFFFFF" },
-      { name: "Jenkins", icon: SiJenkins, color: "#D33833" },
-      { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
-      { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
-      { name: "Netlify", icon: SiNetlify, color: "#00C7B7" },
-      { name: "Sentry", icon: SiSentry, color: "#9E5CF7" },
-      { name: "Prometheus", icon: SiPrometheus, color: "#E6522C" },
-      { name: "Grafana", icon: SiGrafana, color: "#F46800" },
-      { name: "Nginx", icon: SiNginx, color: "#009639" },
-      { name: "Apache", icon: SiApache, color: "#D22128" },
-      { name: "Bash", icon: SiGnubash, color: "#4EAA25" },
+      "AWS",
+      "GCP",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Terraform",
+      "Ansible",
+      "Jenkins",
+      "GitHub Actions",
+      "Vercel",
+      "Netlify",
+      "Sentry",
+      "Prometheus",
+      "Grafana",
+      "Nginx",
+      "Apache",
+      "Bash",
     ],
   },
   {
     category: "Mobile",
     dir: "/opt/mobile",
-    skills: [
-      { name: "React Native", icon: SiReact, color: "#61DAFB" },
-      { name: "Flutter", icon: SiFlutter, color: "#02569B" },
-      { name: "iOS", icon: SiApple, color: "#FFFFFF" },
-      { name: "Android", icon: SiAndroid, color: "#3DDC84" },
-      { name: "Expo", icon: SiExpo, color: "#FFFFFF" },
-    ],
+    skills: ["React Native", "Flutter", "iOS", "Android", "Expo"],
   },
   {
     category: "Tools",
     dir: "/usr/bin",
     skills: [
-      { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "VS Code", icon: VscCode, color: "#007ACC" },
-      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-      { name: "Linux", icon: SiLinux, color: "#FCC624" },
-      { name: "Claude", icon: SiClaude, color: "#D97757" },
-      { name: "ChatGPT", icon: FaRobot, color: "#10A37F" },
-      { name: "Jira", icon: SiJira, color: "#0052CC" },
-      { name: "Slack", icon: FaSlack, color: "#E01E5A" },
-      { name: "Confluence", icon: SiConfluence, color: "#2684FF" },
-      { name: "ClickUp", icon: SiClickup, color: "#7B68EE" },
-      { name: "Monday", icon: CalendarDays, color: "#FF3D57" },
+      "Git",
+      "VS Code",
+      "Figma",
+      "Postman",
+      "Linux",
+      "Claude",
+      "ChatGPT",
+      "Jira",
+      "Slack",
+      "Confluence",
+      "ClickUp",
+      "Monday",
     ],
   },
 ];
@@ -217,27 +142,25 @@ export function TechStack() {
 
                 <div className="flex flex-wrap gap-2">
                   {tech.skills.map((skill, i) => {
-                    const Icon = skill.icon;
+                    const { icon: Icon, color } = getTechIcon(skill);
                     return (
                       <motion.span
-                        key={skill.name}
+                        key={skill}
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.08 + i * 0.03 }}
                         viewport={{ once: true }}
                         whileHover={{ y: -2 }}
-                        style={
-                          { "--brand": skill.color } as React.CSSProperties
-                        }
+                        style={{ "--brand": color } as React.CSSProperties}
                         className="skill-chip group inline-flex items-center gap-1.5 px-2 py-1 text-[11px] font-mono rounded-sm cursor-default"
                       >
                         <Icon
                           className="h-3.5 w-3.5 shrink-0 grayscale-[0.35] opacity-80 transition-all duration-200 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
-                          style={{ color: skill.color }}
+                          style={{ color }}
                           aria-hidden="true"
                         />
                         <span className="text-terminal-green/80 transition-colors duration-200 group-hover:text-terminal-green">
-                          {skill.name}
+                          {skill}
                         </span>
                       </motion.span>
                     );

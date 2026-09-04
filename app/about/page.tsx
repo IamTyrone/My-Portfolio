@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MapPin, Mail, Calendar, Download } from "lucide-react";
 import { TerminalWindow } from "@/components/terminal-window";
 import { GlitchText } from "@/components/glitch-text";
+import { getTechIcon } from "@/lib/tech-icons";
 
 const skills = [
   "JavaScript",
@@ -348,18 +349,30 @@ export default function About() {
 
           <TerminalWindow title="htop — voldermort's arsenal">
             <div className="flex flex-wrap gap-1.5">
-              {skills.map((skill, index) => (
-                <motion.span
-                  key={skill}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: index * 0.02 }}
-                  viewport={{ once: true }}
-                  className="px-2 py-0.5 text-[11px] font-mono border border-terminal-green/20 text-terminal-green/70 hover:text-terminal-green hover:border-terminal-green/50 hover:bg-terminal-green/5 transition-all duration-200 cursor-default rounded-sm"
-                >
-                  {skill}
-                </motion.span>
-              ))}
+              {skills.map((skill, index) => {
+                const { icon: Icon, color } = getTechIcon(skill);
+                return (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.02 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -2 }}
+                    style={{ "--brand": color } as React.CSSProperties}
+                    className="skill-chip group inline-flex items-center gap-1.5 px-2 py-1 text-[11px] font-mono rounded-sm cursor-default"
+                  >
+                    <Icon
+                      className="h-3.5 w-3.5 shrink-0 grayscale-[0.35] opacity-80 transition-all duration-200 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+                      style={{ color }}
+                      aria-hidden="true"
+                    />
+                    <span className="text-terminal-green/80 transition-colors duration-200 group-hover:text-terminal-green">
+                      {skill}
+                    </span>
+                  </motion.span>
+                );
+              })}
             </div>
           </TerminalWindow>
         </div>

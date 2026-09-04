@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
 import { TerminalWindow } from "@/components/terminal-window";
+import { SkillChip } from "@/lib/tech-icons";
 
 const featuredProjects = [
   {
@@ -137,12 +138,7 @@ export function FeaturedProjects() {
                   {/* Tags */}
                   <div className="flex flex-wrap gap-1 mb-4">
                     {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[10px] font-mono px-1.5 py-0.5 bg-terminal-green/5 border border-terminal-green/10 text-terminal-green/60 rounded-sm"
-                      >
-                        {tag}
-                      </span>
+                      <SkillChip key={tag} name={tag} />
                     ))}
                   </div>
 

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { SkillChip } from "@/lib/tech-icons";
 import {
   ArrowLeft,
   ExternalLink,
@@ -249,9 +250,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <div className="mb-8">
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag: string) => (
-                  <Badge key={tag} variant="secondary">
-                    {tag}
-                  </Badge>
+                  <SkillChip key={tag} name={tag} size="md" />
                 ))}
               </div>
 
@@ -445,13 +444,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                         </p>
                         <div className="flex flex-wrap gap-1">
                           {(technologies as string[]).map((tech) => (
-                            <Badge
-                              key={tech}
-                              variant="secondary"
-                              className="text-xs"
-                            >
-                              {tech}
-                            </Badge>
+                            <SkillChip key={tech} name={tech} />
                           ))}
                         </div>
                       </div>
