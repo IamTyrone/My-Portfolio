@@ -1,0 +1,13 @@
+Every project I ship needs to send email. Confirmation emails, payslips, password resets, invoices, the lot. For a while I paid Mailgun to care about that for me, right up until the day something broke and their support turned into a queue I was shouting into. So I read the SES pricing page, noticed it was a tenth of what I was paying, and spent an evening replacing the whole thing.
+
+What came out is 116 lines of Go in one file. A request arrives at API Gateway, the function checks an `x-api-key` header against a static key held in the environment, unmarshals a body with five fields, and hands it to SES. That is the entire program. It deploys as a compiled `bootstrap` binary on one of the `provided.al2` runtimes, so there is no interpreter to warm up and the bill rounds to nothing.
+
+The only design decision worth mentioning is the SES client being built in `init` and kept in a package level variable, so it is created once per container and reused across every warm invocation instead of being rebuilt per request. That is the difference between a function that sends email and a function that spends a hundred milliseconds negotiating TLS before it sends email.
+
+The `isHtml` flag exists because I got tired of writing two code paths at the call site. Set it and the body goes out as an HTML part, leave it and you get text. The sender address comes in the request rather than the environment, since one Lambda now serves several products and each of them wants its own verified from address.
+
+It is honest about what it does not do. One recipient, no cc, no bcc, no attachments, no templates, no retry. Anything that needs those can talk to SES directly. The thing I do wish I had removed is the header lookup: there is a comment about falling back to a lowercase header name, followed by code that reads the exact same key again, which is a fallback to itself. It has been sitting there for nine months, in production, working perfectly, because API Gateway normalises the header anyway.
+
+The payoff is that it turned out to be the most reused thing I have written. Every Vantage Point tenant gets its URL and key injected as platform config at provisioning time, so every isolated ERP stack on that platform sends through this one function. The Africa Patient Safety Summit sends its delegate confirmations through it. It cost one evening. It has one star on GitHub, and I am fairly sure that star is me.
+
+One more thing. The repository is called `Email-Lamba-Golang`. I typed it wrong when I created it, noticed immediately, decided to fix it later, and it has been nine months. At this point the typo is load bearing.

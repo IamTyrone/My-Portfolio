@@ -55,11 +55,18 @@ export function AppStoreSection({ apps }: { apps: MobileApp[] }) {
             </div>
             <div className="flex flex-wrap gap-2 mt-auto">
               <StoreButton href={app.ios} icon={FaApple} label="App Store" />
-              <StoreButton
-                href={app.android}
-                icon={FaGooglePlay}
-                label="Google Play"
-              />
+              {app.android ? (
+                <StoreButton
+                  href={app.android}
+                  icon={FaGooglePlay}
+                  label="Google Play"
+                />
+              ) : (
+                <span className="flex items-center gap-2 px-3 py-2 rounded-md border border-dashed border-muted-foreground/20 text-xs font-mono text-muted-foreground/60">
+                  <FaGooglePlay size={14} />
+                  <span>Android soon</span>
+                </span>
+              )}
             </div>
           </div>
         ))}

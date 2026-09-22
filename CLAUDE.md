@@ -68,7 +68,10 @@ the browser.
 - `content/projects/<slug>.md` is the write-up body, plain paragraphs separated
   by blank lines, read on the server by `lib/projects/content.ts`.
 - `lib/projects/app-links.ts` holds store listings for projects with mobile
-  apps, keyed by project id, with an optional square `icon`.
+  apps, keyed by project id, with an optional square `icon`. `android` is
+  optional: leave it out for an iOS-only app and the detail page shows a
+  dashed "Android soon" placeholder instead of a dead Play link, while
+  `getProjectPlatforms` keeps the card badges honest.
 - Adding a write-up means: a markdown file, a `details.ts` entry, an image.
   `generateStaticParams` picks it up from the `projectDetails` keys, so the new
   page prerenders with no further wiring.
@@ -114,7 +117,11 @@ that must not be cropped.
   and the `$ command` phrasing in UI labels.
 - Tech tags render through `SkillChip`. `lib/tech-icons.tsx` maps a normalised
   tag name to a logo and falls back to a neutral spark, so check a new tag has
-  a real entry before using it, or expect a generic chip.
+  a real entry before using it, or expect a generic chip. AWS services share
+  the one AWS mark through the `aws()` helper. Adding a `react-icons` import
+  for a single tag is not free: `SiTanstack` and `SiTypeorm` together cost
+  about 5 kB of first load on *every* route, so prefer a lucide icon that is
+  already imported and check the route table before and after.
 
 ## Before finishing
 
