@@ -2,74 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { Search } from "lucide-react";
 import { GlitchText } from "@/components/glitch-text";
 import { TerminalWindow } from "@/components/terminal-window";
-import { SkillChip } from "@/lib/tech-icons";
-
-const blogPosts = [
-  {
-    id: "1",
-    title: "Why I moved from session auth to JWT auth on AWS.",
-    excerpt:
-      "How I migrated from session-based authentication to JWT-based authentication on AWS.",
-    date: "2025-10-15",
-    readTime: "5 min",
-    tags: ["NestJS", "AWS", "JWT", "Authentication"],
-    featured: true,
-  },
-  {
-    id: "2",
-    title: "Diminishing Returns in Software Development Experience.",
-    excerpt:
-      "How competence increases at a decreasing rate as you gain more experience.",
-    date: "2025-10-10",
-    readTime: "8 min",
-    tags: ["Experience", "Growth", "Learning"],
-    featured: true,
-  },
-  {
-    id: "3",
-    title: "'Don't fight like a man. Fight like a girl.'",
-    excerpt:
-      "How small companies lose their advantage by trying to behave like large ones.",
-    date: "2025-10-05",
-    readTime: "6 min",
-    tags: ["Python", "Opinion", "Development"],
-    featured: false,
-  },
-  {
-    id: "4",
-    title: "There is a cult amongst Rust developers!",
-    excerpt: "Debunking the irrational, blind admiration for Rust.",
-    date: "2025-10-01",
-    readTime: "7 min",
-    tags: ["Rust", "Community", "Development"],
-    featured: false,
-  },
-  {
-    id: "5",
-    title: "Why not automate the entire division?",
-    excerpt:
-      "A pissed off me trying to get his documents at the district office flirts with the idea of automation.",
-    date: "2025-08-20",
-    readTime: "4 min",
-    tags: ["Automation", "Opinion", "Development"],
-    featured: false,
-  },
-  {
-    id: "6",
-    title: "You could be handling file uploads wrong!",
-    excerpt: "A scalable way to handle file uploads to AWS S3.",
-    date: "2025-09-15",
-    readTime: "10 min",
-    tags: ["AWS", "S3", "File Upload", "Scalability"],
-    featured: true,
-  },
-];
-
-const allTags = Array.from(new Set(blogPosts.flatMap((post) => post.tags)));
+import { PostLogEntry } from "@/components/blog/post-log-entry";
+import { allTags, blogPosts } from "@/lib/blog/posts";
 
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -176,50 +113,7 @@ export default function Blog() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
-                    <Link
-                      href={`/blog/${post.id}`}
-                      className="block group hover:bg-terminal-green/5 -mx-4 px-4 py-3 rounded transition-colors"
-                    >
-                      <div className="flex items-start gap-3">
-                        {/* Timestamp */}
-                        <span className="text-muted-foreground text-[10px] font-mono whitespace-nowrap mt-0.5 hidden sm:block">
-                          [{post.date}]
-                        </span>
-
-                        {/* Featured indicator */}
-                        {post.featured && (
-                          <span className="text-[9px] font-mono px-1 py-0.5 border border-evil-red/30 text-evil-red rounded-sm whitespace-nowrap mt-0.5 hidden md:block">
-                            PINNED
-                          </span>
-                        )}
-
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-terminal-green text-sm font-mono group-hover:text-white transition-colors line-clamp-1">
-                            <span className="text-evil-red mr-1">{">"}</span>
-                            {post.title}
-                          </h3>
-
-                          <p className="text-muted-foreground text-xs font-mono mt-1 line-clamp-1">
-                            {post.excerpt}
-                          </p>
-
-                          <div className="flex items-center gap-3 mt-1.5">
-                            <span className="text-[10px] font-mono text-hack-cyan/60">
-                              {post.readTime}
-                            </span>
-                            <div className="flex gap-1">
-                              {post.tags.map((tag) => (
-                                <SkillChip key={tag} name={tag} />
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-
-                        <span className="text-[10px] font-mono text-evil-red/50 group-hover:text-evil-red transition-colors whitespace-nowrap mt-0.5">
-                          read →
-                        </span>
-                      </div>
-                    </Link>
+                    <PostLogEntry post={post} />
                     {index < filteredPosts.length - 1 && (
                       <div className="border-b border-terminal-green/5 mx-0" />
                     )}
