@@ -6,6 +6,8 @@ import Link from "next/link";
 import { ExternalLink, Github, Search } from "lucide-react";
 import { GlitchText } from "@/components/glitch-text";
 import { SkillChip } from "@/lib/tech-icons";
+import { hasProjectApps } from "@/lib/projects/app-links";
+import { AppsCardLink } from "@/components/projects/app-store-links";
 
 const projects = [
   {
@@ -479,6 +481,9 @@ export default function Projects() {
                           <ExternalLink size={12} />
                           <span>demo</span>
                         </Link>
+                      )}
+                      {hasProjectApps(project.id) && (
+                        <AppsCardLink projectId={project.id} />
                       )}
                       <Link
                         href={`/projects/${project.id}`}

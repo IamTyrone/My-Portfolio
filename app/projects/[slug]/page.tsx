@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { SkillChip } from "@/lib/tech-icons";
+import { getProjectApps } from "@/lib/projects/app-links";
+import { AppStoreSection } from "@/components/projects/app-store-links";
 import {
   ArrowLeft,
   ExternalLink,
@@ -163,7 +165,8 @@ After doing the database design, I did the API design using Smart Bear. This ena
 The client side consists of 2 React Native Apps, one for the cleaners and the  other for the clients. The client app is used  by, well, clients to find cleaners, book them, pay them and manage their bookings. The cleaners app is used by  cleaners to find jobs, manage them and get paid. Well, this is a pretty watered down version of what the apps do but you get the gist. The other client side apps include some Managment interfaces for thhe admin side and cleaners also have their own web dashboard too, similar functionality to the mobile app of course. All web interfaces are built on React.js.
 
 Our Infra is all on AWS. We use a lot of EC2 and RDS. We love Docker over here too. MongoDB, Redis etc, the whole Shabang!`,
-    image: "https://www.safihelp.com/images/request4.png",
+    image: "/img/projects/safi/logo.webp",
+    imageFit: "contain",
     tags: [
       "AWS",
       "Docker",
@@ -229,6 +232,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   if (!project) {
     notFound();
   }
+
+  const apps = getProjectApps(slug);
 
   return (
     <div className="min-h-screen pt-20">
@@ -297,13 +302,22 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative aspect-video rounded-xl overflow-hidden"
+            className={`relative aspect-video rounded-xl overflow-hidden ${
+              project.imageFit === "contain"
+                ? "bg-muted/40 border border-terminal-green/10"
+                : ""
+            }`}
           >
             <Image
               src={project.image}
               alt={project.title}
               fill
-              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className={
+                project.imageFit === "contain"
+                  ? "object-contain p-10"
+                  : "object-cover"
+              }
               priority
             />
           </motion.div>
@@ -353,6 +367,20 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   ))}
                 </ul>
               </motion.div>
+
+              {apps.length > 0 && (
+                <>
+                  <Separator className="my-8" />
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.45 }}
+                  >
+                    <AppStoreSection apps={apps} />
+                  </motion.div>
+                </>
+              )}
 
               <Separator className="my-8" />
 
