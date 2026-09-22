@@ -64,14 +64,17 @@ the browser.
   and `/projects` both read it, so there is no second copy to drift.
 - `lib/projects/details.ts` holds detail-page-only data for the projects that
   have a write-up: `intro`, image, timeline, team, status, features, techStack,
-  challenges, learnings, and the `file` naming its markdown.
+  challenges, learnings, and the `file` naming its markdown. Optional `links`
+  adds buttons beside View Code and Live Demo for a second way in, such as the
+  `wa.me` link to the ZFA chatbot; `icon: "whatsapp"` swaps the glyph.
 - `content/projects/<slug>.md` is the write-up body, plain paragraphs separated
   by blank lines, read on the server by `lib/projects/content.ts`.
 - `lib/projects/app-links.ts` holds store listings for projects with mobile
-  apps, keyed by project id, with an optional square `icon`. `android` is
-  optional: leave it out for an iOS-only app and the detail page shows a
-  dashed "Android soon" placeholder instead of a dead Play link, while
-  `getProjectPlatforms` keeps the card badges honest.
+  apps, keyed by project id, with an optional square `icon`. Both `ios` and
+  `android` are optional: leave one out and the detail page shows a dashed
+  "iOS soon" or "Android soon" placeholder instead of a dead store link, while
+  `getProjectPlatforms` keeps the card badges honest. Never invent a store URL
+  to fill the gap.
 - Adding a write-up means: a markdown file, a `details.ts` entry, an image.
   `generateStaticParams` picks it up from the `projectDetails` keys, so the new
   page prerenders with no further wiring.

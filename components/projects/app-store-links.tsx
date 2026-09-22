@@ -25,6 +25,22 @@ function StoreButton({
   );
 }
 
+/** Stands in for a store the app has not shipped on yet. */
+function StorePlaceholder({
+  icon: Icon,
+  label,
+}: {
+  icon: typeof FaApple;
+  label: string;
+}) {
+  return (
+    <span className="flex items-center gap-2 px-3 py-2 rounded-md border border-dashed border-muted-foreground/20 text-xs font-mono text-muted-foreground/60">
+      <Icon size={14} />
+      <span>{label}</span>
+    </span>
+  );
+}
+
 /** "Get the apps" block on a project detail page. */
 export function AppStoreSection({ apps }: { apps: MobileApp[] }) {
   if (apps.length === 0) return null;
@@ -54,7 +70,11 @@ export function AppStoreSection({ apps }: { apps: MobileApp[] }) {
               </div>
             </div>
             <div className="flex flex-wrap gap-2 mt-auto">
-              <StoreButton href={app.ios} icon={FaApple} label="App Store" />
+              {app.ios ? (
+                <StoreButton href={app.ios} icon={FaApple} label="App Store" />
+              ) : (
+                <StorePlaceholder icon={FaApple} label="iOS soon" />
+              )}
               {app.android ? (
                 <StoreButton
                   href={app.android}
@@ -62,10 +82,7 @@ export function AppStoreSection({ apps }: { apps: MobileApp[] }) {
                   label="Google Play"
                 />
               ) : (
-                <span className="flex items-center gap-2 px-3 py-2 rounded-md border border-dashed border-muted-foreground/20 text-xs font-mono text-muted-foreground/60">
-                  <FaGooglePlay size={14} />
-                  <span>Android soon</span>
-                </span>
+                <StorePlaceholder icon={FaGooglePlay} label="Android soon" />
               )}
             </div>
           </div>

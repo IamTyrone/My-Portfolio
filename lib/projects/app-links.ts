@@ -5,8 +5,8 @@ export interface MobileApp {
   name: string;
   /** who the app is for, shown under the name */
   audience: string;
-  ios: string;
-  /** omitted while a platform has not shipped yet, which hides its button */
+  /** both are optional: a platform with no listing shows a placeholder, not a dead link */
+  ios?: string;
   android?: string;
   /** square store icon in public/img/projects, shown beside the name */
   icon?: string;
@@ -39,6 +39,15 @@ export const projectApps: Record<string, MobileApp[]> = {
       android:
         "https://play.google.com/store/apps/details?id=com.mviyotechnologies.zimtickets&hl=en",
       icon: "/img/projects/zimtickets/app-icon.webp",
+    },
+  ],
+  // Melo
+  "8": [
+    {
+      name: "Melo Money",
+      audience: "Set a savings goal, then let the coach break it into weeks",
+      android: "https://play.google.com/store/apps/details?id=com.melomoney.app",
+      icon: "/img/projects/melo/app-icon.webp",
     },
   ],
   // The ZFA ERP

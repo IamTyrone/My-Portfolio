@@ -11,6 +11,7 @@ import {
   Github,
   Users,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -90,6 +91,22 @@ export function ProjectView({
                   </Link>
                 </Button>
               )}
+              {detail.links?.map((link) => (
+                <Button key={link.href} asChild variant="outline">
+                  <Link
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.icon === "whatsapp" ? (
+                      <FaWhatsapp className="mr-2" size={16} />
+                    ) : (
+                      <ExternalLink className="mr-2" size={16} />
+                    )}
+                    {link.label}
+                  </Link>
+                </Button>
+              ))}
             </div>
           </motion.div>
         </div>

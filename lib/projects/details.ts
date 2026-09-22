@@ -7,6 +7,8 @@ export interface ProjectDetail {
   /** hero paragraph under the title */
   intro: string;
   image: string;
+  /** extra buttons beside View Code and Live Demo, for a second way in */
+  links?: Array<{ label: string; href: string; icon?: "whatsapp" }>;
   /** `contain` for logos and artwork that should not be cropped */
   imageFit?: "cover" | "contain";
   /** overrides the card tags when the detail page tells a different story */
@@ -365,6 +367,13 @@ export const projectDetails: Record<string, ProjectDetail> = {
     intro:
       "The platform the largest forex trading institution in Zimbabwe runs on, serving over five thousand students. A public site, a client portal, a twenty seven section admin console, a learning platform with its own transcoding and transcription pipeline, a bill payments service on top of a bank's biller engine, and an iOS signals app.",
     image: "/img/projects/zfa/site.webp",
+    links: [
+      {
+        label: "WhatsApp the chatbot",
+        href: "https://wa.me/263788997601",
+        icon: "whatsapp",
+      },
+    ],
     tags: [
       "NestJS",
       "TypeScript",
@@ -437,6 +446,75 @@ export const projectDetails: Record<string, ProjectDetail> = {
       "Leaving a minute of headroom under a timeout turns a killed function into a readable error",
     ],
     file: "zfa-erp.md",
+  },
+  "8": {
+    intro:
+      "A savings app for Africa that deliberately holds none of your money. Name a goal, and it breaks the target into a weekly number, coaches you through it in plain language, and lets you join community savings challenges. Ten countries, ten currencies, and an AI that proposes but never writes.",
+    image: "/img/projects/melo/site.webp",
+    tags: [
+      "NestJS",
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "Next.js",
+      "PostgreSQL",
+      "Redis",
+      "OpenAI",
+      "Paystack",
+      "Tamagui",
+      "Redux",
+      "Docker",
+      "Hetzner",
+    ],
+    timeline: "Ongoing",
+    team: "Solo build for Dryback Technology",
+    status: "Live on Google Play",
+    features: [
+      "Savings goals with a target, a deadline and an automatically computed weekly number",
+      "Ten goal types covering school fees, rent, groceries, medical, business and emergencies",
+      "A vision board you pin goals to, so they are the first thing you see when you open the app",
+      "An AI coach that proposes a structured goal from a plain language conversation",
+      "Progress logged by conversation too, as a proposal against one goal that you confirm",
+      "Every AI action is a proposal and never a write, so a bad parse costs a tap and nothing else",
+      "Chat sessions in Redis, goals in Postgres, with prompt credits checked and consumed before the model is called",
+      "Admin built savings challenges with weekly tasks and AI written encouragement per week",
+      "Coach tone set per challenge: gentle, motivational, celebratory or strict",
+      "Ten African countries with their own currencies, and challenges filterable by country",
+      "Paystack payments in the customer's local currency rather than converted to dollars",
+      "Eight product types from a single extra goal through bundles to a premium subscription",
+      "A user balance entity as the single source of truth for quotas, with a weekly prompt reset",
+      "Cron driven nudges: Sunday planning, a Wednesday midweek push, Monday challenge progress",
+      "Signed one time URLs for verification, password reset and email change, HMAC-SHA256 and timing safe",
+      "Four roles including an analytics viewer who can read every dashboard and change nothing",
+      "Expo push notifications, a Next.js admin dashboard, and audit logging on admin actions",
+    ],
+    techStack: {
+      Backend: ["NestJS", "TypeScript", "TypeORM"],
+      Mobile: ["React Native", "Expo", "Tamagui", "Redux"],
+      Web: ["Next.js", "React", "Tailwind", "shadcn"],
+      Data: ["PostgreSQL", "Redis"],
+      AI: ["OpenAI"],
+      Payments: ["Paystack"],
+      Security: ["JWT", "HMAC-SHA256", "RBAC"],
+      Infrastructure: ["Docker", "Hetzner", "Sentry"],
+    },
+    challenges: [
+      "Choosing to hold no balances at all, which removes a licence problem and a whole class of incident",
+      "Letting a model create records without letting a model create records, which the confirmation payload solves",
+      "Pricing across ten currencies through one payment provider instead of converting everyone to dollars",
+      "Keeping one answer to what a user is entitled to, rather than a quota check per screen",
+      "Metering prompt credits before the model call so a runaway conversation cannot outrun the balance",
+      "Picking notification times that help rather than annoy, which is a product question wearing a cron expression",
+    ],
+    learnings: [
+      "Deciding what a product will not store is as much a design decision as what it will",
+      "An AI that proposes and waits for a confirmation is safe enough to point at a real database",
+      "Tone belongs in the data, because some people want a cheerleader and some want to be told off",
+      "Local currency pricing is not a nicety in Africa, it is the difference between a sale and an abandoned checkout",
+      "One balance entity beats four places that each think they know your quota",
+      "A vision board outperformed several features that took ten times as long to build",
+    ],
+    file: "melo.md",
   },
   "19": {
     intro:
