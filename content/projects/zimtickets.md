@@ -1,0 +1,7 @@
+I did mention that I work as a software architect back at Mviyo techonologies right? That means when new products come into the fold, they tend to pass through my hands first, to gather requirements, and design solutions for those requirements alongside the higher-ups. ZimTickets is one of those products.
+
+While designing the architecture for the platform, I had to create what exactly the users will do once on the platform in "Functional Requirements" and make user stories out of those which are eventually used as a unit of work for developers. The technical architecture had to be limited to AWS because that is our primary service provider.
+
+Upon designing the high level architecture, I went deep into the database and designed what it should look like. For that I used pen and paper first because that makes me think quick while retaining lots of context in my head, then I moved it to Eraser to just give me clear schema diagrams to share with the backend developers.
+
+After doing the database design, I did the API design using Smart Bear. This enabled the backend and client side developers to work in parallel. This way, no one has to wait for the other to get their work done. Smart Bear allowed me to create mockable API endpoints that the frontend developers could use to test their code against. This is a great way to ensure that the frontend and backend are in sync and that the API is well documented.

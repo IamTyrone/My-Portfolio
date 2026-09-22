@@ -1,4 +1,16 @@
 /**
+ * Splits prose into paragraphs on blank lines, for content that is plain
+ * paragraphs rather than full markdown (see the project write-ups).
+ */
+export function splitParagraphs(markdown: string): string[] {
+  return markdown
+    .trim()
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+}
+
+/**
  * Minimal line-based markdown to HTML renderer used by the article pages.
  * Content is authored in-repo, so it is trusted.
  */

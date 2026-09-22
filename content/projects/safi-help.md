@@ -1,0 +1,5 @@
+I architected the platform, re-wrote its backend code from Javascript to Python with a few services written in Go on the server side as well. We use lots of event driven architecture, you know, to make sure its snappy on the eye. There's a lot of stuff thats going on in real time too, like the chat between the cleaner and the client, notifications, payments etc.
+
+The client side consists of 2 React Native Apps, one for the cleaners and the  other for the clients. The client app is used  by, well, clients to find cleaners, book them, pay them and manage their bookings. The cleaners app is used by  cleaners to find jobs, manage them and get paid. Well, this is a pretty watered down version of what the apps do but you get the gist. The other client side apps include some Managment interfaces for thhe admin side and cleaners also have their own web dashboard too, similar functionality to the mobile app of course. All web interfaces are built on React.js.
+
+Our Infra is all on AWS. We use a lot of EC2 and RDS. We love Docker over here too. MongoDB, Redis etc, the whole Shabang!

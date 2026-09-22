@@ -2,71 +2,15 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ExternalLink, Github } from "lucide-react";
-import { TerminalWindow } from "@/components/terminal-window";
-import { SkillChip } from "@/lib/tech-icons";
-import { hasProjectApps } from "@/lib/projects/app-links";
-import { AppsCardLink } from "@/components/projects/app-store-links";
+import { ProjectCard } from "@/components/projects/project-card";
+import type { Project } from "@/lib/projects/projects";
 
-const featuredProjects = [
-  {
-    id: "1",
-    title: "Kraven The Hunter",
-    description:
-      "An AI-powered Chrome browser extension that parses an active URL link and checks for malicious sites using a machine learning model on the backend.",
-    tags: [
-      "React",
-      "Python",
-      "FastAPI",
-      "Javascript",
-      "Tailwind",
-      "TensorFlow",
-    ],
-    category: "fullstack",
-    github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
-    demo: "#",
-  },
-  {
-    id: "2",
-    title: "Safi Help",
-    description:
-      "Its a really cool platform where people can find cleaners and cleaners can find jobs and get paid instantly. It has a mobile app and a web app.",
-    tags: [
-      "React Native",
-      "React",
-      "Golang",
-      "Django",
-      "PostgreSQL",
-      "Docker",
-      "AWS",
-      "Stripe",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "https://safihelp.com",
-  },
-  {
-    id: "3",
-    title: "ZimTickets",
-    description:
-      "Scalable cloud infrastructure setup using AWS, Docker, and Kubernetes. Includes CI/CD pipelines and monitoring solutions.",
-    tags: [
-      "MySQL",
-      "SmartBear",
-      "Docker",
-      "AWS",
-      "React Native",
-      "Next.js",
-      "Tailwind",
-      "Laravel",
-    ],
-    category: "architecture",
-    github: "#",
-    demo: "https://www.zimtickets.com/",
-  },
-];
+interface FeaturedProjectsProps {
+  /** selected on the server, so the full project list stays off the client */
+  projects: Project[];
+}
 
-export function FeaturedProjects() {
+export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
@@ -94,7 +38,7 @@ export function FeaturedProjects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-          {featuredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -103,81 +47,7 @@ export function FeaturedProjects() {
               viewport={{ once: true }}
               className="group"
             >
-              <div className="terminal-window h-full flex flex-col">
-                {/* Title Bar */}
-                <div className="terminal-titlebar">
-                  <div className="flex gap-1.5 mr-3">
-                    <span className="terminal-dot terminal-dot-red" />
-                    <span className="terminal-dot terminal-dot-yellow" />
-                    <span className="terminal-dot terminal-dot-green" />
-                  </div>
-                  <span className="truncate">
-                    ~/projects/
-                    {project.title.toLowerCase().replace(/\s+/g, "-")}
-                  </span>
-                </div>
-
-                {/* Body */}
-                <div className="terminal-body flex-1 flex flex-col">
-                  {/* Project name */}
-                  <h3 className="text-terminal-green text-glow-green text-base font-display tracking-wider mb-2 group-hover:text-white transition-colors">
-                    {project.title}
-                  </h3>
-
-                  {/* Category badge */}
-                  <div className="mb-3">
-                    <span className="text-[10px] font-mono px-2 py-0.5 border border-hack-cyan/30 text-hack-cyan rounded-sm">
-                      {project.category}
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-muted-foreground text-xs font-mono leading-relaxed mb-4 line-clamp-3 flex-1">
-                    <span className="text-terminal-green/50">// </span>
-                    {project.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.tags.map((tag) => (
-                      <SkillChip key={tag} name={tag} />
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex items-center gap-3 pt-3 border-t border-terminal-green/10">
-                    <Link
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-terminal-green transition-colors"
-                    >
-                      <Github size={12} />
-                      <span>source</span>
-                    </Link>
-                    {project.demo && project.demo !== "#" && (
-                      <Link
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-hack-cyan transition-colors"
-                      >
-                        <ExternalLink size={12} />
-                        <span>demo</span>
-                      </Link>
-                    )}
-                    {hasProjectApps(project.id) && (
-                      <AppsCardLink projectId={project.id} />
-                    )}
-                    <Link
-                      href={`/projects/${project.id}`}
-                      className="ml-auto text-[10px] font-mono text-evil-red/70 hover:text-evil-red transition-colors"
-                    >
-                      $ cat README.md →
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <ProjectCard project={project} />
             </motion.div>
           ))}
         </div>

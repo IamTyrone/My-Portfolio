@@ -1,342 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ExternalLink, Github, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { GlitchText } from "@/components/glitch-text";
-import { SkillChip } from "@/lib/tech-icons";
-import { hasProjectApps } from "@/lib/projects/app-links";
-import { AppsCardLink } from "@/components/projects/app-store-links";
-
-const projects = [
-  {
-    id: "1",
-    title: "Kraven The Hunter",
-    description:
-      "A full-stack cybersecurity platform using ML to detect phishing and malicious URLs in real time. Includes a trained RandomForest model, FastAPI backend with async Celery retraining, a React dashboard, and a Chrome extension with auto-scan and popup threat reports.",
-    tags: [
-      "Python",
-      "FastAPI",
-      "scikit-learn",
-      "Celery",
-      "RabbitMQ",
-      "React",
-      "Docker",
-      "Chrome Extension",
-    ],
-    category: "fullstack",
-    github: "https://github.com/IamTyrone/Kraven-The-Hunter.git",
-    demo: "https://kraven-the-hunter.vercel.app/",
-    featured: true,
-  },
-  {
-    id: "2",
-    title: "Safi Help",
-    description:
-      "Its a really cool platform where people can find cleaners and cleaners can find jobs and get paid instantly. It has a mobile app and a web app.",
-    tags: [
-      "React Native",
-      "React",
-      "Golang",
-      "Django",
-      "PostgreSQL",
-      "Docker",
-      "AWS",
-      "Stripe",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "https://safihelp.com",
-    featured: true,
-  },
-  {
-    id: "3",
-    title: "ZimTickets",
-    description:
-      "I gave this bad boy a detailed high level architecture. Its a ticketing platform that allows users to buy, sell and validate tickets for events.",
-    tags: [
-      "MySQL",
-      "SmartBear",
-      "Docker",
-      "AWS",
-      "React Native",
-      "Next.js",
-      "Tailwind",
-      "Laravel",
-    ],
-    category: "architecture",
-    github: "#",
-    demo: "https://www.zimtickets.com/",
-    featured: false,
-  },
-  {
-    id: "4",
-    title: "Paynow-GO",
-    description:
-      "I gave this bad boy a detailed high level architecture. Its a ticketing platform that allows users to buy, sell and validate tickets for events.",
-    tags: ["Golang", "Cryptography", "Payments"],
-    category: "backend",
-    github: "https://github.com/IamTyrone/paynow-go",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "5",
-    title: "Email Lambda",
-    description:
-      "Mailgun really pissed me off with their support. So what did I do? I made a very easy open-source solution.",
-    tags: ["Golang", "Fiber", "AWS", "Lambda", "SES", "IAM"],
-    category: "backend",
-    github: "https://github.com/IamTyrone/email-lambda",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "6",
-    title: "Vantagepoint ERP",
-    description:
-      "The coolest AI native ERP you will ever see. Ey, I was a finance major after all, so I know a thing or 2 about business software.",
-    tags: [
-      "React",
-      "Fiber",
-      "AWS",
-      "OpenAI",
-      "Textract",
-      "PostgreSQL",
-      "Golang",
-      "TypeScript",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "7",
-    title: "The ZFA ERP",
-    description:
-      "The lifeblood of the largest Forex Trading institution in Zimbabwe.",
-    tags: [
-      "React",
-      "NestJS",
-      "AWS",
-      "ElasticBeanstalk",
-      "OpenAI",
-      "PostgreSQL",
-      "Redis",
-      "TypeScript",
-      "Next.js",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "https://www.zhouforexacademy.com/",
-    featured: false,
-  },
-  {
-    id: "8",
-    title: "Melo",
-    description: "A mobile app housing your AI savings buddy called Melo.",
-    tags: [
-      "React",
-      "NestJS",
-      "AWS",
-      "Hetnzer",
-      "OpenAI",
-      "PostgreSQL",
-      "Redis",
-      "TypeScript",
-      "Next.js",
-      "Docker",
-      "Swarm",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "https://www.melomoney.co.za/",
-    featured: false,
-  },
-  {
-    id: "9",
-    title: "Acrepoint Tenant Management System",
-    description:
-      "A proper, production ready tenant management system with comprehensive modules for managing multiple rental properties.",
-    tags: [
-      "React",
-      "Fiber",
-      "AWS",
-      "Hetnzer",
-      "OpenAI",
-      "PostgreSQL",
-      "Redis",
-      "TypeScript",
-      "Golang",
-      "Docker",
-      "Swarm",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "10",
-    title: "Bin Apetit",
-    description:
-      "An AI powered mobile app designed to detect garbage via image recognition.",
-    tags: [
-      "React",
-      "Django",
-      "AWS",
-      "Neural Network",
-      "PostgreSQL",
-      "Redis",
-      "TypeScript",
-      "Python",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "11",
-    title: "SmartMed",
-    description:
-      "The claims and contributions system by Healthify Medical Software.",
-    tags: [
-      "React",
-      "Django",
-      "AWS",
-      "SES",
-      "PostgreSQL",
-      "Redis",
-      "TypeScript",
-      "Python",
-      "Docker",
-      "Kubernetes",
-      "Microserices",
-      "ELK",
-      "Grafana",
-      "Prometheus",
-      "Helm",
-      "Digital Ocean",
-      "Rabbitmq",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "12",
-    title: "Intelligateway",
-    description:
-      "A large scale SMS and email gateway used by corparates for intenal communitcation or marketing campaigns.",
-    tags: ["Django", "PostgreSQL", "Redis", "Python", "Rabbitmq"],
-    category: "fullstack",
-    github: "https://pypi.org/project/intelli-gateway/",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "13",
-    title: "Credex (VimbisoPay)",
-    description:
-      "A distributed digital wallet system for peer-to-peer transactions.",
-    tags: ["Django", "Neo4j", "Redis", "Python", "Typescript", "AWS", "EC2"],
-    category: "fullstack",
-    github: "#",
-    demo: "https://vimbisopay.africa/",
-    featured: false,
-  },
-  {
-    id: "14",
-    title: "Investgen",
-    description:
-      "The Investgen Website For A Zimbabwean forex trading institution.",
-    tags: ["Next.js", "Typescript", "Vercel"],
-    category: "frontend",
-    github: "#",
-    demo: "https://www.investgen.org/",
-    featured: false,
-  },
-  {
-    id: "15",
-    title: "Unbreaks",
-    description:
-      "A website designed to empower the next generation with knowledge of cybersecurity.",
-    tags: [
-      "React",
-      "Typescript",
-      "Framer",
-      "GCP",
-      "Digital Ocean",
-      "Cloudflare",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "https://unbreaks.com/",
-    featured: false,
-  },
-  {
-    id: "16",
-    title: "Fluff and Fold",
-    description:
-      "An app for regular Joe's to request laundry services, have it collected and delivered back, all from their WhatsApp.",
-    tags: ["React", "Typescript", "Golang", "Digital Ocean", "Redis"],
-    category: "fullstack",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "17",
-    title: "Offside(Formerly Betmaster)",
-    description:
-      "A sports betting platform for football enthusiasts via a whatsapp interface.",
-    tags: ["Django", "Python", "Postgres", "Heroku", "WhatsApp API"],
-    category: "fullstack",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "18",
-    title: "Fund Admin",
-    description:
-      "An accounting system for a fund management companies powered by Five Avenue Partners.",
-    tags: ["React", "Typescript", "Supabase", "Vercel"],
-    category: "fullstack",
-    github: "#",
-    demo: "https://www.fifeavenuepartners.vc/",
-    featured: false,
-  },
-];
-
-const categories = [
-  { value: "all", label: "--all" },
-  { value: "fullstack", label: "--fullstack" },
-  { value: "backend", label: "--backend" },
-  { value: "frontend", label: "--frontend" },
-  { value: "devops", label: "--devops" },
-  { value: "architecture", label: "--architecture" },
-];
+import { ProjectCard } from "@/components/projects/project-card";
+import { projectCategories, projects } from "@/lib/projects/projects";
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProjects = projects.filter((project) => {
-    const matchesCategory =
-      selectedCategory === "all" || project.category === selectedCategory;
-    const matchesSearch =
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProjects = useMemo(() => {
+    const query = searchQuery.toLowerCase();
+
+    return projects.filter((project) => {
+      const matchesCategory =
+        selectedCategory === "all" || project.category === selectedCategory;
+      const matchesSearch =
+        project.title.toLowerCase().includes(query) ||
+        project.summary.toLowerCase().includes(query) ||
+        project.tags.some((tag) => tag.toLowerCase().includes(query));
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen pt-20">
@@ -393,7 +80,7 @@ export default function Projects() {
 
             {/* Categories */}
             <div className="flex flex-wrap gap-1.5">
-              {categories.map((category) => (
+              {projectCategories.map((category) => (
                 <button
                   key={category.value}
                   onClick={() => setSelectedCategory(category.value)}
@@ -419,81 +106,7 @@ export default function Projects() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="terminal-window h-full flex flex-col">
-                  <div className="terminal-titlebar">
-                    <div className="flex gap-1.5 mr-3">
-                      <span className="terminal-dot terminal-dot-red" />
-                      <span className="terminal-dot terminal-dot-yellow" />
-                      <span className="terminal-dot terminal-dot-green" />
-                    </div>
-                    <span className="truncate">
-                      ~/projects/
-                      {project.title.toLowerCase().replace(/\s+/g, "-")}
-                    </span>
-                  </div>
-
-                  <div className="terminal-body flex-1 flex flex-col">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-terminal-green text-glow-green text-base font-display tracking-wider group-hover:text-white transition-colors">
-                        {project.title}
-                      </h3>
-                      {project.featured && (
-                        <span className="text-[9px] font-mono px-1.5 py-0.5 border border-evil-red/30 text-evil-red rounded-sm">
-                          FEATURED
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="mb-3">
-                      <span className="text-[10px] font-mono px-2 py-0.5 border border-hack-cyan/30 text-hack-cyan rounded-sm">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    <p className="text-muted-foreground text-xs font-mono leading-relaxed mb-4 line-clamp-3 flex-1">
-                      <span className="text-terminal-green/50">// </span>
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {project.tags.map((tag) => (
-                        <SkillChip key={tag} name={tag} />
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-3 pt-3 border-t border-terminal-green/10">
-                      <Link
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-terminal-green transition-colors"
-                      >
-                        <Github size={12} />
-                        <span>source</span>
-                      </Link>
-                      {project.demo && project.demo !== "#" && (
-                        <Link
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-hack-cyan transition-colors"
-                        >
-                          <ExternalLink size={12} />
-                          <span>demo</span>
-                        </Link>
-                      )}
-                      {hasProjectApps(project.id) && (
-                        <AppsCardLink projectId={project.id} />
-                      )}
-                      <Link
-                        href={`/projects/${project.id}`}
-                        className="ml-auto text-[10px] font-mono text-evil-red/70 hover:text-evil-red transition-colors"
-                      >
-                        $ cat README.md →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+                <ProjectCard project={project} showFeaturedBadge />
               </motion.div>
             ))}
           </div>
