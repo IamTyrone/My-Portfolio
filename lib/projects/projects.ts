@@ -181,6 +181,26 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    id: "19",
+    title: "Africa Patient Safety Summit",
+    summary:
+      "The platform behind a pan-African patient safety summit convened by Medicines for Africa with the African Medicines Agency. Thirteen public pages, a multi step delegate registration flow priced on the server, Stripe checkout with idempotent webhooks, and a back office that handles RSVPs, payments, CSV exports and AI drafted bulk email.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Stripe",
+      "Tailwind",
+      "OpenAI",
+      "Vercel",
+    ],
+    category: "fullstack",
+    github: "#",
+    demo: "https://www.africapatientsafetysummit.org/",
+    featured: true,
+  },
+  {
     id: "9",
     title: "Acrepoint Tenant Management System",
     summary:
@@ -335,26 +355,6 @@ export const projects: Project[] = [
     github: "#",
     demo: "https://www.fifeavenuepartners.vc/",
     featured: false,
-  },
-  {
-    id: "19",
-    title: "Africa Patient Safety Summit",
-    summary:
-      "The platform behind a pan-African patient safety summit convened by Medicines for Africa with the African Medicines Agency. Thirteen public pages, a multi step delegate registration flow priced on the server, Stripe checkout with idempotent webhooks, and a back office that handles RSVPs, payments, CSV exports and AI drafted bulk email.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Supabase",
-      "PostgreSQL",
-      "Stripe",
-      "Tailwind",
-      "OpenAI",
-      "Vercel",
-    ],
-    category: "fullstack",
-    github: "#",
-    demo: "https://www.africapatientsafetysummit.org/",
-    featured: true,
   },
 ];
 
