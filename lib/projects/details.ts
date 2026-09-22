@@ -25,7 +25,7 @@ export interface ProjectDetail {
 export const projectDetails: Record<string, ProjectDetail> = {
   "1": {
     intro:
-      "A full-stack cybersecurity platform that uses machine learning to detect phishing, malware, and malicious URLs in real time — combining a trained ML model, a production-grade API, a React web dashboard, and a Chrome extension.",
+      "A full-stack cybersecurity platform that uses machine learning to detect phishing, malware, and malicious URLs in real time, combining a trained ML model, a production-grade API, a React web dashboard, and a Chrome extension.",
     image: "/img/projects/kraven/scanner.png",
     tags: [
       "Python",
@@ -49,7 +49,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       "RandomForest classifier trained on ~500K URLs with predict_proba output",
       "Community threat reporting that overrides ML predictions",
       "Async model retraining via Celery + RabbitMQ without API downtime",
-      "Model hot-reloading — swaps updated .pkl file without restart",
+      "Model hot-reloading that swaps the updated .pkl file without a restart",
       "Chrome Extension (Manifest V3) with auto-scan and manual popup",
       "React web dashboard with detailed threat reports and one-click reporting",
       "Fully containerised backend with Docker Compose (API + worker + broker)",
@@ -76,14 +76,14 @@ export const projectDetails: Record<string, ProjectDetail> = {
     },
     challenges: [
       "Engineering meaningful features from raw URL strings without leaking label information",
-      "Chrome Manifest V3 restrictions on content script redirects — required creative workarounds",
+      "Chrome Manifest V3 restrictions on content script redirects, which required creative workarounds",
       "Wiring async Celery retraining so it never blocks the live API",
       "Keeping the model hot-reloadable on disk without service restarts",
       "Balancing ML prediction confidence thresholds to minimise false positives",
     ],
     learnings: [
       "How to build a production Chrome Extension with Manifest V3 and its many constraints",
-      "Feature engineering for URL-based ML — entropy and structural signals are surprisingly powerful",
+      "Feature engineering for URL-based ML, where entropy and structural signals are surprisingly powerful",
       "Async task queues with Celery and RabbitMQ for background model retraining",
       "Model hot-reloading patterns in production APIs",
       "How crowd-sourced intelligence can meaningfully improve ML accuracy over time",
@@ -146,8 +146,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
   "3": {
     intro:
       "An all in one event management platform. It Houses the ability to help event organizers post events, sell their tickets and provide means to enable users to validate those tickets.",
-    image:
-      "https://media.licdn.com/dms/image/v2/D4D2DAQEamLgnmROxgA/profile-treasury-image-shrink_1920_1920/B4DZVy13C3HYAc-/0/1741388480417?e=1751115600&v=beta&t=VwV_vDCdW8zpYHBCcG0_OITR9ZJN5628JA_uKrhlCLE",
+    image: "/img/projects/zimtickets/explore.webp",
     tags: ["Architecture", "OpenAPI", "Eraser.io"],
     timeline: "1 Year",
     team: "Mviyo Technologies",
@@ -155,6 +154,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     features: [
       "Event Management",
       "Ticket Sales and Validation",
+      "Native iOS and Android apps for discovery, checkout and ticket holding",
       "Detailed Event Analytics",
       "Secure Payment Processing",
       "Event Promotion Tools",
@@ -182,6 +182,64 @@ export const projectDetails: Record<string, ProjectDetail> = {
       "Writing Software Requirements Specifications (SRS) documents",
     ],
     file: "zimtickets.md",
+  },
+  "4": {
+    intro:
+      "An idiomatic, dependency free Go SDK for the Paynow Zimbabwe payment gateway. Web redirects, mobile express checkout on EcoCash, OneMoney and InnBucks, status polling and hash verified webhooks, behind an API that feels like the standard library.",
+    image: "/img/projects/paynow/repo.webp",
+    tags: [
+      "Golang",
+      "Payments",
+      "Cryptography",
+      "Ecocash",
+      "Innbucks",
+      "REST APIs",
+      "GitHub Actions",
+    ],
+    timeline: "6 months, on and off",
+    team: "Solo, open source",
+    status: "Published, MIT licensed",
+    features: [
+      "Web payments returning a redirect URL for the customer and a poll URL for you",
+      "Mobile express checkout charging EcoCash, OneMoney or InnBucks directly",
+      "InnBucks responses carrying the authorization code, deep link and QR code",
+      "Payments that behave like a cart, computing their own total as you add items",
+      "Functional options for the result URL, return URL and a custom HTTP client",
+      "Context on every network call, so payments can be cancelled and timed out",
+      "SHA-512 request signing with automatic verification of every response hash",
+      "Insertion ordered request building, because Paynow hashes fields in order",
+      "Result URL webhook handling that verifies the hash before you trust the update",
+      "Transaction status helpers instead of comparing raw gateway strings",
+      "Sentinel errors for caller mistakes and a distinct APIError for gateway complaints",
+      "A single method HTTP interface, so tests need no mocking framework or live keys",
+      "Zero third party dependencies: the go.mod file is three lines long",
+      "A complete runnable flow in example/main.go",
+    ],
+    techStack: {
+      Language: ["Golang"],
+      Payments: ["Paynow", "Ecocash", "OneMoney", "Innbucks"],
+      Security: ["SHA-512", "Cryptography"],
+      Testing: ["Go Test", "Race Detector", "Codecov"],
+      CI: ["GitHub Actions", "staticcheck", "golangci-lint"],
+      Distribution: ["Go Modules", "MIT License"],
+    },
+    challenges: [
+      "Go's form encoder sorts map keys, which silently breaks a hash that depends on field order",
+      "Porting from the official Node.js and Python SDKs without importing their dynamic habits into Go",
+      "Deciding what belongs in an internal package so callers cannot misuse the hashing",
+      "Modelling InnBucks, which answers with a code, a deep link and a QR code instead of a USSD prompt",
+      "Separating caller mistakes from gateway errors so both are matchable rather than stringly typed",
+      "Keeping the dependency list empty while still being pleasant to test against",
+    ],
+    learnings: [
+      "Insertion order is part of the contract with any gateway that hashes concatenated fields",
+      "Accepting a single method interface instead of *http.Client makes a library trivially mockable",
+      "Functional options age far better than a config struct that keeps growing",
+      "Verification you have to remember to call is verification nobody calls, so do it before handing the value back",
+      "Sentinel errors plus errors.Is give callers branching they can actually rely on",
+      "A CI matrix across three Go versions catches more than it costs on a library other people import",
+    ],
+    file: "paynow-go.md",
   },
   "19": {
     intro:

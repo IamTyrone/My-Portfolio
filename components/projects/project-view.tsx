@@ -78,7 +78,7 @@ export function ProjectView({
                   View Code
                 </Link>
               </Button>
-              {project.demo && (
+              {project.demo && project.demo !== "#" && (
                 <Button asChild variant="outline">
                   <Link
                     href={project.demo}

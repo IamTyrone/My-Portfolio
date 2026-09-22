@@ -32,7 +32,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
             </span>
           </div>
           <p className="text-muted-foreground text-xs font-mono ml-2">
-            // horcruxes of code — each one exists in a different dimension
+            // horcruxes of code, each one exists in a different dimension
           </p>
         </motion.div>
 

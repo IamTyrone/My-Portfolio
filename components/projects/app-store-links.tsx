@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FaApple, FaGooglePlay } from "react-icons/fa";
 import type { MobileApp } from "@/lib/projects/app-links";
@@ -37,9 +38,20 @@ export function AppStoreSection({ apps }: { apps: MobileApp[] }) {
             key={app.name}
             className="bg-muted/50 rounded-lg p-4 flex flex-col gap-3"
           >
-            <div>
-              <p className="font-semibold">{app.name}</p>
-              <p className="text-sm text-muted-foreground">{app.audience}</p>
+            <div className="flex items-start gap-3">
+              {app.icon && (
+                <Image
+                  src={app.icon}
+                  alt={`${app.name} app icon`}
+                  width={44}
+                  height={44}
+                  className="rounded-lg flex-shrink-0"
+                />
+              )}
+              <div>
+                <p className="font-semibold">{app.name}</p>
+                <p className="text-sm text-muted-foreground">{app.audience}</p>
+              </div>
             </div>
             <div className="flex flex-wrap gap-2 mt-auto">
               <StoreButton href={app.ios} icon={FaApple} label="App Store" />
@@ -53,19 +65,5 @@ export function AppStoreSection({ apps }: { apps: MobileApp[] }) {
         ))}
       </div>
     </div>
-  );
-}
-
-/** Compact card footer link pointing at the detail page's app section. */
-export function AppsCardLink({ projectId }: { projectId: string }) {
-  return (
-    <Link
-      href={`/projects/${projectId}#apps`}
-      className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-hack-cyan transition-colors"
-    >
-      <FaApple size={11} />
-      <FaGooglePlay size={10} />
-      <span>apps</span>
-    </Link>
   );
 }

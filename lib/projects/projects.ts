@@ -88,8 +88,15 @@ export const projects: Project[] = [
     id: "4",
     title: "Paynow-GO",
     summary:
-      "I gave this bad boy a detailed high level architecture. Its a ticketing platform that allows users to buy, sell and validate tickets for events.",
-    tags: ["Golang", "Cryptography", "Payments"],
+      "The Go SDK for the Paynow Zimbabwe payment gateway, written because Paynow shipped official libraries for Node and Python and left Go developers copying the same HTTP client between projects. Zero dependencies, MIT licensed.",
+    tags: [
+      "Golang",
+      "Payments",
+      "Cryptography",
+      "Ecocash",
+      "Innbucks",
+      "GitHub Actions",
+    ],
     category: "backend",
     github: "https://github.com/IamTyrone/paynow-go",
     demo: "#",

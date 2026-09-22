@@ -7,6 +7,8 @@ export interface MobileApp {
   audience: string;
   ios: string;
   android: string;
+  /** square store icon in public/img/projects, shown beside the name */
+  icon?: string;
 }
 
 export const projectApps: Record<string, MobileApp[]> = {
@@ -25,6 +27,17 @@ export const projectApps: Record<string, MobileApp[]> = {
       ios: "https://apps.apple.com/gb/app/safi-help-pro/id6736468352",
       android:
         "https://play.google.com/store/apps/details?id=com.mviyo.safizensios&hl=en",
+    },
+  ],
+  // ZimTickets
+  "3": [
+    {
+      name: "Zim Tickets",
+      audience: "Browse events, buy tickets, hold them at the gate",
+      ios: "https://apps.apple.com/gb/app/zim-tickets/id6680194477",
+      android:
+        "https://play.google.com/store/apps/details?id=com.mviyotechnologies.zimtickets&hl=en",
+      icon: "/img/projects/zimtickets/app-icon.webp",
     },
   ],
 };

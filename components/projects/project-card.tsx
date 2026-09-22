@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
 import { SkillChip } from "@/lib/tech-icons";
 import { hasProjectApps } from "@/lib/projects/app-links";
-import { AppsCardLink } from "@/components/projects/app-store-links";
+import { AppsCardLink } from "@/components/projects/apps-card-link";
 import type { Project } from "@/lib/projects/projects";
 
 /** Terminal-style path shown in a card's title bar. */
