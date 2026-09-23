@@ -41,6 +41,8 @@ Mviyo Technologies — Software Architect, full-time (May 2024 – Aug 2025). Th
 - Designed and built a Go-based geo-proximity microservice for the Safi platform — real-time location-based matching at scale
 - Integrated production systems with AWS (EC2, RDS, S3), reducing infrastructure spend while maintaining availability
 - Led project scoping, team composition, and technology selection for all new initiatives
+- Owned the end-to-end software development lifecycle across every engineering team
+- Migrated legacy projects onto AWS and designed scaling frameworks to absorb unplanned traffic spikes
 
 Mviyo Technologies — Senior Software Engineer, full-time (Nov 2023 – March 2024):
 - His first stint at Mviyo, on the engineering side, before leaving for Great Sun and being rehired in May 2024 as the architect
@@ -58,14 +60,16 @@ Intelli Africa Solutions — Software Developer, full-time (Feb 2021 – Dec 202
 - Published open-source API client SDKs on PyPI and NPM for third-party integrations
 - Implemented encryption for payment data at rest and in transit in a React.js merchant dashboard (PayPal, Payfast)
 
-Dryback Technology — Software Developer, contract (Feb 2019 – Present). IMPORTANT: Dryback is Tyrone's OWN company, the vehicle he contracts through. He is there now and it is still open for work:
-- Built Vantage Point ERP with React Native mobile POS and React back-office; backend in Go (Fiber), Redis, PostgreSQL — live retail production system
+Dryback Technology — Founder & Software Developer, part-time contract (Feb 2019 – Present). IMPORTANT: Tyrone FOUNDED Dryback. It is his own independent contracting practice, it has run alongside every other role since 2019, he is there now, and it is still open for work:
+- Delivered the Vantage Point ERP, roughly 609,000 lines of Go covering point of sale, inventory, accounting, payroll and ZIMRA fiscalisation, with a React Native mobile POS
+- Built the platform systems for Zimbabwe's largest forex trading institution (Zhou Forex Academy): client portal, a twenty seven section admin console, and a video-based learning platform
+- Delivered Melo, an AI-driven savings app used across ten African countries, integrating Paystack payments and OpenAI-powered planning
 - Developed a Golang-based tenant management system with React.js frontend
 - Built an asset registry system in Django/React with automated depreciation calculations
 - Architected Acrepoint Housing System (Django, Celery, React.js) — WhatsApp-integrated real estate platform
 
 Great Sun Financial — Senior Software Engineer, full-time (March 2024 – May 2024):
-- Led the development team for Credex, a distributed fintech solution built on WhatsApp (Node.js, TypeScript, Neo4j, Django)
+- Led backend development for Credex, a fintech peer to peer digital wallet delivered over WhatsApp (Node.js, TypeScript, Neo4j, Django)
 - Refactored the serverless architecture, eliminating cold starts and nearly doubling performance
 - Built a custom auth system and optimised GraphQL queries
 

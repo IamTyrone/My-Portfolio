@@ -72,7 +72,7 @@ export const certifications: Certification[] = [
  */
 export const financeTrack = {
   title: "where the two halves meet",
-  body: "I did not pick finance and then abandon it. The interesting problems, to me, are the ones where the code has a balance sheet behind it. Quantitative finance and algorithmic trading in particular: pricing models, backtests, execution logic, the kind of system where a latency budget and a risk limit are the same conversation. I have built payment gateways, an ERP with a real general ledger, and claims processing for medical aid. I would like the next one to have a strategy attached.",
+  body: "I did not pick finance and then abandon it. The interesting problems, to me, are the ones where the code has a balance sheet behind it. Quantitative finance and algorithmic trading in particular: pricing models, backtests, execution logic, the kind of system where a latency budget and a risk limit are the same conversation. I have built payment gateways, an ERP with a real general ledger, claims processing for medical aid, and the platform the largest forex trading institution in Zimbabwe runs on. I would like the next one to have a strategy attached.",
   interests: [
     "Quantitative Finance",
     "Algorithmic Trading",

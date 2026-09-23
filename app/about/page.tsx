@@ -79,13 +79,14 @@ const experience = [
     period: "May 2024 – Aug 2025",
     hash: "a3f7c2d",
     description:
-      "Came back, this time to own the full technical architecture for the organisation's entire product portfolio: selecting technologies, defining infrastructure patterns on AWS, and establishing engineering standards across all projects.",
+      "Came back, this time to own the full technical architecture for the organisation's entire product catalogue, in-house and external: selecting technologies, defining infrastructure patterns on AWS, and establishing engineering standards across all projects.",
     achievements: [
+      "Owned the end-to-end software development lifecycle across every engineering team, setting coding standards, review policy, and CI/CD tooling.",
       "Designed CI/CD pipelines (GitHub Actions, Jenkins) and Kubernetes deployment strategies, achieving zero-downtime deployments across all production services.",
       "Authored and enforced organisation-wide engineering standards covering code style, PR structure, code review policy, and testing practices across Go, Python, Django, and Laravel projects.",
-      "Designed and built a Go-based geo-proximity microservice for the Safi platform, enabling real-time location-based matching between service providers and clients at scale.",
-      "Integrated production systems with AWS (EC2, RDS, S3), reducing infrastructure spend while maintaining availability targets.",
-      "Led project scoping, team composition decisions, and technology selection for all new initiatives.",
+      "Built RESTful APIs and a Go-based geo-proximity service powering nearby-provider search on the Safi platform.",
+      "Migrated legacy projects onto AWS and designed scaling frameworks to absorb unplanned traffic spikes.",
+      "Architected on AWS with scalability balanced against infrastructure cost, and led project scoping, team composition and technology selection for all new initiatives.",
     ],
   },
   {
@@ -123,7 +124,7 @@ const experience = [
     period: "March 2024 – May 2024",
     hash: "d2a6b7c",
     description:
-      "Led development team for Credex, a distributed fintech solution leveraging WhatsApp. Contributed to system architecture, selected technology stacks, developed backend services using Node.js, TypeScript, Neo4j, and Django.",
+      "Led backend development for Credex, a fintech peer to peer digital wallet delivered over WhatsApp. Contributed to system architecture, selected technology stacks, developed backend services using Node.js, TypeScript, Neo4j, and Django.",
     achievements: [
       "Refactored serverless architecture, eliminating cold starts and nearly doubling performance.",
       "Decoupled client/server logic improving load times.",
@@ -171,15 +172,17 @@ const experience = [
     ],
   },
   {
-    title: "Software Developer",
+    title: "Founder & Software Developer",
     company: "Dryback Technology",
-    employment: "Contract",
+    employment: "Contract, part-time",
     period: "Feb 2019 – Present",
     hash: "a1c5d9f",
     description:
-      "My own company, and the one I contract through. Still open, still taking work. Multiple production systems across retail, real estate, and asset management. I did a lotttttt of freelance projects. A LOOOOT. LOL.",
+      "My own company, and the one I contract through. It has run alongside every other role on this list since 2019. Still open, still taking work. I did a lotttttt of freelance projects. A LOOOOT. LOL.",
     achievements: [
-      "Designed and built a full-featured ERP (Vantage Point) with a React Native mobile POS and React back-office dashboard; backend in Go (Fiber) with Redis and PostgreSQL — managing real retail operations.",
+      "Delivered the Vantage Point ERP, roughly 609,000 lines of Go covering point of sale, inventory, accounting, payroll and ZIMRA fiscalisation, with a React Native mobile POS beside it.",
+      "Built the platform systems for Zimbabwe's largest forex trading institution: a client portal, a twenty seven section admin console, and a video-based learning platform.",
+      "Delivered Melo, an AI-driven savings app used across ten African countries, integrating Paystack payments and OpenAI-powered planning.",
       "Developed a Golang-based tenant management system with a React.js frontend and PostgreSQL, including mobile self-service access for tenants.",
       "Built an asset registry system in Django / React tracking real-time asset locations, automating depreciation and revaluation calculations.",
       "Architected the Acrepoint Housing System (Django, Celery, React.js) — a WhatsApp-integrated real estate platform connecting developers with buyers.",
