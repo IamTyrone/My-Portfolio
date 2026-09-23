@@ -583,6 +583,76 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ],
     file: "africa-patient-safety-summit.md",
   },
+  "20": {
+    intro:
+      "A readability rating tool for people with low vision. A Chrome extension spots when you are on a site we index, hands you a short survey, and the institution that owns the site watches the scores and the written suggestions land on a dashboard.",
+    image: "/img/projects/probable-dribble/survey.webp",
+    tags: [
+      "React",
+      "TypeScript",
+      "Redux",
+      "Ant Design",
+      "Chrome Extension",
+      "Django",
+      "JWT",
+      "Netlify",
+      "Heroku",
+    ],
+    timeline: "June and July 2022",
+    team: "Small team, three repos between us",
+    status: "Archived, the backend went with Heroku's free tier",
+    features: [
+      "Manifest V3 extension that reads the active tab URL and asks the backend whether the site is indexed",
+      "Popup that offers the survey when there is a match and says so plainly when there is not",
+      "Six step survey wizard, ten scored questions plus a free text suggestion",
+      "Questions served by the backend, so an institution picks its own rather than taking ours",
+      "The site being rated is passed between the two front ends as a single URL query parameter",
+      "Institution dashboard for adding a website and reading back its questionnaires",
+      "Ten day trend charts for questionnaire volume and per question ratings",
+      "Lazy loaded suggestions table, JWT auth held in localStorage",
+    ],
+    techStack: {
+      Dashboard: [
+        "React 18",
+        "TypeScript",
+        "Create React App",
+        "Redux Toolkit",
+        "PrimeReact",
+        "Chakra UI",
+        "Chart.js",
+        "axios",
+      ],
+      Survey: ["React 18", "TypeScript", "Ant Design", "Framer Motion"],
+      Extension: ["Chrome Extension (Manifest V3)", "JavaScript", "Bootstrap 5"],
+      Backend: ["Django", "Django REST Framework", "JWT"],
+      Deployment: ["Netlify", "Heroku"],
+    },
+    challenges: [
+      "Three separate front ends that only ever talk to each other through one query parameter",
+      "Submitting a questionnaire as ten sequential POSTs with no transaction behind them",
+      "A star rating built from five independent booleans, which quietly refuses to let you change your answer",
+      "Manifest V3 permissions, where reading the active tab URL is most of what the extension is allowed to do",
+      "Telling 'this site is not indexed' apart from 'the request failed', which the extension never bothers to do",
+    ],
+    learnings: [
+      "An accessibility project is the worst place to hang a click handler on a div and leave the real input inert",
+      "Guard conditions on five separate useState booleans are a state machine you did not mean to write",
+      "A fan out of one request per answer needs a bulk endpoint, or you ship half filled records",
+      "Free tier hosting decides how long your project lives, and Heroku decided this one",
+      "Pick the component library before you install three of them",
+    ],
+    file: "probable-dribble.md",
+    links: [
+      {
+        label: "Survey Form Repo",
+        href: "https://github.com/IamTyrone/Probable-Dribble-Survey",
+      },
+      {
+        label: "Extension Repo",
+        href: "https://github.com/IamTyrone/probable-trible-extension",
+      },
+    ],
+  },
 };
 
 export function getProjectDetail(id: string): ProjectDetail | undefined {
