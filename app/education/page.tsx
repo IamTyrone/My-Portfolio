@@ -2,13 +2,20 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Award, Download, GraduationCap, MapPin } from "lucide-react";
+import {
+  Award,
+  Download,
+  GraduationCap,
+  MapPin,
+  TrendingUp,
+} from "lucide-react";
 import { GlitchText } from "@/components/glitch-text";
 import { TerminalWindow } from "@/components/terminal-window";
 import { getTechIcon, SkillChip } from "@/lib/tech-icons";
 import {
   certifications,
   educationStats,
+  financeTrack,
   institutions,
   plannedCertifications,
   selfTaught,
@@ -215,9 +222,11 @@ export default function Education() {
                   <span className="text-terminal-green text-[10px] font-mono truncate">
                     {cert.id}.pem
                   </span>
-                  <span className="text-muted-foreground text-[10px] font-mono ml-auto pl-2 shrink-0">
-                    {cert.issued}
-                  </span>
+                  {cert.issued && (
+                    <span className="text-muted-foreground text-[10px] font-mono ml-auto pl-2 shrink-0">
+                      {cert.issued}
+                    </span>
+                  )}
                 </div>
                 <div className="terminal-body !py-4 !px-4">
                   <p className="text-terminal-green text-xs font-mono mb-1">
@@ -379,6 +388,37 @@ export default function Education() {
               ))}
             </div>
           </TerminalWindow>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="mt-6"
+          >
+            <div className="terminal-window">
+              <div className="terminal-titlebar !py-1.5">
+                <TrendingUp
+                  size={11}
+                  className="text-hack-cyan mr-2 shrink-0"
+                  aria-hidden="true"
+                />
+                <span className="text-terminal-green text-[10px] font-mono truncate">
+                  {financeTrack.title}
+                </span>
+              </div>
+              <div className="terminal-body !py-4 !px-4">
+                <p className="text-muted-foreground text-xs font-mono leading-relaxed mb-4">
+                  {financeTrack.body}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {financeTrack.interests.map((interest) => (
+                    <SkillChip key={interest} name={interest} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}

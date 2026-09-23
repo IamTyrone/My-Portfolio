@@ -23,7 +23,8 @@ export type Certification = {
   id: string;
   name: string;
   issuer: string;
-  issued: string;
+  /** Omit when the date is not on record. The card drops the date, not the card. */
+  issued?: string;
   /** What the exam actually covers, not what the badge implies. */
   note: string;
   tags: string[];
@@ -56,7 +57,35 @@ export const certifications: Certification[] = [
     note: "Sat it after years of already running production on EC2, RDS and S3. Most of the studying was learning the names AWS gives to things I had been wiring up by hand.",
     tags: ["AWS", "EC2", "S3", "RDS", "VPC", "IAM", "CloudWatch"],
   },
+  {
+    id: "cfa-investment-foundations",
+    name: "Investment Foundations Certificate",
+    issuer: "CFA Institute",
+    note: "The other half of the CV. Ethics, portfolio management, securities and how the industry plumbing actually fits together. Useful every single time I build something that touches money.",
+    tags: ["Finance", "Portfolio Management", "Risk Management", "Ethics"],
+  },
 ];
+
+/**
+ * Why a finance degree and a CFA certificate sit on an engineer's site. This
+ * is the thread that connects them, and it is the work he wants more of.
+ */
+export const financeTrack = {
+  title: "where the two halves meet",
+  body: "I did not pick finance and then abandon it. The interesting problems, to me, are the ones where the code has a balance sheet behind it. Quantitative finance and algorithmic trading in particular: pricing models, backtests, execution logic, the kind of system where a latency budget and a risk limit are the same conversation. I have built payment gateways, an ERP with a real general ledger, and claims processing for medical aid. I would like the next one to have a strategy attached.",
+  interests: [
+    "Quantitative Finance",
+    "Algorithmic Trading",
+    "Financial Modelling",
+    "Risk Management",
+    "Backtesting",
+    "Market Data",
+    "Python",
+    "Go",
+    "Rust",
+    "PostgreSQL",
+  ],
+};
 
 export type PlannedCertification = {
   id: string;
@@ -147,7 +176,7 @@ export const plannedCertifications: PlannedCertification[] = [
  */
 export const selfTaught = {
   title: "Everything else",
-  body: "The honest version: the degree says finance, the job says backend. Go, Kubernetes, Django, Terraform, the whole stack I actually get paid for came from documentation, other people's source code, and breaking things in environments that deserved better. Seven years of that is its own curriculum. It just doesn't come with a certificate.",
+  body: "The honest version: the degree says finance, the job says backend. Go, Kubernetes, Django, Terraform, the whole stack I actually get paid for came from documentation, other people's source code, and breaking things in environments that deserved better. Eight years of that is its own curriculum. It just doesn't come with a certificate.",
   subjects: [
     "Go",
     "Python",

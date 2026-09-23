@@ -122,7 +122,7 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
           >
             <h3 className="text-xl font-bold mb-3">About the Author</h3>
             <p className="text-muted-foreground">
-              {author} is a full-stack software engineer with over 7 years of
+              {author} is a full-stack software engineer with over 8 years of
               experience building scalable web applications. He specializes in
               React, Node.js, and cloud architecture.
             </p>

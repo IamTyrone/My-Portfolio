@@ -308,6 +308,15 @@ const registry: Record<string, TechIcon> = {
   community: { icon: Users, color: "#C77DFF" },
   cloud: { icon: Cloud, color: "#00D9FF" },
   costoptimization: { icon: PiggyBank, color: "#00E5A0" },
+  finance: { icon: PiggyBank, color: "#00E5A0" },
+  quantitativefinance: { icon: TrendingUp, color: "#00E5A0" },
+  algorithmictrading: { icon: TrendingUp, color: "#FFB454" },
+  backtesting: { icon: TrendingUp, color: "#00A3FF" },
+  marketdata: { icon: TrendingUp, color: "#00E5A0" },
+  financialmodelling: { icon: PiggyBank, color: "#00A3FF" },
+  portfoliomanagement: { icon: PiggyBank, color: "#00A3FF" },
+  riskmanagement: { icon: ShieldCheck, color: "#FFB454" },
+  ethics: { icon: ScrollText, color: "#00E5A0" },
   agility: { icon: Rocket, color: "#FFB454" },
   agilemethodologies: { icon: Rocket, color: "#FFB454" },
   startups: { icon: Rocket, color: "#FF6B6B" },
@@ -360,7 +369,11 @@ type SkillChipProps = {
  * The color is passed down as `--brand`; `.skill-chip` in globals.css turns
  * it into the border, fill, and hover glow.
  */
-export function SkillChip({ name, size = "sm", className = "" }: SkillChipProps) {
+export function SkillChip({
+  name,
+  size = "sm",
+  className = "",
+}: SkillChipProps) {
   const { icon: Icon, color } = getTechIcon(name);
   const dense = size === "sm";
 
