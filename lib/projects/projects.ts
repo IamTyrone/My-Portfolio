@@ -441,7 +441,7 @@ export const projects: Project[] = [
     id: "18",
     title: "Fund Admin",
     summary:
-      "An accounting system for a fund management companies powered by Five Avenue Partners.",
+      "An accounting and reporting system for a venture firm's funds. Every action posts a journal entry, so the capital accounts and the seven statements come off the ledger rather than out of a spreadsheet sitting next to it.",
     tags: ["React", "Typescript", "Supabase", "Vercel"],
     category: "fullstack",
     github: "#",
