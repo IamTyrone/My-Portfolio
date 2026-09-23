@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MapPin, Mail, Calendar, Download } from "lucide-react";
+import { MapPin, Mail, Calendar, Download, GraduationCap } from "lucide-react";
 import { TerminalWindow } from "@/components/terminal-window";
 import { GlitchText } from "@/components/glitch-text";
 import { getTechIcon } from "@/lib/tech-icons";
@@ -75,10 +75,11 @@ const experience = [
   {
     title: "Software Architect",
     company: "Mviyo Technologies",
-    period: "Nov 2023 – Aug 2025",
+    employment: "Full-time",
+    period: "Nov 2023 \u2013 Aug 2025",
     hash: "a3f7c2d",
     description:
-      "Owned the full technical architecture for the organisation's entire product portfolio — selecting technologies, defining infrastructure patterns on AWS, and establishing engineering standards across all projects.",
+      "Owned the full technical architecture for the organisation's entire product portfolio \u2014 selecting technologies, defining infrastructure patterns on AWS, and establishing engineering standards across all projects.",
     achievements: [
       "Designed CI/CD pipelines (GitHub Actions, Jenkins) and Kubernetes deployment strategies, achieving zero-downtime deployments across all production services.",
       "Authored and enforced organisation-wide engineering standards covering code style, PR structure, code review policy, and testing practices across Go, Python, Django, and Laravel projects.",
@@ -88,12 +89,13 @@ const experience = [
     ],
   },
   {
-    title: "Lead DevOps Engineer (Contractual)",
+    title: "Lead DevOps Engineer",
     company: "Great Sun Financial",
-    period: "May 2024 – Nov 2024",
+    employment: "Part-time contract",
+    period: "May 2024 \u2013 Nov 2024",
     hash: "c5d9e3b",
     description:
-      "Designed CI/CD pipelines using GitHub Actions, built staging/testing/production environments on DigitalOcean and AWS, deployed applications with Docker. Set up metrics reporting and managed infrastructure security.",
+      "Stayed on after the full-time engineering contract ended, part time this round. Designed CI/CD pipelines using GitHub Actions, built staging/testing/production environments on DigitalOcean and AWS, deployed applications with Docker. Set up metrics reporting and managed infrastructure security.",
     achievements: [
       "Designed and deployed development, test and canary environments.",
       "Implemented CI/CD pipelines to terraform provisioned AWS and Digital Ocean infrastructure.",
@@ -101,9 +103,24 @@ const experience = [
     ],
   },
   {
-    title: "Senior Software Engineer (Contractual)",
+    title: "Technical Support Specialist",
+    company: "MIBV Media",
+    employment: "Contract",
+    period: "2024",
+    hash: "b3e7f2a",
+    description:
+      "Tackled complex technical issues requiring scripting, managed servers, designed CI/CD pipelines. Extended website functionality on Framer using React/TypeScript and automated workflows.",
+    achievements: [
+      "Designed backup methodologies for critical systems.",
+      "Deployed automation scripts to streamline workflows.",
+      "Integrated third-party APIs to dynamic interfaces in Framer.",
+    ],
+  },
+  {
+    title: "Senior Software Engineer",
     company: "Great Sun Financial",
-    period: "March 2024 – May 2024",
+    employment: "Full-time",
+    period: "March 2024 \u2013 May 2024",
     hash: "d2a6b7c",
     description:
       "Led development team for Credex, a distributed fintech solution leveraging WhatsApp. Contributed to system architecture, selected technology stacks, developed backend services using Node.js, TypeScript, Neo4j, and Django.",
@@ -116,7 +133,8 @@ const experience = [
   {
     title: "Senior Software Engineer",
     company: "Healthify Medical Software",
-    period: "Dec 2021 – Nov 2023",
+    employment: "Full-time",
+    period: "Dec 2021 \u2013 Nov 2023",
     hash: "e9f3a1d",
     description:
       "Designed and led development of a large-scale distributed claims and contributions platform for medical aid organisations, built on Django, PostgreSQL, and a microservices architecture.",
@@ -125,16 +143,17 @@ const experience = [
       "Built a Go-based audit microservice with MongoDB persistence, providing immutable logging of all user actions for compliance.",
       "Created a Node.js PDF generation microservice (Puppeteer / Express.js), decoupling document generation from core business logic.",
       "Designed async inter-service communication using RabbitMQ alongside synchronous HTTP, enabling resilient, decoupled service interactions.",
-      "Stood up and managed production Kubernetes clusters with Jenkins and GitHub Actions CI/CD — zero downtime across all releases.",
+      "Stood up and managed production Kubernetes clusters with Jenkins and GitHub Actions CI/CD \u2014 zero downtime across all releases.",
     ],
   },
   {
     title: "Software Developer",
     company: "Intelli Africa Solutions",
-    period: "Feb 2021 – Dec 2021",
+    employment: "Full-time",
+    period: "Feb 2021 \u2013 Dec 2021",
     hash: "f4b8c2e",
     description:
-      "Engineered a full-stack bulk SMS and email dispatch platform integrating with multiple carrier networks, built on Python, Django, Celery, and PostgreSQL — handling high message throughput asynchronously.",
+      "Engineered a full-stack bulk SMS and email dispatch platform integrating with multiple carrier networks, built on Python, Django, Celery, and PostgreSQL \u2014 handling high message throughput asynchronously.",
     achievements: [
       "Published and maintained open-source API client SDKs on PyPI (Python) and NPM (Node.js), enabling third-party developer integrations.",
       "Implemented military-grade encryption for payment data at rest and in transit in a React.js merchant dashboard integrated with PayPal and Payfast.",
@@ -142,38 +161,27 @@ const experience = [
     ],
   },
   {
-    title: "Software Developer (Contracts)",
+    title: "Software Developer",
     company: "Dryback Technology",
-    period: "Feb 2019 – Present",
+    employment: "Contract",
+    period: "Feb 2019 \u2013 Present",
     hash: "a1c5d9f",
     description:
-      "Long-running contract engagement spanning multiple production systems across retail, real estate, and asset management. I did a lotttttt of freelance projects. A LOOOOT. LOL.",
+      "My own company, and the one I contract through. Still open, still taking work. Multiple production systems across retail, real estate, and asset management. I did a lotttttt of freelance projects. A LOOOOT. LOL.",
     achievements: [
-      "Designed and built a full-featured ERP (Vantage Point) with a React Native mobile POS and React back-office dashboard; backend in Go (Fiber) with Redis and PostgreSQL — managing real retail operations.",
+      "Designed and built a full-featured ERP (Vantage Point) with a React Native mobile POS and React back-office dashboard; backend in Go (Fiber) with Redis and PostgreSQL \u2014 managing real retail operations.",
       "Developed a Golang-based tenant management system with a React.js frontend and PostgreSQL, including mobile self-service access for tenants.",
       "Built an asset registry system in Django / React tracking real-time asset locations, automating depreciation and revaluation calculations.",
-      "Architected the Acrepoint Housing System (Django, Celery, React.js) — a WhatsApp-integrated real estate platform connecting developers with buyers.",
+      "Architected the Acrepoint Housing System (Django, Celery, React.js) \u2014 a WhatsApp-integrated real estate platform connecting developers with buyers.",
       "Built the Dabane Trust education system for local farmers using Django and React.js.",
       "Designed a text-based WhatsApp chatbot for low-bandwidth rural areas in Zimbabwe.",
     ],
   },
   {
-    title: "Technical Support Specialist",
-    company: "MIBV Media",
-    period: "2019 – 2020",
-    hash: "b3e7f2a",
-    description:
-      "Tackled complex technical issues requiring scripting, managed servers, designed CI/CD pipelines. Extended website functionality on Framer using React/TypeScript and automated workflows.",
-    achievements: [
-      "Designed backup methodologies for critical systems.",
-      "Deployed automation scripts to streamline workflows.",
-      "Integrated third-party APIs to dynamic interfaces in Framer.",
-    ],
-  },
-  {
     title: "Intern",
     company: "Integrity Business Solutions",
-    period: "Aug 2019 – Aug 2020",
+    employment: "Internship",
+    period: "Aug 2019 \u2013 Aug 2020",
     hash: "c8d4a6b",
     description:
       "Deployed and configured Linux server infrastructure for Hansaworld Standard ERP installations at multiple client sites.",
@@ -267,7 +275,7 @@ export default function About() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="mt-6"
+                className="mt-6 flex flex-wrap gap-3"
               >
                 <Link
                   href="/resume/Tyrone_Mguni.pdf"
@@ -275,6 +283,12 @@ export default function About() {
                   className="zap-hover inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
                 >
                   <Download size={12} />$ wget resume/Tyrone_Mguni.pdf
+                </Link>
+                <Link
+                  href="/education"
+                  className="zap-hover inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-hack-cyan/30 text-hack-cyan hover:bg-hack-cyan/10 hover:border-hack-cyan transition-all duration-200 rounded-sm"
+                >
+                  <GraduationCap size={12} />$ cat education.json
                 </Link>
               </motion.div>
             </motion.div>
@@ -435,9 +449,12 @@ export default function About() {
                     </span>
                   </div>
                   <div className="terminal-body !py-3 !px-4">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
                       <span className="text-evil-red text-[10px] font-mono">
                         @{exp.company}
+                      </span>
+                      <span className="px-1.5 py-0.5 text-[9px] font-mono rounded-sm border border-hack-cyan/25 text-hack-cyan/80 bg-hack-cyan/5">
+                        {exp.employment}
                       </span>
                     </div>
                     <p className="text-muted-foreground text-xs font-mono leading-relaxed mb-3">
@@ -459,6 +476,43 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+
+          {/* Education pointer */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
+            className="mt-8"
+          >
+            <Link href="/education" className="block group">
+              <div className="terminal-window">
+                <div className="terminal-titlebar !py-1.5">
+                  <GraduationCap
+                    size={11}
+                    className="text-hack-cyan mr-2 shrink-0"
+                  />
+                  <span className="text-terminal-green text-[10px] font-mono">
+                    education.json
+                  </span>
+                  <span className="text-muted-foreground text-[10px] font-mono ml-auto">
+                    $ open
+                  </span>
+                </div>
+                <div className="terminal-body !py-3 !px-4">
+                  <p className="text-xs font-mono text-muted-foreground leading-relaxed">
+                    <span className="text-hack-cyan mr-1">?</span> Curious where
+                    any of this came from? The degree is in finance. The rest of
+                    it has a longer story, and it lives{" "}
+                    <span className="text-terminal-green group-hover:text-glow-green transition-all">
+                      on the education page
+                    </span>
+                    .
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

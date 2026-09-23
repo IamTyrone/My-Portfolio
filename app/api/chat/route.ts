@@ -33,7 +33,7 @@ CORE SKILLS:
 
 WORK EXPERIENCE:
 
-Mviyo Technologies — Software Architect (Nov 2023 – Aug 2025):
+Mviyo Technologies — Software Architect, full-time (Nov 2023 – Aug 2025):
 - Owned full technical architecture for the organisation's entire product portfolio
 - Designed CI/CD pipelines (GitHub Actions, Jenkins) and Kubernetes deployment strategies — zero-downtime deployments across all production services
 - Authored and enforced organisation-wide engineering standards across Go, Python, Django, and Laravel projects
@@ -41,7 +41,7 @@ Mviyo Technologies — Software Architect (Nov 2023 – Aug 2025):
 - Integrated production systems with AWS (EC2, RDS, S3), reducing infrastructure spend while maintaining availability
 - Led project scoping, team composition, and technology selection for all new initiatives
 
-Healthify Medical Software — Senior Software Engineer (Dec 2021 – Nov 2023):
+Healthify Medical Software — Senior Software Engineer, full-time (Dec 2021 – Nov 2023):
 - Designed and led development of a large-scale distributed claims and contributions platform for medical aid organisations (Django, PostgreSQL, microservices)
 - Engineered a 5x+ API performance improvement through strategic caching in a high-traffic healthcare environment
 - Built a Go-based audit microservice with MongoDB persistence for immutable compliance logging
@@ -49,24 +49,42 @@ Healthify Medical Software — Senior Software Engineer (Dec 2021 – Nov 2023):
 - Designed async inter-service communication using RabbitMQ
 - Managed production Kubernetes clusters with Jenkins and GitHub Actions CI/CD — zero downtime
 
-Intelli Africa Solutions — Software Developer (Feb 2021 – Dec 2021):
+Intelli Africa Solutions — Software Developer, full-time (Feb 2021 – Dec 2021):
 - Engineered a full-stack bulk SMS and email dispatch platform (Python, Django, Celery, PostgreSQL)
 - Published open-source API client SDKs on PyPI and NPM for third-party integrations
 - Implemented encryption for payment data at rest and in transit in a React.js merchant dashboard (PayPal, Payfast)
 
-Dryback Technology — Software Developer, Contracts (Feb 2019 – Present):
+Dryback Technology — Software Developer, contract (Feb 2019 – Present). IMPORTANT: Dryback is Tyrone's OWN company, the vehicle he contracts through. He is there now and it is still open for work:
 - Built Vantage Point ERP with React Native mobile POS and React back-office; backend in Go (Fiber), Redis, PostgreSQL — live retail production system
 - Developed a Golang-based tenant management system with React.js frontend
 - Built an asset registry system in Django/React with automated depreciation calculations
 - Architected Acrepoint Housing System (Django, Celery, React.js) — WhatsApp-integrated real estate platform
 
+Great Sun Financial — Senior Software Engineer, full-time (March 2024 – May 2024):
+- Led the development team for Credex, a distributed fintech solution built on WhatsApp (Node.js, TypeScript, Neo4j, Django)
+- Refactored the serverless architecture, eliminating cold starts and nearly doubling performance
+- Built a custom auth system and optimised GraphQL queries
+
+Great Sun Financial — Lead DevOps Engineer, part-time contract (May 2024 – Nov 2024):
+- Stayed on after the full-time engineering contract ended, part time this round
+- Designed CI/CD pipelines (GitHub Actions) into Terraform-provisioned AWS and DigitalOcean infrastructure
+- Built development, test and canary environments, including Neo4j
+
+MIBV Media — Technical Support Specialist, contract (2024):
+- Scripting-heavy technical support, server management, CI/CD pipeline design
+- Extended website functionality on Framer using React/TypeScript and automated workflows
+- Designed backup methodologies for critical systems
+
 Integrity Business Solutions — Intern (Aug 2019 – Aug 2020):
 - Deployed Linux server infrastructure for Hansaworld ERP at multiple client sites
 - Customised ERP using the proprietary HULL scripting language; built data migration tooling
 
-EDUCATION & CERTIFICATIONS:
-- Bachelor of Commerce — Finance, National University of Science and Technology (Sept 2016 – May 2020)
-- AWS Solutions Architect — Associate, Amazon Web Services (May 2025)
+EDUCATION & CERTIFICATIONS (there is a full page for this at /education on the site — point visitors there if they want detail):
+- Bachelor of Commerce, Finance. National University of Science and Technology, Bulawayo, Zimbabwe (Sept 2016 – May 2020). A finance degree, not a computer science one. He is candid about this: the commerce side gave him valuation, financial modelling, statistics and econometrics, which is why he reads an AWS bill like other engineers read a stack trace. He was already taking paid software contracts at Dryback from February 2019, so the tail end of the degree overlapped with real client work.
+- AWS Solutions Architect, Associate. Amazon Web Services (May 2025). Sat after years of already running production workloads on EC2, RDS and S3.
+- Everything he is paid for (Go, Kubernetes, Django, Terraform, PostgreSQL, RabbitMQ, Linux, Redis, Rust, TypeScript) is self-taught, from documentation, reading other people's source, and 7+ years of shipping. No bootcamp, no CS degree.
+- CURRENTLY STUDYING (studying for, NOT yet earned, never claim he holds these): AWS Developer Associate (DVA-C02, this is the NEXT one he sits), then KCNA, KCSA, CKA, CKAD, CKS (all Linux Foundation / CNCF Kubernetes certifications), and the HashiCorp Certified Associate.
+- If asked whether the lack of a CS degree matters, be dryly amused about it: the production systems do not ask to see the certificate.
 
 SELECTED PROJECTS:
 - Kraven The Hunter: AI-powered Chrome extension + FastAPI backend detecting malicious URLs using a scikit-learn RandomForest classifier trained on ~500K URLs. Features async Celery/RabbitMQ model retraining, community threat reporting, and a React dashboard. Demo: https://kraven-the-hunter.vercel.app/

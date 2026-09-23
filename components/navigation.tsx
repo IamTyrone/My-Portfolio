@@ -9,6 +9,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { href: "/", label: "./home", cmd: "~" },
   { href: "/about", label: "./about", cmd: "cat README.md" },
+  { href: "/education", label: "./education", cmd: "cat education.json" },
   { href: "/projects", label: "./projects", cmd: "ls -la" },
   { href: "/blog", label: "./blog", cmd: "tail -f" },
 ];
