@@ -76,10 +76,10 @@ const experience = [
     title: "Software Architect",
     company: "Mviyo Technologies",
     employment: "Full-time",
-    period: "Nov 2023 \u2013 Aug 2025",
+    period: "May 2024 – Aug 2025",
     hash: "a3f7c2d",
     description:
-      "Owned the full technical architecture for the organisation's entire product portfolio \u2014 selecting technologies, defining infrastructure patterns on AWS, and establishing engineering standards across all projects.",
+      "Came back, this time to own the full technical architecture for the organisation's entire product portfolio: selecting technologies, defining infrastructure patterns on AWS, and establishing engineering standards across all projects.",
     achievements: [
       "Designed CI/CD pipelines (GitHub Actions, Jenkins) and Kubernetes deployment strategies, achieving zero-downtime deployments across all production services.",
       "Authored and enforced organisation-wide engineering standards covering code style, PR structure, code review policy, and testing practices across Go, Python, Django, and Laravel projects.",
@@ -92,10 +92,10 @@ const experience = [
     title: "Lead DevOps Engineer",
     company: "Great Sun Financial",
     employment: "Part-time contract",
-    period: "May 2024 \u2013 Nov 2024",
+    period: "May 2024 – Nov 2024",
     hash: "c5d9e3b",
     description:
-      "Stayed on after the full-time engineering contract ended, part time this round. Designed CI/CD pipelines using GitHub Actions, built staging/testing/production environments on DigitalOcean and AWS, deployed applications with Docker. Set up metrics reporting and managed infrastructure security.",
+      "When I went back to Mviyo, this role moved to part-time contract rather than ending. Designed CI/CD pipelines using GitHub Actions, built staging/testing/production environments on DigitalOcean and AWS, deployed applications with Docker. Set up metrics reporting and managed infrastructure security.",
     achievements: [
       "Designed and deployed development, test and canary environments.",
       "Implemented CI/CD pipelines to terraform provisioned AWS and Digital Ocean infrastructure.",
@@ -120,7 +120,7 @@ const experience = [
     title: "Senior Software Engineer",
     company: "Great Sun Financial",
     employment: "Full-time",
-    period: "March 2024 \u2013 May 2024",
+    period: "March 2024 – May 2024",
     hash: "d2a6b7c",
     description:
       "Led development team for Credex, a distributed fintech solution leveraging WhatsApp. Contributed to system architecture, selected technology stacks, developed backend services using Node.js, TypeScript, Neo4j, and Django.",
@@ -132,9 +132,19 @@ const experience = [
   },
   {
     title: "Senior Software Engineer",
+    company: "Mviyo Technologies",
+    employment: "Full-time",
+    period: "Nov 2023 – March 2024",
+    hash: "b7e2f4a",
+    description:
+      "First run at Mviyo, on the engineering side. I left for a full-time role at Great Sun, then came back two months later as the architect, which is a more flattering way of saying they missed me.",
+    achievements: [],
+  },
+  {
+    title: "Senior Software Engineer",
     company: "Healthify Medical Software",
     employment: "Full-time",
-    period: "Dec 2021 \u2013 Nov 2023",
+    period: "Dec 2021 – Nov 2023",
     hash: "e9f3a1d",
     description:
       "Designed and led development of a large-scale distributed claims and contributions platform for medical aid organisations, built on Django, PostgreSQL, and a microservices architecture.",
@@ -143,17 +153,17 @@ const experience = [
       "Built a Go-based audit microservice with MongoDB persistence, providing immutable logging of all user actions for compliance.",
       "Created a Node.js PDF generation microservice (Puppeteer / Express.js), decoupling document generation from core business logic.",
       "Designed async inter-service communication using RabbitMQ alongside synchronous HTTP, enabling resilient, decoupled service interactions.",
-      "Stood up and managed production Kubernetes clusters with Jenkins and GitHub Actions CI/CD \u2014 zero downtime across all releases.",
+      "Stood up and managed production Kubernetes clusters with Jenkins and GitHub Actions CI/CD — zero downtime across all releases.",
     ],
   },
   {
     title: "Software Developer",
     company: "Intelli Africa Solutions",
     employment: "Full-time",
-    period: "Feb 2021 \u2013 Dec 2021",
+    period: "Feb 2021 – Dec 2021",
     hash: "f4b8c2e",
     description:
-      "Engineered a full-stack bulk SMS and email dispatch platform integrating with multiple carrier networks, built on Python, Django, Celery, and PostgreSQL \u2014 handling high message throughput asynchronously.",
+      "Engineered a full-stack bulk SMS and email dispatch platform integrating with multiple carrier networks, built on Python, Django, Celery, and PostgreSQL — handling high message throughput asynchronously.",
     achievements: [
       "Published and maintained open-source API client SDKs on PyPI (Python) and NPM (Node.js), enabling third-party developer integrations.",
       "Implemented military-grade encryption for payment data at rest and in transit in a React.js merchant dashboard integrated with PayPal and Payfast.",
@@ -164,15 +174,15 @@ const experience = [
     title: "Software Developer",
     company: "Dryback Technology",
     employment: "Contract",
-    period: "Feb 2019 \u2013 Present",
+    period: "Feb 2019 – Present",
     hash: "a1c5d9f",
     description:
       "My own company, and the one I contract through. Still open, still taking work. Multiple production systems across retail, real estate, and asset management. I did a lotttttt of freelance projects. A LOOOOT. LOL.",
     achievements: [
-      "Designed and built a full-featured ERP (Vantage Point) with a React Native mobile POS and React back-office dashboard; backend in Go (Fiber) with Redis and PostgreSQL \u2014 managing real retail operations.",
+      "Designed and built a full-featured ERP (Vantage Point) with a React Native mobile POS and React back-office dashboard; backend in Go (Fiber) with Redis and PostgreSQL — managing real retail operations.",
       "Developed a Golang-based tenant management system with a React.js frontend and PostgreSQL, including mobile self-service access for tenants.",
       "Built an asset registry system in Django / React tracking real-time asset locations, automating depreciation and revaluation calculations.",
-      "Architected the Acrepoint Housing System (Django, Celery, React.js) \u2014 a WhatsApp-integrated real estate platform connecting developers with buyers.",
+      "Architected the Acrepoint Housing System (Django, Celery, React.js) — a WhatsApp-integrated real estate platform connecting developers with buyers.",
       "Built the Dabane Trust education system for local farmers using Django and React.js.",
       "Designed a text-based WhatsApp chatbot for low-bandwidth rural areas in Zimbabwe.",
     ],
@@ -181,7 +191,7 @@ const experience = [
     title: "Intern",
     company: "Integrity Business Solutions",
     employment: "Internship",
-    period: "Aug 2019 \u2013 Aug 2020",
+    period: "Aug 2019 – Aug 2020",
     hash: "c8d4a6b",
     description:
       "Deployed and configured Linux server infrastructure for Hansaworld Standard ERP installations at multiple client sites.",
@@ -457,20 +467,28 @@ export default function About() {
                         {exp.employment}
                       </span>
                     </div>
-                    <p className="text-muted-foreground text-xs font-mono leading-relaxed mb-3">
+                    <p
+                      className={`text-muted-foreground text-xs font-mono leading-relaxed ${
+                        exp.achievements.length > 0 ? "mb-3" : ""
+                      }`}
+                    >
                       {exp.description}
                     </p>
-                    <div className="space-y-1">
-                      {exp.achievements.map((a, i) => (
-                        <p
-                          key={i}
-                          className="text-[10px] font-mono text-terminal-green/60"
-                        >
-                          <span className="text-terminal-green/30 mr-1">+</span>{" "}
-                          {a}
-                        </p>
-                      ))}
-                    </div>
+                    {exp.achievements.length > 0 && (
+                      <div className="space-y-1">
+                        {exp.achievements.map((a, i) => (
+                          <p
+                            key={i}
+                            className="text-[10px] font-mono text-terminal-green/60"
+                          >
+                            <span className="text-terminal-green/30 mr-1">
+                              +
+                            </span>{" "}
+                            {a}
+                          </p>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>

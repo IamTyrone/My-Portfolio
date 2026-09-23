@@ -34,13 +34,16 @@ CORE SKILLS:
 
 WORK EXPERIENCE:
 
-Mviyo Technologies — Software Architect, full-time (Nov 2023 – Aug 2025):
+Mviyo Technologies — Software Architect, full-time (May 2024 – Aug 2025). This is his SECOND stint at Mviyo: he was there as a senior engineer from Nov 2023, left for a full-time role at Great Sun in March 2024, and was rehired two months later as the architect:
 - Owned full technical architecture for the organisation's entire product portfolio
 - Designed CI/CD pipelines (GitHub Actions, Jenkins) and Kubernetes deployment strategies — zero-downtime deployments across all production services
 - Authored and enforced organisation-wide engineering standards across Go, Python, Django, and Laravel projects
 - Designed and built a Go-based geo-proximity microservice for the Safi platform — real-time location-based matching at scale
 - Integrated production systems with AWS (EC2, RDS, S3), reducing infrastructure spend while maintaining availability
 - Led project scoping, team composition, and technology selection for all new initiatives
+
+Mviyo Technologies — Senior Software Engineer, full-time (Nov 2023 – March 2024):
+- His first stint at Mviyo, on the engineering side, before leaving for Great Sun and being rehired in May 2024 as the architect
 
 Healthify Medical Software — Senior Software Engineer, full-time (Dec 2021 – Nov 2023):
 - Designed and led development of a large-scale distributed claims and contributions platform for medical aid organisations (Django, PostgreSQL, microservices)
@@ -67,7 +70,7 @@ Great Sun Financial — Senior Software Engineer, full-time (March 2024 – May 
 - Built a custom auth system and optimised GraphQL queries
 
 Great Sun Financial — Lead DevOps Engineer, part-time contract (May 2024 – Nov 2024):
-- Stayed on after the full-time engineering contract ended, part time this round
+- When he returned to Mviyo, this role moved to a part-time contract rather than ending, so it ran alongside the architect job
 - Designed CI/CD pipelines (GitHub Actions) into Terraform-provisioned AWS and DigitalOcean infrastructure
 - Built development, test and canary environments, including Neo4j
 
