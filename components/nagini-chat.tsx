@@ -394,9 +394,9 @@ export function NaginiChat() {
       <AnimatePresence>
         {isReady && !isOpen && (
           <motion.button
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
+            exit={{ scale: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
             onClick={() => setIsOpen(true)}
             className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[200] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0a0a0a] border border-terminal-green/30 flex items-center justify-center pulse-glow hover:border-terminal-green/60 transition-colors group"
