@@ -56,6 +56,8 @@ export const projectApps: Record<string, MobileApp[]> = {
       name: "Zhou Forex Academy",
       audience: "Live trade calls, the room under each one, and the wallet",
       ios: "https://apps.apple.com/us/app/zhou-forex-academy/id6804734979",
+      android:
+        "https://play.google.com/store/apps/details?id=app.zhouforexacademy.com",
       icon: "/img/projects/zfa/app-icon.webp",
     },
   ],

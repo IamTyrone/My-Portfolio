@@ -32,7 +32,7 @@ export function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
+      className={`fixed top-0 w-full z-[100] transition-colors duration-300 ${
         scrolled
           ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-terminal-green/10"
           : "bg-transparent"
@@ -62,7 +62,7 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3 py-1.5 text-xs font-mono tracking-wide transition-all duration-200 rounded ${
+                  className={`relative px-3 py-1.5 text-xs font-mono tracking-wide transition-colors duration-200 rounded ${
                     isActive
                       ? "text-terminal-green text-glow-green bg-terminal-green/5"
                       : "text-muted-foreground hover:text-terminal-green hover:bg-terminal-green/5"

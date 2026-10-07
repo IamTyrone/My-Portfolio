@@ -105,19 +105,19 @@ export function ZapDoodles() {
       />
       <DevIcon
         icon="git"
-        className="w-5 sm:w-7 bottom-0 right-8 sm:right-14"
+        className="w-5 sm:w-7 bottom-1/4 right-0"
         color="var(--evil-red)"
         delay={2.2}
       />
       <DevIcon
         icon="terminal"
-        className="w-6 sm:w-8 top-6 left-10 sm:left-24"
+        className="w-6 sm:w-8 bottom-0 left-0"
         color="var(--hack-cyan)"
         delay={1.7}
       />
       <DevIcon
         icon="database"
-        className="w-5 sm:w-7 -bottom-2 left-4 sm:left-10"
+        className="w-5 sm:w-7 top-1/2 left-0"
         color="var(--terminal-green)"
         delay={0.3}
       />

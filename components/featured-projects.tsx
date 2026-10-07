@@ -22,12 +22,12 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
             <span className="text-evil-red font-mono text-sm">
               voldermort@projects
             </span>
             <span className="text-muted-foreground font-mono text-sm">:~$</span>
-            <span className="text-terminal-green font-mono text-sm">
+            <span className="text-terminal-green font-mono text-sm [overflow-wrap:anywhere]">
               ls -la ./projects/ --featured
             </span>
           </div>
@@ -62,7 +62,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
         >
           <Link
             href="/projects"
-            className="inline-block px-6 py-2.5 text-xs font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green/60 transition-all duration-200 rounded-sm tracking-wider"
+            className="inline-block px-6 py-2.5 text-xs font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green/60 transition-colors duration-200 rounded-sm tracking-wider"
           >
             $ find ./projects -type f --all
           </Link>

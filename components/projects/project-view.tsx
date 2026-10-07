@@ -19,6 +19,7 @@ import { SkillChip } from "@/lib/tech-icons";
 import { AppStoreSection } from "@/components/projects/app-store-links";
 import type { MobileApp } from "@/lib/projects/app-links";
 import type { ProjectDetail } from "@/lib/projects/details";
+import { hasLink } from "@/lib/projects/links";
 import type { Project } from "@/lib/projects/projects";
 
 interface ProjectViewProps {
@@ -69,18 +70,23 @@ export function ProjectView({
             </div>
 
             <div className="flex flex-wrap gap-4 mb-8">
-              <Button asChild>
-                <Link
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {hasLink(project.github) && (
+                <Button asChild>
+                  <Link
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="mr-2" size={16} />
+                    View Code
+                  </Link>
+                </Button>
+              )}
+              {hasLink(project.demo) && (
+                <Button
+                  asChild
+                  variant={hasLink(project.github) ? "outline" : "default"}
                 >
-                  <Github className="mr-2" size={16} />
-                  View Code
-                </Link>
-              </Button>
-              {project.demo && project.demo !== "#" && (
-                <Button asChild variant="outline">
                   <Link
                     href={project.demo}
                     target="_blank"

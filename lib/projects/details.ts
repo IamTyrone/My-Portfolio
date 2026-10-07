@@ -365,7 +365,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
   },
   "7": {
     intro:
-      "The platform the largest forex trading institution in Zimbabwe runs on, serving over five thousand students. A public site, a client portal, a twenty seven section admin console, a learning platform with its own transcoding and transcription pipeline, a bill payments service on top of a bank's biller engine, and an iOS signals app.",
+      "The platform the largest forex trading institution in Zimbabwe runs on, serving over five thousand students. A public site, a client portal, a twenty seven section admin console, a learning platform with its own transcoding and transcription pipeline, a bill payments service on top of a bank's biller engine, and a signals app on iOS and Android.",
     image: "/img/projects/zfa/site.webp",
     links: [
       {

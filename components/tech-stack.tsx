@@ -107,12 +107,12 @@ export function TechStack() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
             <span className="text-evil-red font-mono text-sm">
               voldermort@arsenal
             </span>
             <span className="text-muted-foreground font-mono text-sm">:~$</span>
-            <span className="text-terminal-green font-mono text-sm">
+            <span className="text-terminal-green font-mono text-sm [overflow-wrap:anywhere]">
               cat /etc/voldermort/skills.json
             </span>
           </div>
@@ -155,7 +155,7 @@ export function TechStack() {
                         className="skill-chip group inline-flex items-center gap-1.5 px-2 py-1 text-[11px] font-mono rounded-sm cursor-default"
                       >
                         <Icon
-                          className="h-3.5 w-3.5 shrink-0 grayscale-[0.35] opacity-80 transition-all duration-200 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+                          className="h-3.5 w-3.5 shrink-0 grayscale-[0.35] opacity-80 transition-[filter,opacity,transform] duration-200 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
                           style={{ color }}
                           aria-hidden="true"
                         />

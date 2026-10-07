@@ -128,7 +128,8 @@ export default function HeroSection() {
                 <p
                   className={`text-[10px] font-mono mt-1.5 ${CATEGORY_COLORS[quote.category] || "text-muted-foreground/50"}`}
                 >
-                  — {quote.source}
+                  {"// "}
+                  {quote.source}
                 </p>
               </motion.div>
             )}
@@ -142,13 +143,13 @@ export default function HeroSection() {
             >
               <Link
                 href="/projects"
-                className="zap-hover px-6 py-2.5 text-xs font-mono border border-terminal-green/40 bg-black/40 backdrop-blur-sm text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm tracking-wider text-center"
+                className="zap-hover px-6 py-2.5 text-xs font-mono border border-terminal-green/40 bg-black/40 backdrop-blur-sm text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-colors duration-200 rounded-sm tracking-wider text-center"
               >
                 $ ls ./projects
               </Link>
               <Link
                 href="/about"
-                className="zap-hover px-6 py-2.5 text-xs font-mono border border-evil-red/30 bg-black/40 backdrop-blur-sm text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-all duration-200 rounded-sm tracking-wider text-center"
+                className="zap-hover px-6 py-2.5 text-xs font-mono border border-evil-red/30 bg-black/40 backdrop-blur-sm text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-colors duration-200 rounded-sm tracking-wider text-center"
               >
                 $ cat ./about
               </Link>
@@ -165,10 +166,10 @@ export default function HeroSection() {
                 href="https://github.com/IamTyrone"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-muted-foreground hover:text-terminal-green transition-all duration-200"
+                className="group relative flex items-center text-muted-foreground hover:text-terminal-green transition-colors duration-200"
               >
                 <Github size={16} />
-                <span className="text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-1.5 whitespace-nowrap text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity">
                   git remote -v
                 </span>
               </Link>
@@ -176,19 +177,19 @@ export default function HeroSection() {
                 href="https://www.linkedin.com/in/tyrone-mguni-9b9806127/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-muted-foreground hover:text-hack-cyan transition-all duration-200"
+                className="group relative flex items-center text-muted-foreground hover:text-hack-cyan transition-colors duration-200"
               >
                 <Linkedin size={16} />
-                <span className="text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-1.5 whitespace-nowrap text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity">
                   connect --professional
                 </span>
               </Link>
               <Link
                 href="mailto:tyronemguni@gmail.com"
-                className="group flex items-center gap-2 text-muted-foreground hover:text-evil-red transition-all duration-200"
+                className="group relative flex items-center text-muted-foreground hover:text-evil-red transition-colors duration-200"
               >
                 <Mail size={16} />
-                <span className="text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-1.5 whitespace-nowrap text-[10px] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity">
                   sendmail -v
                 </span>
               </Link>

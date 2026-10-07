@@ -741,4 +741,39 @@ html {
   .skill-chip svg {
     transition: none;
   }
+
+  /* Loops that never stop: hold them on a still frame. Colour and opacity
+     transitions elsewhere are left alone. */
+  .glitch-text::before,
+  .glitch-text::after,
+  .terminal-cursor,
+  .flicker,
+  .noise-bg::before,
+  .pulse-glow,
+  .zap-doodle path,
+  .zap-doodle polyline,
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+  }
+
+  .zap-hover:hover {
+    animation: none;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    display: none;
+  }
+
+  /* a spark only makes sense as a flash; held still it is just a blot */
+  .spark-pop {
+    display: none;
+  }
+
+  /* drawn in full rather than stuck at the undrawn first frame */
+  .zap-doodle path,
+  .zap-doodle polyline {
+    stroke-dashoffset: 0;
+  }
 }

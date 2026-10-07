@@ -61,7 +61,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
               <span className="terminal-dot terminal-dot-yellow" />
               <span className="terminal-dot terminal-dot-green" />
             </div>
-            <span className="text-[10px]">init — voldermort_os</span>
+            <span className="text-[10px]">init: voldermort_os</span>
           </div>
           <div className="terminal-body font-mono text-xs sm:text-sm min-h-[190px]">
             <Typewriter
@@ -99,7 +99,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
                   showCursor={false}
                 />
                 <Typewriter
-                  text="[OK] Death Eaters summoned — Dark Mark active"
+                  text="[OK] Death Eaters summoned, Dark Mark active"
                   speed={18}
                   delay={1600}
                   className="text-hack-cyan block"

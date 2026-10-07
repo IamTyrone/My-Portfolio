@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 interface TypewriterProps {
   text: string;
@@ -21,6 +21,10 @@ export function Typewriter({
 }: TypewriterProps) {
   const [displayed, setDisplayed] = useState("");
   const [started, setStarted] = useState(false);
+  // Callers pass inline callbacks, so keep the latest one in a ref. If it sat
+  // in the effect deps, every parent render would restart the line from zero.
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     const timeout = setTimeout(() => setStarted(true), delay);
@@ -37,12 +41,12 @@ export function Typewriter({
         i++;
       } else {
         clearInterval(interval);
-        onComplete?.();
+        onCompleteRef.current?.();
       }
     }, speed);
 
     return () => clearInterval(interval);
-  }, [started, text, speed, onComplete]);
+  }, [started, text, speed]);
 
   useEffect(() => {
     const cleanup = type();

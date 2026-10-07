@@ -50,7 +50,7 @@ export const projects: Project[] = [
     id: "7",
     title: "The ZFA ERP",
     summary:
-      "The lifeblood of the largest Forex Trading institution in Zimbabwe. A public site, a client portal, a twenty seven section admin console, a learning platform with its own video and transcription pipeline, a bill payments service wired into ZB Bank, and an iOS signals app.",
+      "The lifeblood of the largest Forex Trading institution in Zimbabwe. A public site, a client portal, a twenty seven section admin console, a learning platform with its own video and transcription pipeline, a bill payments service wired into ZB Bank, and a signals app on iOS and Android.",
     tags: [
       "NestJS",
       "Next.js",

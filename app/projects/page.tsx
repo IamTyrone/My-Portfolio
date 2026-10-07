@@ -36,14 +36,14 @@ export default function Projects() {
             transition={{ duration: 0.6 }}
             className="mb-10"
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
               <span className="text-evil-red font-mono text-sm">
                 voldermort@projects
               </span>
               <span className="text-muted-foreground font-mono text-sm">
                 :~$
               </span>
-              <span className="text-terminal-green font-mono text-sm">
+              <span className="text-terminal-green font-mono text-sm [overflow-wrap:anywhere]">
                 find /projects -type f
               </span>
             </div>
@@ -84,7 +84,7 @@ export default function Projects() {
                 <button
                   key={category.value}
                   onClick={() => setSelectedCategory(category.value)}
-                  className={`px-3 py-1.5 text-[10px] font-mono rounded-sm border transition-all duration-200 ${
+                  className={`px-3 py-1.5 text-[10px] font-mono rounded-sm border transition-colors duration-200 ${
                     selectedCategory === category.value
                       ? "border-terminal-green/50 text-terminal-green bg-terminal-green/10"
                       : "border-terminal-green/10 text-muted-foreground hover:text-terminal-green hover:border-terminal-green/30"

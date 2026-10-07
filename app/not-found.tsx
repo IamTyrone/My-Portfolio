@@ -106,7 +106,8 @@ export default function NotFound() {
             &quot;{randomQuote.text}&quot;
           </p>
           <p className="text-terminal-green/50 text-xs font-mono">
-            — {randomQuote.source}
+            {"// "}
+            {randomQuote.source}
           </p>
         </motion.div>
 
@@ -153,7 +154,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="zap-hover inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
+            className="zap-hover inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-colors duration-200 rounded-sm"
           >
             <Home size={16} />
             Return to Safety
@@ -162,7 +163,7 @@ export default function NotFound() {
             onClick={() =>
               typeof window !== "undefined" && window.history.back()
             }
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-evil-red/30 text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-all duration-200 rounded-sm"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-evil-red/30 text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-colors duration-200 rounded-sm"
           >
             <ArrowLeft size={16} />
             Go Back
@@ -176,7 +177,7 @@ export default function NotFound() {
           transition={{ duration: 0.5, delay: 1 }}
           className="mt-12 text-[10px] font-mono text-muted-foreground/40"
         >
-          Pro tip: Try talking to Nagini — she knows where everything is
+          Pro tip: Try talking to Nagini. She knows where everything is
           hidden. Or type &quot;portal&quot; and see what happens...
         </motion.p>
       </div>

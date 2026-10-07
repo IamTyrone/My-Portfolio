@@ -15,6 +15,7 @@ export function splitParagraphs(markdown: string): string[] {
  * Content is authored in-repo, so it is trusted.
  */
 export function renderMarkdown(markdown: string): string {
+  let inCode = false;
   return markdown
     .split("\n")
     .map((line) => {
@@ -34,12 +35,28 @@ export function renderMarkdown(markdown: string): string {
         return "<br />";
       }
       if (line.startsWith("```")) {
-        return line.length > 3
-          ? `</code></pre>`
-          : `<pre class="bg-muted p-4 rounded-lg overflow-x-auto"><code>`;
+        // "```ts" opens a block too, so track state instead of reading the length
+        inCode = !inCode;
+        return inCode
+          ? `<pre class="bg-muted p-4 rounded-lg overflow-x-auto"><code>`
+          : `</code></pre>`;
       }
-      const boldText = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-      const codeText = boldText.replace(
+      if (inCode) {
+        return `${line.replace(/&/g, "&amp;").replace(/</g, "&lt;")}\n`;
+      }
+      if (/^-{3,}$/.test(line.trim())) {
+        return `<hr class="my-8 border-muted" />`;
+      }
+      const linked = line.replace(
+        /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
+        '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-terminal-green underline underline-offset-2">$1</a>',
+      );
+      const boldText = linked.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+      const italicText = boldText.replace(
+        /(^|[^*\w])\*(?!\s)([^*]+?)\*(?!\w)/g,
+        "$1<em>$2</em>",
+      );
+      const codeText = italicText.replace(
         /`(.*?)`/g,
         '<code class="bg-muted px-2 py-1 rounded">$1</code>',
       );

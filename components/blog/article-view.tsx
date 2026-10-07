@@ -55,7 +55,7 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
                 {post.title}
               </h1>
 
-              <div className="flex items-center gap-6 text-muted-foreground mb-6">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-muted-foreground mb-6">
                 <div className="flex items-center gap-2">
                   <User size={16} />
                   <span>{author}</span>
@@ -122,9 +122,9 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
           >
             <h3 className="text-xl font-bold mb-3">About the Author</h3>
             <p className="text-muted-foreground">
-              {author} is a full-stack software engineer with over 8 years of
-              experience building scalable web applications. He specializes in
-              React, Node.js, and cloud architecture.
+              {author} is a full-stack software engineer who has been shipping
+              production systems since 2019, mostly payments, ERPs and the AWS
+              underneath them.
             </p>
           </motion.div>
         </div>
