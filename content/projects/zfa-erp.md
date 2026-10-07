@@ -20,4 +20,4 @@ Live prices nearly broke the budget before I understood the vendor's billing. Tw
 
 The rest is the unglamorous half that makes it a real system: KYC with document review, an affiliate programme with its own guards and commission tracking, memberships with expiry reminders, role based access control, audit logs, presence, a WhatsApp chatbot with scripted flows, inbound mail handling through SES receipt rules, AI drafted email replies, a knowledge base, a library of ebooks with a scheduler, events with seat reservations, a blog, a shop, and a buy bitcoin request flow. The admin console has a section for each of these and a dashboard on top of all of it.
 
-The iOS app went live on the twentieth of September 2026. Android is next, and the website currently says "Android coming soon" underneath a greyed out Google Play badge, which is the most honest button I have ever shipped.
+The iOS app went live on the twentieth of September 2026 and Android followed it onto the Play Store. For the weeks in between, the website said "Android coming soon" underneath a greyed out Google Play badge, which was the most honest button I have ever shipped.
