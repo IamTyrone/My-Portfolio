@@ -34,21 +34,15 @@ export function MatrixRain() {
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      // resizing a canvas resets its context, font included
+      ctx.font = `${FONT_SIZE}px monospace`;
       initDrops();
     };
 
     resize();
     window.addEventListener("resize", resize);
 
-    ctx.font = `${FONT_SIZE}px monospace`;
-
-    const render = (now: number) => {
-      animationRef.current = requestAnimationFrame(render);
-
-      const delta = now - lastFrameRef.current;
-      if (delta < FRAME_INTERVAL) return;
-      lastFrameRef.current = now - (delta % FRAME_INTERVAL);
-
+    const drawFrame = () => {
       const drops = dropsRef.current;
 
       ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
@@ -78,10 +72,49 @@ export function MatrixRain() {
       }
     };
 
+    const render = (now: number) => {
+      animationRef.current = requestAnimationFrame(render);
+
+      const delta = now - lastFrameRef.current;
+      if (delta < FRAME_INTERVAL) return;
+      lastFrameRef.current = now - (delta % FRAME_INTERVAL);
+      drawFrame();
+    };
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    // Reduced motion gets one still frame of rain instead of a loop: start
+    // every column somewhere on screen and let it fall a few rows.
+    if (reduceMotion) {
+      const drawStill = () => {
+        const rows = canvas.height / FONT_SIZE;
+        dropsRef.current = dropsRef.current.map(() => Math.random() * rows);
+        for (let i = 0; i < 30; i++) drawFrame();
+      };
+      drawStill();
+      window.addEventListener("resize", drawStill);
+      return () => {
+        window.removeEventListener("resize", resize);
+        window.removeEventListener("resize", drawStill);
+      };
+    }
+
+    // Nobody is watching a background tab, so stop drawing in one.
+    const onVisibility = () => {
+      cancelAnimationFrame(animationRef.current);
+      if (!document.hidden) {
+        animationRef.current = requestAnimationFrame(render);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
     animationRef.current = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibility);
       cancelAnimationFrame(animationRef.current);
     };
   }, []);

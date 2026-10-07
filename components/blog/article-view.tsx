@@ -35,7 +35,7 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.35 }}
           >
             <Button asChild variant="ghost" className="mb-6">
               <Link href="/blog">
@@ -55,7 +55,7 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
                 {post.title}
               </h1>
 
-              <div className="flex items-center gap-6 text-muted-foreground mb-6">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-muted-foreground mb-6">
                 <div className="flex items-center gap-2">
                   <User size={16} />
                   <span>{author}</span>
@@ -106,7 +106,7 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.35, delay: 0.1 }}
             className="prose prose-gray dark:prose-invert max-w-none"
           >
             <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -117,14 +117,14 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.35, delay: 0.2 }}
             className="bg-muted/50 rounded-xl p-6"
           >
             <h3 className="text-xl font-bold mb-3">About the Author</h3>
             <p className="text-muted-foreground">
-              {author} is a full-stack software engineer with over 8 years of
-              experience building scalable web applications. He specializes in
-              React, Node.js, and cloud architecture.
+              {author} is a full-stack software engineer who has been shipping
+              production systems since 2019, mostly payments, ERPs and the AWS
+              underneath them.
             </p>
           </motion.div>
         </div>

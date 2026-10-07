@@ -51,7 +51,7 @@ export default function NotFound() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="mb-8"
         >
           <h1
@@ -66,7 +66,7 @@ export default function NotFound() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
           className="terminal-window text-left mb-8"
         >
           <div className="terminal-titlebar">
@@ -99,7 +99,7 @@ export default function NotFound() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
           className="mb-10"
         >
           <p className="text-muted-foreground text-sm font-mono italic mb-2">
@@ -114,7 +114,7 @@ export default function NotFound() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.3, delay: 0.25 }}
           className="terminal-window text-left mb-10 max-w-md mx-auto"
         >
           <div className="terminal-titlebar">
@@ -148,12 +148,12 @@ export default function NotFound() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
             href="/"
-            className="zap-hover inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
+            className="zap-hover inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-colors duration-200 rounded-sm"
           >
             <Home size={16} />
             Return to Safety
@@ -162,7 +162,7 @@ export default function NotFound() {
             onClick={() =>
               typeof window !== "undefined" && window.history.back()
             }
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-evil-red/30 text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-all duration-200 rounded-sm"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-mono border border-evil-red/30 text-evil-red hover:bg-evil-red/10 hover:border-evil-red transition-colors duration-200 rounded-sm"
           >
             <ArrowLeft size={16} />
             Go Back
@@ -173,7 +173,7 @@ export default function NotFound() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={{ duration: 0.3, delay: 0.5 }}
           className="mt-12 text-[10px] font-mono text-muted-foreground/40"
         >
           Pro tip: Try talking to Nagini — she knows where everything is

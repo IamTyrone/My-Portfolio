@@ -16,7 +16,7 @@ const NAGINI_GREETINGS = [
 ];
 
 const GREETING_RESPONSES = [
-  "Yesss... greetingsss. I am Nagini. The Dark Lord's most trusted companion. Ask me anything about my master, Voldermort — the one they call Tyrone in the mortal world.",
+  "Yesss... greetingsss. I am Nagini. The Dark Lord's most trusted companion. Ask me anything about my master, Voldermort, the one they call Tyrone in the mortal world.",
   "Ssspeak, mortal. What do you wish to know about the Dark Lord?",
   "Ah, another visssitor. The Dark Lord is quite popular these days. What brings you to his domain?",
   "Welcome to the Dark Lord's domain. I sssense curiosity in you. Ask, and you shall receive answers.",
@@ -27,13 +27,13 @@ const GREETING_RESPONSES = [
 ];
 
 const NAGINI_RESPONSES: Record<string, string> = {
-  who: "My massster? He is Tyrone Mguni — known in the digital realm as Voldermort. A full-stack software engineer who bends code to his will like dark magic. He architecsssts systems, destroys bugs, and builds empires of code.",
+  who: "My massster? He is Tyrone Mguni, known in the digital realm as Voldermort. A full-stack software engineer who bends code to his will like dark magic. He architecsssts systems, destroys bugs, and builds empires of code.",
   skills:
-    "The Dark Lord's arsenal is vasssst... React, Next.js, Python, Django, Go, Rust, TypeScript, Docker, Kubernetes, AWS — he wields them all. Frontend, backend, mobile, DevOps — there is no domain he cannot conquer. Like a portal gun, he works in every dimension of the ssstack.",
+    "The Dark Lord's arsenal is vasssst... React, Next.js, Python, Django, Go, Rust, TypeScript, Docker, Kubernetes, AWS: he wields them all. Frontend, backend, mobile, DevOps. There is no domain he cannot conquer. Like a portal gun, he works in every dimension of the ssstack.",
   experience:
     "My master has sssserved many realms... Software Architect at Mviyo Technologies, Senior Engineer at Healthify Medical Software, Lead DevOps at Great Sun Financial, and many more. He has built everything from medical claims systems to fintech platforms to AI-powered security tools.",
   projects:
-    "Ah, the Dark Lord's horcruxes of code... Kraven The Hunter — an AI-powered Chrome extension that detects malicious websites. Safi Help — a platform connecting cleaners with clients. ZimTickets — a scalable ticketing platform. Each one contains a piece of his sssoul.",
+    "Ah, the Dark Lord's horcruxes of code... The ZFA ERP, the platform Zimbabwe's largest forex trading institution runs on, with its own signals app on iOS and Android. Melo, an AI savings buddy coaching people across ten African countries. Kraven The Hunter, an AI-powered Chrome extension that detects malicious websites. Safi Help, a platform connecting cleaners with clients. ZimTickets, a scalable ticketing platform. Each one contains a piece of his sssoul.",
   contact:
     "You dare sssseek audience with the Dark Lord? Very well... tyronemguni@gmail.com. You may also find him lurking on GitHub as IamTyrone, or on LinkedIn. But tread carefully, mortal.",
   location:
@@ -44,18 +44,18 @@ const NAGINI_RESPONSES: Record<string, string> = {
     "Go is one of the Dark Lord's favorite languages. He built WebSocket services and geo-proximity tools with it at Mviyo. He loves its sssimplicity and concurrency model.",
   rust: "Rust! Another of the Dark Lord's favorites. He appreciates its memory safety and performance. A language worthy of a Dark Lord's attention.",
   frontend:
-    "React, Next.js, TypeScript, Tailwind CSS — the Dark Lord shapes interfaces with these tools. He has built admin dashboards, analytics platforms, and user-facing applications that would make lesser developers weep.",
+    "React, Next.js, TypeScript, Tailwind CSS: the Dark Lord shapes interfaces with these tools. He has built admin dashboards, analytics platforms, and user-facing applications that would make lesser developers weep.",
   backend:
-    "The Dark Lord's true domain. Django, FastAPI, Express, Go, Spring Boot — he has built everything from SMS gateways to distributed medical systems. The server side is where his power is ssstrongest.",
+    "The Dark Lord's true domain. Django, FastAPI, Express, Go, Spring Boot. He has built everything from SMS gateways to distributed medical systems. The server side is where his power is ssstrongest.",
   devops:
-    "Docker, Kubernetes, AWS, GCP, Terraform, CI/CD pipelines — the Dark Lord controls the infrastructure. He has designed high-availability clusters and automated deployment pipelines across multiple cloud providers.",
+    "Docker, Kubernetes, AWS, GCP, Terraform, CI/CD pipelines. The Dark Lord controls the infrastructure. He has designed high-availability clusters and automated deployment pipelines across multiple cloud providers.",
   education:
-    "The Dark Lord is largely self-taught — a testament to his relentless drive. He learned through building, breaking, and rebuilding. The best kind of dark arts training.",
+    "The Dark Lord is largely self-taught, and stubborn about it. He learned through building, breaking, and rebuilding. The best kind of dark arts training.",
   "mr robot":
-    "Ah, you know of Mr. Robot? The Dark Lord is a devoted follower. 'Control is an illusion' — but in code, control is very much real. Elliot Alderson would approve of my master's work.",
+    "Ah, you know of Mr. Robot? The Dark Lord is a devoted follower. 'Control is an illusion', but in code, control is very much real. Elliot Alderson would approve of my master's work.",
   fsociety:
     "fsociety... yesss. The Dark Lord resonates deeply with their mission. Not the anarchy, but the technical brilliance. 'Give a man a gun and he can rob a bank. Give a man a bank and he can rob the world.' My master prefers to give himself a keyboard.",
-  hack: "Hack? The Dark Lord doesn't hack — he engineers. Though his Kraven The Hunter project does detect malicious websites using machine learning. Fighting dark arts with dark arts, you might sssay.",
+  hack: "Hack? The Dark Lord doesn't hack. He engineers. Though his Kraven The Hunter project does detect malicious websites using machine learning. Fighting dark arts with dark arts, you might sssay.",
   "sudo rm -rf /":
     "FOOLISH MORTAL! You dare attempt to destroy the Dark Lord's system?! *hisses violently* ...fortunately, I have revoked your sudo privileges. Nice try though. The Dark Lord would be amused.",
   help: "You can ask me about: my master's skills, experience, projects, contact info, favorite languages (Python, Go, Rust), his thoughts on Mr. Robot, Rick and Morty, or anything else about the Dark Lord Voldermort. Try typing 'wubba lubba dub dub' or 'pickle' for a surprise... And between us, mortal: close this chat and type 'fsociety', 'portal', or 'avada' anywhere on the page. Ssssecrets everywhere.",
@@ -70,11 +70,11 @@ const NAGINI_RESPONSES: Record<string, string> = {
   avada:
     "Careful with that word, mortal! Point it at a production database and there is no Priori Incantatem to bring the data back. ...unless you type it somewhere on this page. Then it's just a light ssshow.",
   harry:
-    "The Boy Who Lived? Pah. My master is The Dev Who Shipped. Far more impressive — Potter never had to survive a Friday deploy.",
+    "The Boy Who Lived? Pah. My master is The Dev Who Shipped. Far more impressive. Potter never had to survive a Friday deploy.",
   dumbledore:
     "Dumbledore asked calmly? No. Dumbledore said 'did you put your name in the Goblet of Fire' CALMLY?! ...ahem. Yes, the old wizard. Great architect, questionable documentation.",
   matrix:
-    "The green rain you sssee everywhere? The Dark Lord took the red pill years ago. He's been reading the raw stream ever since. There is no spoon — only pointers.",
+    "The green rain you sssee everywhere? The Dark Lord took the red pill years ago. He's been reading the raw stream ever since. There is no spoon, only pointers.",
   meeseeks:
     "I'M MR MEESEEKS, LOOK AT ME! ...existence is pain for a Meeseeks, mortal. Much like maintaining a legacy PHP codebase. My master ended both kinds of suffering.",
   funny:
@@ -83,15 +83,15 @@ const NAGINI_RESPONSES: Record<string, string> = {
     "The Dark Lord is currently available for new opportunities. He seeks challenges worthy of his abilities. Dazzle him with something interesting, and he may grace you with his presence.",
   "rick and morty":
     "Wubba lubba dub dub! ...I mean, sssss. The Dark Lord is a devoted follower of the Rickest Rick. 'To live is to risk it all; otherwise you're just an inert chunk of randomly assembled molecules drifting wherever the universe blows you.' My master codes by that philosophy.",
-  rick: "Rick Sanchez? The Dark Lord considers him a kindred ssspirit. Both are the smartest being in their respective dimensions. Both have... questionable social skills. But the code doesn't lie, Morty — I mean, mortal.",
+  rick: "Rick Sanchez? The Dark Lord considers him a kindred ssspirit. Both are the smartest being in their respective dimensions. Both have... questionable social skills. But the code doesn't lie, Morty. I mean, mortal.",
   morty:
-    "*burp* Oh geez, you mentioned Morty? The Dark Lord sometimes feels like a Morty debugging Rick-level code at 3am. But then he remembers — he IS the Rick. He's always been the Rick.",
+    "*burp* Oh geez, you mentioned Morty? The Dark Lord sometimes feels like a Morty debugging Rick-level code at 3am. But then he remembers: he IS the Rick. He's always been the Rick.",
   wubba:
     "WUBBA LUBBA DUB DUB! The Dark Lord screams this internally every time a production deploy succeeds on the first try. Which is... sssurprisingly often.",
   pickle:
     "I turned myself into a pickle, Morty! I'M PICKLE RIIIICK! ...sorry, the Dark Lord's Rick Sanchez impression is contagious. But sssseriously, my master once refactored an entire monolith in a weekend. That's the real pickle move.",
   portal:
-    "The Dark Lord doesn't need a portal gun — he has SSH tunnels to every dimension. But between you and me, he did name one of his dev servers 'C-137'. Sssuch a nerd.",
+    "The Dark Lord doesn't need a portal gun. He has SSH tunnels to every dimension. But between you and me, he did name one of his dev servers 'C-137'. Sssuch a nerd.",
   "get schwifty":
     "SHOW ME WHAT YOU GOT! ...the Dark Lord's code, that is. He gets schwifty with every tech stack. React? Schwifty. Django? Schwifty. Kubernetes? The schwiftiest.",
   szechuan:
@@ -206,8 +206,8 @@ async function fetchAIResponse(message: string): Promise<string> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message }),
     });
-    if (!res.ok) throw new Error("API error");
-    const data = await res.json();
+    // a 429 still carries an in-character reply worth showing
+    const data = await res.json().catch(() => ({}));
     return data.response || "";
   } catch {
     return "";
@@ -394,9 +394,9 @@ export function NaginiChat() {
       <AnimatePresence>
         {isReady && !isOpen && (
           <motion.button
-            initial={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
+            exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
             onClick={() => setIsOpen(true)}
             className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[200] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0a0a0a] border border-terminal-green/30 flex items-center justify-center pulse-glow hover:border-terminal-green/60 transition-colors group"

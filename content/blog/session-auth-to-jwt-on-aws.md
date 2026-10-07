@@ -19,4 +19,4 @@ That's when I decided to use JWT authentication. A JWT is a fancy string curated
 
 ---
 
-*What do you think about the cost of managed cloud products, justified? Share your thoughts on [Twitter](https://twitter.com/tyronemguni) or [LinkedIn](https://linkedin.com/in/tyronemguni).*
+*What do you think about the cost of managed cloud products, justified? Share your thoughts on [Twitter](https://twitter.com/tyronemguni) or [LinkedIn](https://www.linkedin.com/in/tyrone-mguni-9b9806127/).*

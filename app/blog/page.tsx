@@ -28,17 +28,17 @@ export default function Blog() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.35 }}
             className="mb-10"
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
               <span className="text-evil-red font-mono text-sm">
                 voldermort@thoughts
               </span>
               <span className="text-muted-foreground font-mono text-sm">
                 :~$
               </span>
-              <span className="text-terminal-green font-mono text-sm">
+              <span className="text-terminal-green font-mono text-sm [overflow-wrap:anywhere]">
                 cat /var/log/thoughts.log
               </span>
             </div>
@@ -57,7 +57,7 @@ export default function Blog() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.35, delay: 0.1 }}
             className="mb-10"
           >
             <div className="flex flex-col md:flex-row gap-4 mb-4">
@@ -78,7 +78,7 @@ export default function Blog() {
             <div className="flex flex-wrap gap-1.5">
               <button
                 onClick={() => setSelectedTag(null)}
-                className={`px-3 py-1.5 text-[10px] font-mono rounded-sm border transition-all duration-200 ${
+                className={`px-3 py-1.5 text-[10px] font-mono rounded-sm border transition-colors duration-200 ${
                   selectedTag === null
                     ? "border-terminal-green/50 text-terminal-green bg-terminal-green/10"
                     : "border-terminal-green/10 text-muted-foreground hover:text-terminal-green hover:border-terminal-green/30"
@@ -90,7 +90,7 @@ export default function Blog() {
                 <button
                   key={tag}
                   onClick={() => setSelectedTag(tag)}
-                  className={`px-3 py-1.5 text-[10px] font-mono rounded-sm border transition-all duration-200 ${
+                  className={`px-3 py-1.5 text-[10px] font-mono rounded-sm border transition-colors duration-200 ${
                     selectedTag === tag
                       ? "border-terminal-green/50 text-terminal-green bg-terminal-green/10"
                       : "border-terminal-green/10 text-muted-foreground hover:text-terminal-green hover:border-terminal-green/30"
@@ -111,7 +111,7 @@ export default function Blog() {
                     key={post.id}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    transition={{ duration: 0.3, delay: Math.min(index, 8) * 0.05 }}
                   >
                     <PostLogEntry post={post} />
                     {index < filteredPosts.length - 1 && (

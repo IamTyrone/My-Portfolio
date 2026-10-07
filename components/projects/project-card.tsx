@@ -5,6 +5,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { SkillChip } from "@/lib/tech-icons";
 import { hasProjectApps } from "@/lib/projects/app-links";
 import { AppsCardLink } from "@/components/projects/apps-card-link";
+import { hasLink } from "@/lib/projects/links";
 import type { Project } from "@/lib/projects/projects";
 
 /** Terminal-style path shown in a card's title bar. */
@@ -64,16 +65,18 @@ export function ProjectCard({
         </div>
 
         <div className="flex items-center gap-3 pt-3 border-t border-terminal-green/10">
-          <Link
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-terminal-green transition-colors"
-          >
-            <Github size={12} />
-            <span>source</span>
-          </Link>
-          {project.demo && project.demo !== "#" && (
+          {hasLink(project.github) && (
+            <Link
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground hover:text-terminal-green transition-colors"
+            >
+              <Github size={12} />
+              <span>source</span>
+            </Link>
+          )}
+          {hasLink(project.demo) && (
             <Link
               href={project.demo}
               target="_blank"

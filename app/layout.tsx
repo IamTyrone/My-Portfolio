@@ -6,6 +6,7 @@ import { CRTOverlay } from "@/components/crt-overlay";
 import { NaginiChat } from "@/components/nagini-chat";
 import { EasterEggs } from "@/components/easter-eggs";
 import { MatrixRain } from "@/components/matrix-rain";
+import { MotionProvider } from "@/components/motion-provider";
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
@@ -15,14 +16,13 @@ const jetbrains = JetBrains_Mono({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
-  title: "Voldermort // Tyrone Mguni — Software Engineer",
+  title: "Voldermort // Tyrone Mguni // Software Engineer",
   description:
-    "He Who Must Not Be Debugged. The Rickest developer in dimension C-137. Full-stack software engineer specializing in modern web technologies, cloud architecture, and scalable solutions.",
+    "He Who Must Not Be Debugged. The Rickest developer in dimension C-137. Full-stack software engineer in Pretoria. Mostly payments, ERPs and the AWS bills underneath them.",
 };
 
 export default function RootLayout({
@@ -36,12 +36,14 @@ export default function RootLayout({
         className={`${jetbrains.variable} noise-bg`}
         suppressHydrationWarning
       >
-        <MatrixRain />
-        <CRTOverlay />
-        <Navigation />
-        <main className="min-h-screen">{children}</main>
-        <NaginiChat />
-        <EasterEggs />
+        <MotionProvider>
+          <MatrixRain />
+          <CRTOverlay />
+          <Navigation />
+          <main className="min-h-screen">{children}</main>
+          <NaginiChat />
+          <EasterEggs />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -176,7 +176,7 @@ export const plannedCertifications: PlannedCertification[] = [
  */
 export const selfTaught = {
   title: "Everything else",
-  body: "The honest version: the degree says finance, the job says backend. Go, Kubernetes, Django, Terraform, the whole stack I actually get paid for came from documentation, other people's source code, and breaking things in environments that deserved better. Eight years of that is its own curriculum. It just doesn't come with a certificate.",
+  body: "The honest version: the degree says finance, the job says backend. Go, Kubernetes, Django, Terraform, the whole stack I actually get paid for came from documentation, other people's source code, and breaking things in environments that deserved better. Nearly eight years of that is its own curriculum. It just doesn't come with a certificate.",
   subjects: [
     "Go",
     "Python",

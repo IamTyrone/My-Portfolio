@@ -223,17 +223,17 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.35 }}
               className="lg:col-span-3"
             >
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-6">
                 <span className="text-evil-red font-mono text-sm">
                   voldermort@about
                 </span>
                 <span className="text-muted-foreground font-mono text-sm">
                   :~$
                 </span>
-                <span className="text-terminal-green font-mono text-sm">
+                <span className="text-terminal-green font-mono text-sm [overflow-wrap:anywhere]">
                   cat /etc/voldermort/README.md
                 </span>
               </div>
@@ -258,7 +258,7 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.2 }}
                 className="mt-6 space-y-2"
               >
                 <div className="flex items-center gap-2 text-xs font-mono">
@@ -287,19 +287,19 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.25 }}
                 className="mt-6 flex flex-wrap gap-3"
               >
                 <Link
                   href="/resume/Tyrone_Mguni.pdf"
                   target="_blank"
-                  className="zap-hover inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-all duration-200 rounded-sm"
+                  className="zap-hover inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-terminal-green/30 text-terminal-green hover:bg-terminal-green/10 hover:border-terminal-green transition-colors duration-200 rounded-sm"
                 >
                   <Download size={12} />$ wget resume/Tyrone_Mguni.pdf
                 </Link>
                 <Link
                   href="/education"
-                  className="zap-hover inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-hack-cyan/30 text-hack-cyan hover:bg-hack-cyan/10 hover:border-hack-cyan transition-all duration-200 rounded-sm"
+                  className="zap-hover inline-flex items-center gap-2 px-5 py-2 text-xs font-mono border border-hack-cyan/30 text-hack-cyan hover:bg-hack-cyan/10 hover:border-hack-cyan transition-colors duration-200 rounded-sm"
                 >
                   <GraduationCap size={12} />$ cat education.json
                 </Link>
@@ -310,7 +310,7 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.35, delay: 0.15 }}
               className="lg:col-span-2"
             >
               <div className="terminal-window">
@@ -357,18 +357,18 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.35 }}
             viewport={{ once: true }}
             className="mb-8"
           >
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
               <span className="text-evil-red font-mono text-sm">
                 voldermort@skills
               </span>
               <span className="text-muted-foreground font-mono text-sm">
                 :~$
               </span>
-              <span className="text-terminal-green font-mono text-sm">
+              <span className="text-terminal-green font-mono text-sm [overflow-wrap:anywhere]">
                 htop --filter=skills
               </span>
             </div>
@@ -383,14 +383,14 @@ export default function About() {
                     key={skill}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.02 }}
+                    transition={{ delay: Math.min(index, 8) * 0.02 }}
                     viewport={{ once: true }}
                     whileHover={{ y: -2 }}
                     style={{ "--brand": color } as React.CSSProperties}
                     className="skill-chip group inline-flex items-center gap-1.5 px-2 py-1 text-[11px] font-mono rounded-sm cursor-default"
                   >
                     <Icon
-                      className="h-3.5 w-3.5 shrink-0 grayscale-[0.35] opacity-80 transition-all duration-200 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+                      className="h-3.5 w-3.5 shrink-0 grayscale-[0.35] opacity-80 transition-[filter,opacity,transform] duration-200 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
                       style={{ color }}
                       aria-hidden="true"
                     />
@@ -413,18 +413,18 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.35 }}
             viewport={{ once: true }}
             className="mb-8"
           >
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
               <span className="text-evil-red font-mono text-sm">
                 voldermort@career
               </span>
               <span className="text-muted-foreground font-mono text-sm">
                 :~$
               </span>
-              <span className="text-terminal-green font-mono text-sm">
+              <span className="text-terminal-green font-mono text-sm [overflow-wrap:anywhere]">
                 git log --oneline --graph
               </span>
             </div>
@@ -439,7 +439,7 @@ export default function About() {
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.25, delay: Math.min(index, 8) * 0.05 }}
                 viewport={{ once: true }}
                 className="relative pl-6 border-l border-terminal-green/20"
               >
@@ -502,7 +502,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.25 }}
             viewport={{ once: true }}
             className="mt-8"
           >
@@ -525,7 +525,7 @@ export default function About() {
                     <span className="text-hack-cyan mr-1">?</span> Curious where
                     any of this came from? The degree is in finance. The rest of
                     it has a longer story, and it lives{" "}
-                    <span className="text-terminal-green group-hover:text-glow-green transition-all">
+                    <span className="text-terminal-green group-hover:text-glow-green transition-[color,text-shadow]">
                       on the education page
                     </span>
                     .
