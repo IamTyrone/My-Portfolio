@@ -30,7 +30,7 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
             className="mb-10"
           >
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
@@ -58,7 +58,7 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.075 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-10"
           >
             {educationStats.map((stat) => (
@@ -86,7 +86,7 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-8"
           >
@@ -112,7 +112,7 @@ export default function Education() {
                 key={school.id}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.25, delay: Math.min(index, 8) * 0.05 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
                 className="relative pl-6 border-l border-terminal-green/20"
               >
@@ -183,7 +183,7 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-8"
           >
@@ -209,7 +209,7 @@ export default function Education() {
                 key={cert.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25, delay: Math.min(index, 8) * 0.05 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
                 className="terminal-window"
               >
@@ -258,7 +258,7 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-8"
           >
@@ -289,7 +289,7 @@ export default function Education() {
                   key={cert.id}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, delay: Math.min(index, 8) * 0.04 }}
+                  transition={{ duration: 0.35, delay: index * 0.04 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -3 }}
                   className={`group relative flex flex-col p-4 rounded-sm border bg-[#050505] transition-colors duration-200 ${
@@ -360,7 +360,7 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-8"
           >
@@ -392,7 +392,7 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.05 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
             className="mt-6"
           >
@@ -423,7 +423,7 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.2 }}
             viewport={{ once: true }}
             className="mt-8 flex flex-wrap gap-3"
           >

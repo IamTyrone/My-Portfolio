@@ -28,7 +28,7 @@ export default function Blog() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
             className="mb-10"
           >
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
@@ -57,7 +57,7 @@ export default function Blog() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-10"
           >
             <div className="flex flex-col md:flex-row gap-4 mb-4">
@@ -111,7 +111,7 @@ export default function Blog() {
                     key={post.id}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: Math.min(index, 8) * 0.05 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
                     <PostLogEntry post={post} />
                     {index < filteredPosts.length - 1 && (

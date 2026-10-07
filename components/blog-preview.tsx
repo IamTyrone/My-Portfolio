@@ -16,7 +16,7 @@ export function BlogPreview() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-12"
         >
@@ -43,7 +43,7 @@ export function BlogPreview() {
                   key={post.id}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.25, delay: Math.min(index, 8) * 0.05 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
                   <PostLogEntry post={post} variant="preview" />
@@ -72,7 +72,7 @@ export function BlogPreview() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
             className="text-center mt-10"
           >

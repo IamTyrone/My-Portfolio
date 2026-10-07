@@ -35,7 +35,7 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
           >
             <Button asChild variant="ghost" className="mb-6">
               <Link href="/blog">
@@ -106,7 +106,7 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="prose prose-gray dark:prose-invert max-w-none"
           >
             <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -117,7 +117,7 @@ export function ArticleView({ post, author, html }: ArticleViewProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="bg-muted/50 rounded-xl p-6"
           >
             <h3 className="text-xl font-bold mb-3">About the Author</h3>

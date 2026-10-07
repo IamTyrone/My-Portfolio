@@ -31,7 +31,7 @@ export function Navigation() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 w-full z-[100] transition-colors duration-300 ${
         scrolled
           ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-terminal-green/10"
@@ -99,7 +99,7 @@ export function Navigation() {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ duration: 0.2 }}
               className="md:hidden overflow-hidden bg-[#0a0a0a] backdrop-blur-md"
             >
               <div className="border-t border-terminal-green/10 py-3 space-y-1 bg-[#0a0a0a]">

@@ -47,7 +47,7 @@ export function ProjectView({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
           >
             <Button asChild variant="ghost" className="mb-6">
               <Link href="/projects">
@@ -124,7 +124,7 @@ export function ProjectView({
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.35, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className={`relative aspect-video rounded-xl overflow-hidden ${
               containImage ? "bg-muted/40 border border-terminal-green/10" : ""
             }`}
@@ -150,7 +150,7 @@ export function ProjectView({
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 0.15 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
                 <div className="prose prose-gray dark:prose-invert max-w-none">
@@ -170,7 +170,7 @@ export function ProjectView({
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
               >
                 <h3 className="text-xl font-bold mb-4">Key Features</h3>
                 <ul className="space-y-2">
@@ -190,7 +190,7 @@ export function ProjectView({
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: 0.225 }}
+                    transition={{ duration: 0.6, delay: 0.45 }}
                   >
                     <AppStoreSection apps={apps} />
                   </motion.div>
@@ -202,7 +202,7 @@ export function ProjectView({
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 0.25 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
               >
                 <h3 className="text-xl font-bold mb-4">Challenges & Solutions</h3>
                 <div className="space-y-4">
@@ -219,7 +219,7 @@ export function ProjectView({
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
               >
                 <h3 className="text-xl font-bold mb-4">Key Learnings</h3>
                 <div className="space-y-2">
@@ -238,7 +238,7 @@ export function ProjectView({
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
                 className="bg-card border rounded-xl p-6 sticky top-24"
               >
                 <h3 className="text-lg font-semibold mb-4">Project Info</h3>

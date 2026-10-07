@@ -103,7 +103,7 @@ export function TechStack() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-12"
         >
@@ -148,7 +148,7 @@ export function TechStack() {
                         key={skill}
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: Math.min(index, 8) * 0.05 + i * 0.03 }}
+                        transition={{ delay: index * 0.08 + i * 0.03 }}
                         viewport={{ once: true }}
                         whileHover={{ y: -2 }}
                         style={{ "--brand": color } as React.CSSProperties}

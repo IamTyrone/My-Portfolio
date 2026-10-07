@@ -63,7 +63,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.8 }}
             className="max-w-md sm:max-w-lg text-center sm:text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.95)]"
           >
             {/* Prompt line */}
@@ -92,7 +92,7 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.15 }}
+              transition={{ delay: 0.3 }}
               className="mb-6"
             >
               <span className="text-muted-foreground text-sm font-mono">
@@ -107,7 +107,7 @@ export default function HeroSection() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.25 }}
+              transition={{ delay: 0.5 }}
               className="text-sm sm:text-base text-terminal-green/80 font-mono mb-4"
             >
               <span className="text-muted-foreground">{">"}</span> Full-Stack
@@ -119,7 +119,7 @@ export default function HeroSection() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.35 }}
+                transition={{ delay: 0.7 }}
                 className="mb-8 max-w-xl border-l-2 border-terminal-green/20 pl-3 sm:pl-4 mx-auto sm:mx-0 text-left"
               >
                 <p className="text-xs sm:text-sm text-muted-foreground font-mono italic">
@@ -137,7 +137,7 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
+              transition={{ delay: 0.9 }}
               className="flex flex-col sm:flex-row gap-3 justify-center sm:justify-start mb-8"
             >
               <Link
@@ -158,7 +158,7 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.55 }}
+              transition={{ delay: 1.1 }}
               className="flex justify-center sm:justify-start gap-6"
             >
               <Link
@@ -203,7 +203,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 8, 0] }}
           transition={{
-            opacity: { delay: 0.75 },
+            opacity: { delay: 1.5 },
             y: { duration: 2, repeat: Infinity },
           }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"

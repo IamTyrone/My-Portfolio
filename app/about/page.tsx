@@ -223,7 +223,7 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.35 }}
+              transition={{ duration: 0.6 }}
               className="lg:col-span-3"
             >
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-6">
@@ -258,7 +258,7 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
+                transition={{ delay: 0.4 }}
                 className="mt-6 space-y-2"
               >
                 <div className="flex items-center gap-2 text-xs font-mono">
@@ -287,7 +287,7 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.25 }}
+                transition={{ delay: 0.5 }}
                 className="mt-6 flex flex-wrap gap-3"
               >
                 <Link
@@ -310,7 +310,7 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.35, delay: 0.15 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               className="lg:col-span-2"
             >
               <div className="terminal-window">
@@ -357,7 +357,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-8"
           >
@@ -383,7 +383,7 @@ export default function About() {
                     key={skill}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: Math.min(index, 8) * 0.02 }}
+                    transition={{ delay: index * 0.02 }}
                     viewport={{ once: true }}
                     whileHover={{ y: -2 }}
                     style={{ "--brand": color } as React.CSSProperties}
@@ -413,7 +413,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-8"
           >
@@ -439,7 +439,7 @@ export default function About() {
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.25, delay: Math.min(index, 8) * 0.05 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
                 className="relative pl-6 border-l border-terminal-green/20"
               >
@@ -502,7 +502,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
             className="mt-8"
           >
