@@ -76,7 +76,7 @@ const experience = [
     title: "Software Architect",
     company: "Mviyo Technologies",
     employment: "Full-time",
-    period: "May 2024 – Aug 2025",
+    period: "May 2024 to Aug 2025",
     hash: "a3f7c2d",
     description:
       "Came back, this time to own the full technical architecture for the organisation's entire product catalogue, in-house and external: selecting technologies, defining infrastructure patterns on AWS, and establishing engineering standards across all projects.",
@@ -93,7 +93,7 @@ const experience = [
     title: "Lead DevOps Engineer",
     company: "Great Sun Financial",
     employment: "Part-time contract",
-    period: "May 2024 – Nov 2024",
+    period: "May 2024 to Nov 2024",
     hash: "c5d9e3b",
     description:
       "When I went back to Mviyo, this role moved to part-time contract rather than ending. Designed CI/CD pipelines using GitHub Actions, built staging/testing/production environments on DigitalOcean and AWS, deployed applications with Docker. Set up metrics reporting and managed infrastructure security.",
@@ -121,7 +121,7 @@ const experience = [
     title: "Senior Software Engineer",
     company: "Great Sun Financial",
     employment: "Full-time",
-    period: "March 2024 – May 2024",
+    period: "March 2024 to May 2024",
     hash: "d2a6b7c",
     description:
       "Led backend development for Credex, a fintech peer to peer digital wallet delivered over WhatsApp. Contributed to system architecture, selected technology stacks, developed backend services using Node.js, TypeScript, Neo4j, and Django.",
@@ -135,7 +135,7 @@ const experience = [
     title: "Senior Software Engineer",
     company: "Mviyo Technologies",
     employment: "Full-time",
-    period: "Nov 2023 – March 2024",
+    period: "Nov 2023 to March 2024",
     hash: "b7e2f4a",
     description:
       "First run at Mviyo, on the engineering side. I left for a full-time role at Great Sun, then came back two months later as the architect, which is a more flattering way of saying they missed me.",
@@ -145,7 +145,7 @@ const experience = [
     title: "Senior Software Engineer",
     company: "Healthify Medical Software",
     employment: "Full-time",
-    period: "Dec 2021 – Nov 2023",
+    period: "Dec 2021 to Nov 2023",
     hash: "e9f3a1d",
     description:
       "Designed and led development of a large-scale distributed claims and contributions platform for medical aid organisations, built on Django, PostgreSQL, and a microservices architecture.",
@@ -154,17 +154,17 @@ const experience = [
       "Built a Go-based audit microservice with MongoDB persistence, providing immutable logging of all user actions for compliance.",
       "Created a Node.js PDF generation microservice (Puppeteer / Express.js), decoupling document generation from core business logic.",
       "Designed async inter-service communication using RabbitMQ alongside synchronous HTTP, enabling resilient, decoupled service interactions.",
-      "Stood up and managed production Kubernetes clusters with Jenkins and GitHub Actions CI/CD — zero downtime across all releases.",
+      "Stood up and managed production Kubernetes clusters with Jenkins and GitHub Actions CI/CD, with zero downtime across all releases.",
     ],
   },
   {
     title: "Software Developer",
     company: "Intelli Africa Solutions",
     employment: "Full-time",
-    period: "Feb 2021 – Dec 2021",
+    period: "Feb 2021 to Dec 2021",
     hash: "f4b8c2e",
     description:
-      "Engineered a full-stack bulk SMS and email dispatch platform integrating with multiple carrier networks, built on Python, Django, Celery, and PostgreSQL — handling high message throughput asynchronously.",
+      "Engineered a full-stack bulk SMS and email dispatch platform integrating with multiple carrier networks, built on Python, Django, Celery, and PostgreSQL, handling high message throughput asynchronously.",
     achievements: [
       "Published and maintained open-source API client SDKs on PyPI (Python) and NPM (Node.js), enabling third-party developer integrations.",
       "Implemented military-grade encryption for payment data at rest and in transit in a React.js merchant dashboard integrated with PayPal and Payfast.",
@@ -175,7 +175,7 @@ const experience = [
     title: "Founder & Software Developer",
     company: "Dryback Technology",
     employment: "Contract, part-time",
-    period: "Feb 2019 – Present",
+    period: "Feb 2019 to Present",
     hash: "a1c5d9f",
     description:
       "My own company, and the one I contract through. It has run alongside every other role on this list since 2019. Still open, still taking work. I did a lotttttt of freelance projects. A LOOOOT. LOL.",
@@ -185,7 +185,7 @@ const experience = [
       "Delivered Melo, an AI-driven savings app used across ten African countries, integrating Paystack payments and OpenAI-powered planning.",
       "Developed a Golang-based tenant management system with a React.js frontend and PostgreSQL, including mobile self-service access for tenants.",
       "Built an asset registry system in Django / React tracking real-time asset locations, automating depreciation and revaluation calculations.",
-      "Architected the Acrepoint Housing System (Django, Celery, React.js) — a WhatsApp-integrated real estate platform connecting developers with buyers.",
+      "Architected the Acrepoint Housing System (Django, Celery, React.js), a WhatsApp-integrated real estate platform connecting developers with buyers.",
       "Built the Dabane Trust education system for local farmers using Django and React.js.",
       "Designed a text-based WhatsApp chatbot for low-bandwidth rural areas in Zimbabwe.",
     ],
@@ -194,7 +194,7 @@ const experience = [
     title: "Intern",
     company: "Integrity Business Solutions",
     employment: "Internship",
-    period: "Aug 2019 – Aug 2020",
+    period: "Aug 2019 to Aug 2020",
     hash: "c8d4a6b",
     description:
       "Deployed and configured Linux server infrastructure for Hansaworld Standard ERP installations at multiple client sites.",
@@ -279,7 +279,7 @@ export default function About() {
                   <Calendar size={12} className="text-terminal-green" />
                   <span className="text-muted-foreground">status:</span>
                   <span className="text-evil-red">
-                    AVAILABLE — show me what you got!
+                    AVAILABLE: show me what you got!
                   </span>
                 </div>
               </motion.div>
@@ -340,7 +340,7 @@ export default function About() {
                     room
                   </p>
                   <p className="text-[9px] font-mono text-terminal-green/40">
-                    {"//"} control is an illusion — but uptime is real
+                    {"//"} control is an illusion, but uptime is real
                   </p>
                 </div>
               </div>
@@ -374,7 +374,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          <TerminalWindow title="htop — voldermort's arsenal">
+          <TerminalWindow title="htop: voldermort's arsenal">
             <div className="flex flex-wrap gap-1.5">
               {skills.map((skill, index) => {
                 const { icon: Icon, color } = getTechIcon(skill);

@@ -57,7 +57,7 @@ export const QUOTES: Quote[] = [
     category: "rick-and-morty",
   },
   {
-    text: "School is not a place for smart people, Morty. Stack Overflow and raw source code — that's where the real learning happens.",
+    text: "School is not a place for smart people, Morty. Stack Overflow and raw source code, that's where the real learning happens.",
     source: "Rick Sanchez (adapted)",
     category: "rick-and-morty",
   },
@@ -124,7 +124,7 @@ export const QUOTES: Quote[] = [
     category: "voldemort",
   },
   {
-    text: "The Elder Wand, the Resurrection Stone, and the Cloak of Invisibility — or as I call them: Vim, Git, and SSH.",
+    text: "The Elder Wand, the Resurrection Stone, and the Cloak of Invisibility. Or as I call them: Vim, Git, and SSH.",
     source: "Voldermort",
     category: "voldemort",
   },
@@ -161,7 +161,7 @@ export const QUOTES: Quote[] = [
     category: "mr-robot",
   },
   {
-    text: "Hello, friend. That's lame. Maybe I should give you a name. But that's a slippery slope — you'll want a REST API next.",
+    text: "Hello, friend. That's lame. Maybe I should give you a name. But that's a slippery slope. You'll want a REST API next.",
     source: "Elliot Alderson (adapted)",
     category: "mr-robot",
   },
@@ -176,7 +176,7 @@ export const QUOTES: Quote[] = [
     category: "mr-robot",
   },
   {
-    text: "The top one percent of the top one percent — the ones who play God without permission. They don't write their own code though.",
+    text: "The top one percent of the top one percent, the ones who play God without permission. They don't write their own code though.",
     source: "Elliot Alderson (adapted)",
     category: "mr-robot",
   },

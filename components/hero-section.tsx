@@ -128,7 +128,8 @@ export default function HeroSection() {
                 <p
                   className={`text-[10px] font-mono mt-1.5 ${CATEGORY_COLORS[quote.category] || "text-muted-foreground/50"}`}
                 >
-                  — {quote.source}
+                  {"// "}
+                  {quote.source}
                 </p>
               </motion.div>
             )}

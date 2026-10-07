@@ -479,7 +479,7 @@ export function NaginiChat() {
                   className="space-y-1"
                 >
                   <span className="text-[9px] font-mono text-evil-red/60">
-                    [NAGINI] — materializing...
+                    [NAGINI] materializing...
                   </span>
                   <div className="rounded overflow-hidden border border-terminal-green/20 shadow-[0_0_15px_rgba(0,255,65,0.15)]">
                     <video
